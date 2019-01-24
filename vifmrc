@@ -1,14 +1,22 @@
 set undolevels=10
 set history=100
 
-set noiec  " Use KiB instead of KB
+set noiec  
+" Use KiB instead of KB
 
 colorscheme Default
 
-set ignorecase " ignore case in search patterns
-set smartcase " if it contains at leaset one uppercase , do not ignore case
-set nohlsearch " do not highlight the search result file , but still highlight the mathed characters
-set incsearch " Use increment searching (search while typing)
+set ignorecase 
+" ignore case in search patterns
+
+set smartcase 
+" if it contains at leaset one uppercase , do not ignore case
+
+set nohlsearch 
+" do not highlight the search result file , but still highlight the mathed characters
+
+set incsearch 
+" Use increment searching (search while typing)
 
 set statusline="  %t%= %A %10u:%-7g %15s %20d  "custom statusline
 
