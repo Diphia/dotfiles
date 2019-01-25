@@ -36,4 +36,9 @@ nnoremap <f8> :delete<cr>
 
 nnoremap x :delete
 
+nnoremap = :cd %d %d<cr>
+" use = to force sync path
+
 nmap d '
+
+filetype *.mp4,*.avi,*.mkv,*.jpg,*.png,*.doc,*.docx,*.xls,*.xlsx,*.pdf,*.dmg open
