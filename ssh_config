@@ -11,3 +11,8 @@ Host nas
  Hostname 192.168.50.20
  User diphia
  Port 22
+
+Host vultr
+ Hostname 95.179.139.54
+ User root
+ Port 22
