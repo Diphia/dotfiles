@@ -1,2 +1,2 @@
 \::send,{Backspace}
-^q::send,#
+^q::send,#1
