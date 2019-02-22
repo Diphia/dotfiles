@@ -11,3 +11,19 @@ Host nas
  Hostname 192.168.50.20
  User diphia
  Port 22
+
+Host vultr
+ Hostname 45.32.190.44
+ User root
+ Port 22
+
+Host bandwagon
+ Hostname 67.230.174.156
+ User root
+ Port 29923
+
+Host nas_frp
+ Hostname 45.32.190.44
+ User diphia
+ Port 6666
+
