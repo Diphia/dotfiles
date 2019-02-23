@@ -17,7 +17,9 @@ fi
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="ys"
 #ZSH_THEME="fishy"
-ZSH_THEME="jtriley"
+#ZSH_THEME="jtriley"
+ZSH_THEME="kafeitu"
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
