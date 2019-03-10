@@ -2,7 +2,7 @@ set undolevels=10
 set history=100
 
 set noiec  
-" Use KiB instead of KB
+"Use KiB instead of KB
 
 colorscheme Default
 
