@@ -27,3 +27,7 @@ Host nas_frp
  User diphia
  Port 6666
 
+Host nas_temp
+ Hostname 192.168.3.3
+ User diphia
+ Port 22
