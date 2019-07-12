@@ -13,7 +13,7 @@ Host nas
  Port 22
 
 Host vultr
- Hostname 45.32.190.44
+ Hostname 149.28.183.214
  User root
  Port 22
 
