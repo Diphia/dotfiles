@@ -36,3 +36,8 @@ Host virtualbox_ubuntu
  Hostname 192.168.50.195
  User diphia
  Port 22
+
+Host tencent
+ Hostname 49.234.63.85
+ User ubuntu
+ port 22
