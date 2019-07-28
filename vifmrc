@@ -42,7 +42,9 @@ nnoremap = :cd %d %d<cr>
 " VimDesktop style favs
 nmap d '
 
-filetype *.mp4,*.avi,*.mkv,*.jpg,*.png,*.doc,*.docx,*.xls,*.xlsx,*.pdf,*.dmg,*.gsheet,*.gdoc,*.gslides open
+" filetype *.mp4,*.avi,*.mkv,*.jpg,*.png,*.doc,*.docx,*.xls,*.xlsx,*.pdf,*.dmg,*.gsheet,*.gdoc,*.gslides open
 
-fileviewer *.jpg,*.png shellpic %c
+" fileviewer *.jpg,*.png shellpic %c
+
+filetype * open
 
