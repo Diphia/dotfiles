@@ -43,6 +43,6 @@ Host tencent
  port 22
 
 Host kali
- Hostname 192.168.31.52
+ Hostname 127.0.0.1
  User root
- port 22
+ port 2222
