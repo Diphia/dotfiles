@@ -46,3 +46,8 @@ Host kali
  Hostname 127.0.0.1
  User root
  port 2222
+
+Host arch
+ Hostname 127.0.0.1
+ User diphia
+ port 2200
