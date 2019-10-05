@@ -186,9 +186,9 @@ bar {
         status_command i3status
         font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
         font pango:Noto Mono Bold 10
-	#colors{
-		#background #2E3436
-	#}
+	colors{
+		background #002B36
+	}
 }
 
 default_border pixel

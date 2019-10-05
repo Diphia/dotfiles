@@ -1,4 +1,7 @@
 #!/bin/bash
+# diphia@2019
+# This script is used to create the soft links which point to the authentic config file locations
+
 ln -si ~/dotfiles/.vimrc ~/.vimrc
 ln -si ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -si ~/dotfiles/vifmrc ~/.config/vifm/vifmrc
