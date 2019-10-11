@@ -102,4 +102,3 @@ VBoxClient --clipboard
 eval "$(fasd --init auto)"
 alias vi='vim'
 alias pc='proxychains'
-export PATH=/home/diphia/scripts:$PATH
