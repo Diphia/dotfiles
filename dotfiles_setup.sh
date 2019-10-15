@@ -5,48 +5,49 @@
 
 username="diphia"
 
-ln -si ~/dotfiles/.vimrc ~/.vimrc
+ln -si /home/${username}/dotfiles/.vimrc /home/${username}/.vimrc
 
 
-ln -si ~/dotfiles/.tmux.conf ~/.tmux.conf
+ln -si /home/${username}/dotfiles/.tmux.conf /home/${username}/.tmux.conf
 
 
 if [ ! -d "/home/${username}/.config/vifm/" ]
 then
-	mkdir ~/.config/vifm/	
+	mkdir /home/${username}/.config/vifm/	
 fi
-ln -si ~/dotfiles/vifmrc ~/.config/vifm/vifmrc
+ln -si /home/${username}/dotfiles/vifmrc /home/${username}/.config/vifm/vifmrc
 
 
 if [ ! -d "/home/${username}/.ssh/" ]
 then
-	mkdir ~/.ssh
+	mkdir /home/${username}/.ssh
 fi
-ln -si ~/dotfiles/ssh_config ~/.ssh/config
+ln -si /home/${username}/dotfiles/ssh_config /home/${username}/.ssh/config
 
 
-ln -si ~/dotfiles/.zshrc ~/.zshrc
+ln -si /home/${username}/dotfiles/.zshrc /home/${username}/.zshrc
 
 
 if [ ! -d "/home/${username}/.config/i3/" ]
 then
-	mkdir ~/.config/i3/	
+	mkdir /home/${username}/.config/i3/	
 fi
-ln -si ~/dotfiles/i3_config ~/.config/i3/config
+ln -si /home/${username}/dotfiles/i3_config /home/${username}/.config/i3/config
 
 
 if [ ! -d "/home/${username}/.config/i3status/" ]
 then
-	mkdir ~/.config/i3status/	
+	mkdir /home/${username}/.config/i3status/	
 fi
-ln -si ~/dotfiles/i3status_config ~/.config/i3status/config
+ln -si /home/${username}/dotfiles/i3status_config /home/${username}/.config/i3status/config
 
 
 if [ ! -d "/home/${username}/.vim/autoload/" ]
 then
-	mkdir ~/.vim/autoload/	
+	mkdir /home/${username}/.vim/autoload/	
 fi
-ln -si ~/dotfiles/plug.vim ~/.vim/autoload/plug.vim
+ln -si /home/${username}/dotfiles/plug.vim /home/${username}/.vim/autoload/plug.vim
 
 
-ln -si ~/scripts/newpost.sh /usr/bin/newpost
+ln -si /home/${username}/scripts/newpost.sh /usr/bin/newpost
+ln -si /home/${username}/scripts/nc_receive.sh /usr/bin/nc_receive
