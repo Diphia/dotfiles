@@ -103,3 +103,4 @@ VBoxClient --clipboard
 eval "$(fasd --init auto)"
 alias vi='vim'
 alias pc='proxychains'
+alias v="f -e vim"
