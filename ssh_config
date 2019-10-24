@@ -52,7 +52,7 @@ Host arch
  User diphia
  port 2200
 
-Host chnmobile
- Hostname 20.26.17.182
- User firefart
+Host wsf_server
+ Hostname 10.73.151.52
+ User manage
  port 2222
