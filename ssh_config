@@ -53,6 +53,6 @@ Host arch
  port 2200
 
 Host wsf_server
- Hostname 10.73.151.52
+ Hostname 10.73.151.65
  User manage
  port 2222
