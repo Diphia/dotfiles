@@ -43,6 +43,8 @@ nmap d '
 
 " filetype *.mp4,*.avi,*.mkv,*.jpg,*.png,*.doc,*.docx,*.xls,*.xlsx,*.pdf,*.dmg,*.gsheet,*.gdoc,*.gslides open
 
+filetype *.jpg,*.png feh -F
+
 " fileviewer *.jpg,*.png shellpic %c
 
 filetype * open
