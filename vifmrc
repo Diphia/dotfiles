@@ -45,7 +45,12 @@ nmap d '
 
 filetype *.jpg,*.png feh -F
 
-fileviewer *.jpg,*.png /usr/local/bin/tiv
+fileviewer *.jpg,*.png 
+	\ imgt %px %py %pw %ph %c
+	\ %pc
+	\ imgc %px %py %pw %ph
+
+
 " fileviewer *.md head
 
 filetype * open
