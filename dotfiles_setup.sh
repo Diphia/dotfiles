@@ -10,12 +10,7 @@ ln -si /home/${username}/dotfiles/.vimrc /home/${username}/.vimrc
 
 ln -si /home/${username}/dotfiles/.tmux.conf /home/${username}/.tmux.conf
 
-
-if [ ! -d "/home/${username}/.config/vifm/" ]
-then
-	mkdir /home/${username}/.config/vifm/	
-fi
-ln -si /home/${username}/dotfiles/vifmrc /home/${username}/.config/vifm/vifmrc
+ln -si /home/${username}/dotfiles/vifm/ /home/${username}/.config/vifm
 
 
 if [ ! -d "/home/${username}/.ssh/" ]
