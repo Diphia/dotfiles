@@ -1,0 +1,22 @@
+snippet head "hugo head descriptions" b
+---
+categories: ["Tech"]
+tags: ["Linux"]
+title: "`!v expand('%')`"
+date: `date +"%Y-%m-%d"`T00:00:00+08:00
+draft: true
+
+---
+endsnippet
+
+snippet image "insert image for hugo markdown file" b
+![img1](/post/img/`!v expand('%')`_1.jpg)
+endsnippet
+
+snippet img "insert image for hugo markdown file" b
+![img1](/post/img/`!v expand('%')`_1.jpg)
+endsnippet
+
+snippet ref "refernce" b
+[^1]:[]()
+endsnippet
