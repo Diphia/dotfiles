@@ -36,7 +36,7 @@ fi
 ln -si /home/${username}/dotfiles/i3status_config /home/${username}/.config/i3status/config
 
 
-ln -si /home/${username}/dotfiles/.vimrc /home/${username}/.vimrc
+ln -si /home/${username}/dotfiles/vim/.vimrc /home/${username}/.vimrc
 if [ ! -d "/home/${username}/.vim/autoload/" ]
 then
 	mkdir /home/${username}/.vim/autoload/	
