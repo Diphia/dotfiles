@@ -5,7 +5,6 @@
 
 username="diphia"
 
-ln -si /home/${username}/dotfiles/.vimrc /home/${username}/.vimrc
 
 
 ln -si /home/${username}/dotfiles/.tmux.conf /home/${username}/.tmux.conf
@@ -37,11 +36,13 @@ fi
 ln -si /home/${username}/dotfiles/i3status_config /home/${username}/.config/i3status/config
 
 
+ln -si /home/${username}/dotfiles/.vimrc /home/${username}/.vimrc
 if [ ! -d "/home/${username}/.vim/autoload/" ]
 then
 	mkdir /home/${username}/.vim/autoload/	
 fi
-ln -si /home/${username}/dotfiles/plug.vim /home/${username}/.vim/autoload/plug.vim
+ln -si /home/${username}/dotfiles/vim/plug.vim /home/${username}/.vim/autoload/plug.vim
+ln -si /home/${username}/dotfiles/vim/UltiSnips /home/${username}/.vim/UltiSnips
 
 
 ln -si /home/${username}/scripts/newpost.sh /usr/bin/newpost
