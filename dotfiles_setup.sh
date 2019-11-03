@@ -43,7 +43,7 @@ fi
 if [[ ${input} == *b* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing vifm config"
-	ln -si ${dotfiles_loc}/vifm/ ${user_main_dir}/.config/vifm
+	ln -si ${dotfiles_loc}/vifm/ ${user_main_dir}/.config/
 fi  
 
 if [[ ${input} == *c* ]] || [[ ${input} == "ALL" ]]
@@ -93,7 +93,7 @@ then
 		mkdir ${user_main_dir}/.vim/autoload/	
 	fi
 	ln -si ${dotfiles_loc}/vim/plug.vim ${user_main_dir}/.vim/autoload/plug.vim
-	ln -si ${dotfiles_loc}/vim/UltiSnips ${user_main_dir}/.vim/UltiSnips
+	ln -si ${dotfiles_loc}/vim/UltiSnips ${user_main_dir}/.vim
 fi
 
 
