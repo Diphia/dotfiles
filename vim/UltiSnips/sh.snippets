@@ -6,7 +6,7 @@ snippet head "comment at the start of shell scripts" b
 endsnippet
 
 snippet if "typical if blocks" b
-if [ ]
+if [ ${x} == "" ]
 then
 	xxx 
 	exit
@@ -18,5 +18,15 @@ for i in \`seq 1 100\`
 do
 	xxx
 done
+endsnippet
+
+snippet inc "if blocks that judges string inclusion" b
+A="abcdef"
+if [[ ${A} == *x* ]]
+then
+	echo "YES"
+else
+	echo "NO"
+fi  
 endsnippet
 

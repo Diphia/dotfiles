@@ -5,50 +5,102 @@
 
 username="diphia"
 
-
-dotfiles_loc="/home/${username}/dotfiles"
-user_main_dir="/home/${username}"
-
-
-
-ln -si ${dotfiles_loc}/.tmux.conf ${user_main_dir}/.tmux.conf
-
-ln -si ${dotfiles_loc}/vifm/ ${user_main_dir}/.config/vifm
-
-
-if [ ! -d "${user_main_dir}/.ssh/" ]
+os=`uname -s`
+if [ ${os} == "Linux" ]
 then
-	mkdir ${user_main_dir}/.ssh
-fi
-ln -si ${dotfiles_loc}/ssh_config ${user_main_dir}/.ssh/config
-
-
-ln -si ${dotfiles_loc}/.zshrc ${user_main_dir}/.zshrc
-
-
-if [ ! -d "${user_main_dir}/.config/i3/" ]
+	echo "OS:Linux"
+	dotfiles_loc="/home/${username}/dotfiles"
+	user_main_dir="/home/${username}"
+elif [ ${os} == "Darwin" ]
 then
-	mkdir ${user_main_dir}/.config/i3/	
+	echo "OS:macOS"
+	dotfiles_loc="/Users/${username}/dotfiles"
+	user_main_dir="/Users/${username}"
 fi
-ln -si ${dotfiles_loc}/i3_config ${user_main_dir}/.config/i3/config
 
+cat << EOF
+Please select dotfiles you want to sync:
+a) .tmux.config
+b) vifm
+c) .ssh/config
+d) .zshrc
+e) i3wm
+f) i3status
+g) vim
+z) linking personal scripts to /usr/bin
+ALL) doing ALL the things above
+EOF
 
-if [ ! -d "${user_main_dir}/.config/i3status/" ]
+echo -n "-> "
+read input
+
+if [[ ${input} == *a* ]] || [[ ${input} == "ALL" ]]
 then
-	mkdir ${user_main_dir}/.config/i3status/	
-fi
-ln -si ${dotfiles_loc}/i3status_config ${user_main_dir}/.config/i3status/config
+	echo "Processing Tmux config"
+	ln -si ${dotfiles_loc}/.tmux.conf ${user_main_dir}/.tmux.conf
+fi  
 
-
-ln -si ${dotfiles_loc}/vim/.vimrc ${user_main_dir}/.vimrc
-if [ ! -d "${user_main_dir}/.vim/autoload/" ]
+if [[ ${input} == *b* ]] || [[ ${input} == "ALL" ]]
 then
-	mkdir ${user_main_dir}/.vim/autoload/	
+	echo "Processing vifm config"
+	ln -si ${dotfiles_loc}/vifm/ ${user_main_dir}/.config/vifm
+fi  
+
+if [[ ${input} == *c* ]] || [[ ${input} == "ALL" ]]
+then
+	echo "Processing ssh config"
+	if [ ! -d "${user_main_dir}/.ssh/" ]
+	then
+		mkdir ${user_main_dir}/.ssh
+	fi
+	ln -si ${dotfiles_loc}/ssh_config ${user_main_dir}/.ssh/config
 fi
-ln -si ${dotfiles_loc}/vim/plug.vim ${user_main_dir}/.vim/autoload/plug.vim
-ln -si ${dotfiles_loc}/vim/UltiSnips ${user_main_dir}/.vim/UltiSnips
+
+if [[ ${input} == *d* ]] || [[ ${input} == "ALL" ]]
+then
+	echo "Processing .zshrc"
+	ln -si ${dotfiles_loc}/.zshrc ${user_main_dir}/.zshrc
+fi
+
+if [[ ${input} == *e* ]] || [[ ${input} == "ALL" ]]
+then
+	echo "Processing i3wm config"
+	if [ ! -d "${user_main_dir}/.config/i3/" ]
+	then
+		mkdir ${user_main_dir}/.config/i3/	
+	fi
+	ln -si ${dotfiles_loc}/i3_config ${user_main_dir}/.config/i3/config
+fi
 
 
-ln -si ${user_main_dir}/scripts/newpost.sh /usr/bin/newpost
-ln -si ${user_main_dir}/scripts/nc_receive.sh /usr/bin/nc_receive
-ln -si ${user_main_dir}/scripts/push_blog_to_server.sh /usr/bin/push_blog_to_server
+if [[ ${input} == *f* ]] || [[ ${input} == "ALL" ]]
+then
+	echo "Processing i3status config"
+	if [ ! -d "${user_main_dir}/.config/i3status/" ]
+	then
+		mkdir ${user_main_dir}/.config/i3status/	
+	fi
+	ln -si ${dotfiles_loc}/i3status_config ${user_main_dir}/.config/i3status/config
+fi
+
+
+if [[ ${input} == *g* ]] || [[ ${input} == "ALL" ]]
+then
+	echo "Processing vim config"
+	ln -si ${dotfiles_loc}/vim/.vimrc ${user_main_dir}/.vimrc
+	if [ ! -d "${user_main_dir}/.vim/autoload/" ]
+	then
+		mkdir ${user_main_dir}/.vim/autoload/	
+	fi
+	ln -si ${dotfiles_loc}/vim/plug.vim ${user_main_dir}/.vim/autoload/plug.vim
+	ln -si ${dotfiles_loc}/vim/UltiSnips ${user_main_dir}/.vim/UltiSnips
+fi
+
+
+if [[ ${input} == *z* ]] || [[ ${input} == "ALL" ]]
+then
+	echo "Linking Scripts"
+	ln -si ${user_main_dir}/scripts/newpost.sh /usr/bin/newpost
+	ln -si ${user_main_dir}/scripts/nc_receive.sh /usr/bin/nc_receive
+	ln -si ${user_main_dir}/scripts/push_blog_to_server.sh /usr/bin/push_blog_to_server
+fi

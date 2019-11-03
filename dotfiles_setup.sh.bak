@@ -5,9 +5,14 @@
 
 username="diphia"
 
+os=`uname`
 
-dotfiles_loc="/home/${username}/dotfiles"
-user_main_dir="/home/${username}"
+if [ ${os} == "Linux" ]
+then
+	echo "OS:Linux"
+	dotfiles_loc="/home/${username}/dotfiles"
+	user_main_dir="/home/${username}"
+fi
 
 
 
@@ -20,35 +25,35 @@ if [ ! -d "${user_main_dir}/.ssh/" ]
 then
 	mkdir ${user_main_dir}/.ssh
 fi
-ln -si ${dotfiles_loc}/ssh_config /home/${username}/.ssh/config
+ln -si ${dotfiles_loc}/ssh_config ${user_main_dir}/.ssh/config
 
 
-ln -si /home/${username}/dotfiles/.zshrc /home/${username}/.zshrc
+ln -si ${dotfiles_loc}/.zshrc ${user_main_dir}/.zshrc
 
 
-if [ ! -d "/home/${username}/.config/i3/" ]
+if [ ! -d "${user_main_dir}/.config/i3/" ]
 then
-	mkdir /home/${username}/.config/i3/	
+	mkdir ${user_main_dir}/.config/i3/	
 fi
-ln -si /home/${username}/dotfiles/i3_config /home/${username}/.config/i3/config
+ln -si ${dotfiles_loc}/i3_config ${user_main_dir}/.config/i3/config
 
 
-if [ ! -d "/home/${username}/.config/i3status/" ]
+if [ ! -d "${user_main_dir}/.config/i3status/" ]
 then
-	mkdir /home/${username}/.config/i3status/	
+	mkdir ${user_main_dir}/.config/i3status/	
 fi
-ln -si /home/${username}/dotfiles/i3status_config /home/${username}/.config/i3status/config
+ln -si ${dotfiles_loc}/i3status_config ${user_main_dir}/.config/i3status/config
 
 
-ln -si /home/${username}/dotfiles/vim/.vimrc /home/${username}/.vimrc
-if [ ! -d "/home/${username}/.vim/autoload/" ]
+ln -si ${dotfiles_loc}/vim/.vimrc ${user_main_dir}/.vimrc
+if [ ! -d "${user_main_dir}/.vim/autoload/" ]
 then
-	mkdir /home/${username}/.vim/autoload/	
+	mkdir ${user_main_dir}/.vim/autoload/	
 fi
-ln -si /home/${username}/dotfiles/vim/plug.vim /home/${username}/.vim/autoload/plug.vim
-ln -si /home/${username}/dotfiles/vim/UltiSnips /home/${username}/.vim/UltiSnips
+ln -si ${dotfiles_loc}/vim/plug.vim ${user_main_dir}/.vim/autoload/plug.vim
+ln -si ${dotfiles_loc}/vim/UltiSnips ${user_main_dir}/.vim/UltiSnips
 
 
-ln -si /home/${username}/scripts/newpost.sh /usr/bin/newpost
-ln -si /home/${username}/scripts/nc_receive.sh /usr/bin/nc_receive
-ln -si /home/${username}/scripts/push_blog_to_server.sh /usr/bin/push_blog_to_server
+ln -si ${user_main_dir}/scripts/newpost.sh /usr/bin/newpost
+ln -si ${user_main_dir}/scripts/nc_receive.sh /usr/bin/nc_receive
+ln -si ${user_main_dir}/scripts/push_blog_to_server.sh /usr/bin/push_blog_to_server
