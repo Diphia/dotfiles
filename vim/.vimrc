@@ -1,4 +1,5 @@
 set number
+
 syntax on
 
 set showmode
@@ -12,6 +13,25 @@ set shiftwidth=4
 "set softtabstop=4
 
 set scrolloff=10
+
+"set shortcuts for switching between tabs
+:map t1 1gt
+:map t2 2gt
+:map t3 3gt
+:map t4 4gt
+:map t5 5gt
+:map t6 6gt
+:map t7 7gt
+:map t8 8gt
+:map t9 9gt
+:map th :tabp<cr>
+:map tl :tabn<cr>
+:map to :tabnew 
+
+"set simple run script shortcuts
+:map :py :!python % 
+:map :sh :!sh % 
+
 
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
