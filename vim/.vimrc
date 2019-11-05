@@ -1,4 +1,6 @@
-set number
+"show line numbers and relative line numbers at the same time
+set nu
+set rnu
 
 syntax on
 
@@ -32,6 +34,8 @@ set scrolloff=10
 :map :py :!python % 
 :map :sh :!sh % 
 
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
