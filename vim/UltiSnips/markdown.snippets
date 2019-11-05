@@ -1,7 +1,7 @@
 snippet head "hugo head descriptions" b
 ---
-categories: ["Tech"]
-tags: ["Linux"]
+categories: ["${1: Tech}"]
+tags: ["${2: Linux}"]
 title: "`!v expand('%')`"
 date: `date +"%Y-%m-%d"`T00:00:00+08:00
 draft: true
@@ -18,7 +18,7 @@ snippet png "insert png for hugo markdown file" b
 endsnippet
 
 snippet ref "refernce" b
-[^1]:[]()
+[^1]:[${1:title}](${2:link})
 endsnippet
 
 snippet table2 "insert table" b
@@ -55,4 +55,3 @@ snippet table6 "insert table" b
 | 1 | 2 | 3 | 4 | 5 | 6 |
 | 1 | 2 | 3 | 4 | 5 | 6 |
 endsnippet
-
