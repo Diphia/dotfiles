@@ -16,3 +16,10 @@ try:
 except:
 	pass
 endsnippet
+
+snippet data "typical request data statement" b
+data={
+	'${1:username}':'${2:\{content\}}'.format(content=content),
+	'${3:password}':'${4:content}',
+}
+endsnippet
