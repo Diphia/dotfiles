@@ -69,7 +69,7 @@ ZSH_THEME="kafeitu"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,4 +104,8 @@ eval "$(fasd --init auto)"
 alias vi='vim'
 alias pc='proxychains'
 alias v="f -e vim"
-alias glances="glances -t 0.5"
+alias grep="grep -E --color"
+
+bindkey '^l' autosuggest-accept
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#6b6b6b,bg=bold,underline"
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="bg=bold,underline"
