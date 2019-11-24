@@ -13,7 +13,7 @@ Host nas
  Port 22
 
 Host vultr
- Hostname 149.28.183.214
+ Hostname 45.76.48.154
  User root
  Port 22
 
@@ -56,3 +56,4 @@ Host wsf_server
  Hostname 10.73.151.65
  User manage
  port 2222
+
