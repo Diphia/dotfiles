@@ -4,7 +4,7 @@ set history=100
 set noiec  
 "Use KiB instead of KB
 
-colorscheme Solarized-dark
+colorscheme snowwhite
 
 set ignorecase 
 " ignore case in search patterns
