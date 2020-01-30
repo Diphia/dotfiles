@@ -28,7 +28,7 @@ e) i3wm
 f) i3status
 g) vim
 h) proxychains
-z) linking personal scripts to /usr/bin
+z) download and link some personal scripts to /usr/bin
 ALL) doing ALL the things above
 EOF
 
@@ -106,6 +106,8 @@ fi
 
 if [[ ${input} == *z* ]] || [[ ${input} == "ALL" ]]
 then
+	echo "Cloning Scripts"
+    git clone ${user_main_dir}/scripts
 	echo "Linking Scripts"
 	ln -si ${user_main_dir}/scripts/newpost.sh /usr/bin/newpost
 	ln -si ${user_main_dir}/scripts/nc_receive.sh /usr/bin/nc_receive
