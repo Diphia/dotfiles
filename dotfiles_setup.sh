@@ -35,7 +35,7 @@ e) i3wm
 f) i3status
 g) vim
 h) proxychains
-z) download and link some personal scripts to /usr/local/bin
+z) download and link some personal scripts to ~/.local/bin
 ALL) doing ALL the things above
 EOF
 
