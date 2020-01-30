@@ -74,7 +74,6 @@ then
 	ln -si ${dotfiles_loc}/i3_config ${user_main_dir}/.config/i3/config
 fi
 
-
 if [[ ${input} == *f* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing i3status config"
@@ -107,10 +106,18 @@ fi
 
 if [[ ${input} == *z* ]] || [[ ${input} == "ALL" ]]
 then
-	echo "Cloning Scripts"
-    git clone ${scripts_repository} ${user_main_dir}/scripts
+    if [ ! -d "${user_main_dir}/scripts/" ]
+    then
+        echo "Cloning Scripts"
+        git clone ${scripts_repository} ${user_main_dir}/scripts
+    else
+        echo "Directory exists, skip downloading"
+    fi
 	echo "Linking Scripts"
-	ln -si ${user_main_dir}/scripts/newpost.sh /usr/bin/newpost
-	ln -si ${user_main_dir}/scripts/nc_receive.sh /usr/bin/nc_receive
-	ln -si ${user_main_dir}/scripts/push_blog_to_server.sh /usr/bin/push_blog_to_server
+    for i in `ls ${user_main_dir}/scripts/systools`:
+    do
+        bin_name=`echo $i | awk -F '.' '{print $1}'`
+        ln -si ${user_main_dir}/scripts/systools/$i /usr/bin/${bin_name}
+        echo "processed compeleted for $i"
+    done
 fi
