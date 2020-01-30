@@ -6,7 +6,7 @@ snippet head "comment at the start of shell scripts" b
 endsnippet
 
 snippet if "if statement" b
-if [ ${1:condition} ]
+if [[ ${1:condition} ]]
 then
 	xxx 
 fi
@@ -14,7 +14,7 @@ endsnippet
 
 
 snippet if-else "if else statement" b
-if [ ${1:condition} ]
+if [[ ${1:condition} ]]
 then
 	xxx 
 else
@@ -23,10 +23,10 @@ fi
 endsnippet
 
 snippet if-elif "if elif statement" b
-if [ ${1:condition} ]
+if [[ ${1:condition} ]]
 then
 	xxx 
-elif [ ${y} == "" ]
+elif [[ ${y} == "" ]]
 then
 	yyy
 fi

@@ -17,12 +17,12 @@ if [ ${os} == "Linux" ]
 then
 	echo "OS:Linux"
 	dotfiles_loc="/home/${username}/dotfiles"
-	HOME="/home/${username}"
+	user_main_dir="/home/${username}"
 elif [ ${os} == "Darwin" ]
 then
 	echo "OS:macOS"
 	dotfiles_loc="/Users/${username}/dotfiles"
-	HOME="/Users/${username}"
+	user_main_dir="/Users/${username}"
 fi
 
 cat << EOF
@@ -45,69 +45,69 @@ read input
 if [[ ${input} == *a* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing Tmux config"
-	ln -si ${dotfiles_loc}/.tmux.conf ${HOME}/.tmux.conf
+	ln -si ${dotfiles_loc}/.tmux.conf ${user_main_dir}/.tmux.conf
 fi  
 
 if [[ ${input} == *b* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing vifm config"
-	ln -si ${dotfiles_loc}/vifm/ ${HOME}/.config/
+	ln -si ${dotfiles_loc}/vifm/ ${user_main_dir}/.config/
 fi  
 
 if [[ ${input} == *c* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing ssh config"
-	if [ ! -d "${HOME}/.ssh/" ]
+	if [ ! -d "${user_main_dir}/.ssh/" ]
 	then
-		mkdir ${HOME}/.ssh
+		mkdir ${user_main_dir}/.ssh
 	fi
-	ln -si ${dotfiles_loc}/ssh_config ${HOME}/.ssh/config
+	ln -si ${dotfiles_loc}/ssh_config ${user_main_dir}/.ssh/config
 fi
 
 if [[ ${input} == *d* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing .zshrc"
-    if [[ `grep "source ${HOME}/dotfiles/.zshrc" ${HOME}/.zshrc` ]]
+    if [[ `grep "source ${user_main_dir}/dotfiles/.zshrc" ${user_main_dir}/.zshrc` ]]
     then
         echo "source command exists, abort adding"
     else
-        echo "source ${HOME}/dotfiles/.zshrc" >> ${HOME}/.zshrc
+        echo "source ${user_main_dir}/dotfiles/.zshrc" >> ${user_main_dir}/.zshrc
         echo "source command added"
     fi
-	#ln -si ${dotfiles_loc}/.zshrc ${HOME}/.zshrc
+	#ln -si ${dotfiles_loc}/.zshrc ${user_main_dir}/.zshrc
 fi
 
 if [[ ${input} == *e* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing i3wm config"
-	if [ ! -d "${HOME}/.config/i3/" ]
+	if [ ! -d "${user_main_dir}/.config/i3/" ]
 	then
-		mkdir ${HOME}/.config/i3/	
+		mkdir ${user_main_dir}/.config/i3/	
 	fi
-	ln -si ${dotfiles_loc}/i3_config ${HOME}/.config/i3/config
+	ln -si ${dotfiles_loc}/i3_config ${user_main_dir}/.config/i3/config
 fi
 
 if [[ ${input} == *f* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing i3status config"
-	if [ ! -d "${HOME}/.config/i3status/" ]
+	if [ ! -d "${user_main_dir}/.config/i3status/" ]
 	then
-		mkdir ${HOME}/.config/i3status/	
+		mkdir ${user_main_dir}/.config/i3status/	
 	fi
-	ln -si ${dotfiles_loc}/i3status_config ${HOME}/.config/i3status/config
+	ln -si ${dotfiles_loc}/i3status_config ${user_main_dir}/.config/i3status/config
 fi
 
 
 if [[ ${input} == *g* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing vim config"
-	ln -si ${dotfiles_loc}/vim/.vimrc ${HOME}/.vimrc
-	if [ ! -d "${HOME}/.vim/autoload/" ]
+	ln -si ${dotfiles_loc}/vim/.vimrc ${user_main_dir}/.vimrc
+	if [ ! -d "${user_main_dir}/.vim/autoload/" ]
 	then
-		mkdir ${HOME}/.vim/autoload/	
+		mkdir ${user_main_dir}/.vim/autoload/	
 	fi
-	ln -si ${dotfiles_loc}/vim/plug.vim ${HOME}/.vim/autoload/plug.vim
-	ln -si ${dotfiles_loc}/vim/UltiSnips ${HOME}/.vim
+	ln -si ${dotfiles_loc}/vim/plug.vim ${user_main_dir}/.vim/autoload/plug.vim
+	ln -si ${dotfiles_loc}/vim/UltiSnips ${user_main_dir}/.vim
 fi
 
 if [[ ${input} == *h* ]] || [[ ${input} == "ALL" ]]
@@ -119,24 +119,24 @@ fi
 
 if [[ ${input} == *z* ]] || [[ ${input} == "ALL" ]]
 then
-    if [ ! -d "${HOME}/scripts/" ]
+    if [ ! -d "${user_main_dir}/scripts/" ]
     then
         echo "Cloning Scripts"
-        git clone ${scripts_repository} ${HOME}/scripts
+        git clone ${scripts_repository} ${user_main_dir}/scripts
     else
         echo "Directory exists, skip downloading"
     fi
 	echo "Linking Scripts"
-    if [ ! -d "${HOME}/.local/bin" ]
+    if [ ! -d "${user_main_dir}/.local/bin" ]
     then
-        mkdir -p ${HOME}/.local/bin/
-        echo "${HOME}/.local/bin created" 
+        mkdir -p ${user_main_dir}/.local/bin/
+        echo "${user_main_dir}/.local/bin created" 
     fi
-    for i in `ls ${HOME}/scripts/systools`
+    for i in `ls ${user_main_dir}/scripts/systools`
     do
         bin_name=`echo $i | awk -F '.' '{print $1}'`  # dip the .sh postfix
-        #sudo ln -si ${HOME}/scripts/systools/$i /usr/local/bin/${bin_name}
-        sudo ln -si ${HOME}/scripts/systools/$i ${HOME}/.local/bin/${bin_name}
+        #sudo ln -si ${user_main_dir}/scripts/systools/$i /usr/local/bin/${bin_name}
+        sudo ln -si ${user_main_dir}/scripts/systools/$i ${user_main_dir}/.local/bin/${bin_name}
         echo "processed compeleted for $i"
     done
 fi
