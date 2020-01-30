@@ -6,6 +6,12 @@
 username="diphia"
 scripts_repository="https://github.com/Diphia/scripts.git"
 
+if [ `whoami` != "root" ]
+then
+    echo "Permission Denied, please execute as root"
+    exit
+fi
+
 os=`uname -s`
 if [ ${os} == "Linux" ]
 then
