@@ -4,6 +4,7 @@
 # This script is used to create the soft links which point to the authentic config file locations
 
 username="diphia"
+scripts_repository="https://github.com/Diphia/scripts.git"
 
 os=`uname -s`
 if [ ${os} == "Linux" ]
@@ -107,7 +108,7 @@ fi
 if [[ ${input} == *z* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Cloning Scripts"
-    git clone ${user_main_dir}/scripts
+    git clone ${scripts_repository} ${user_main_dir}/scripts
 	echo "Linking Scripts"
 	ln -si ${user_main_dir}/scripts/newpost.sh /usr/bin/newpost
 	ln -si ${user_main_dir}/scripts/nc_receive.sh /usr/bin/nc_receive
