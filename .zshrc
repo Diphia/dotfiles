@@ -109,3 +109,5 @@ alias grep="grep -E --color"
 bindkey '^l' autosuggest-accept
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#6b6b6b,bg=bold,underline"
 #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="bg=bold,underline"
+#
+export PATH="/home/diphia/.local/bin:$PATH"
