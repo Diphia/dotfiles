@@ -191,3 +191,15 @@ t/home/diphia/.local/share/vifm/Trash/000_iplist
 	/home/diphia/iplist
 t/home/diphia/.local/share/vifm/Trash/000_test
 	/home/diphia/Westfall/content/post/test
+t/home/diphia/.local/share/vifm/Trash/000_hugo-theme-even
+	/home/diphia/Westfall/themes/hugo-theme-even
+t/home/diphia/.local/share/vifm/Trash/001_hugo-theme-even
+	/home/diphia/test/hugo-theme-even
+t/home/diphia/.local/share/vifm/Trash/000_hugo-theme-even.tar
+	/home/diphia/Westfall/themes/hugo-theme-even.tar
+t/home/diphia/.local/share/vifm/Trash/000_favicon-16x16.png
+	/home/diphia/Westfall/themes/hugo-theme-even/static/favicon-16x16.png
+t/home/diphia/.local/share/vifm/Trash/000_favicon-32x32.png
+	/home/diphia/Westfall/themes/hugo-theme-even/static/favicon-32x32.png
+t/home/diphia/.local/share/vifm/Trash/000_favicon.ico
+	/home/diphia/Westfall/themes/hugo-theme-even/static/favicon.ico
