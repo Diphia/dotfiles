@@ -8,7 +8,7 @@ scripts_repository="https://github.com/Diphia/scripts.git"
 
 if [ `whoami` != "root" ]
 then
-    echo "Permission Denied, please execute as root"
+    echo "Permission Denied, please run as root"
     exit
 fi
 
@@ -35,7 +35,7 @@ e) i3wm
 f) i3status
 g) vim
 h) proxychains
-z) download and link some personal scripts to /usr/bin
+z) download and link some personal scripts to /usr/local/bin
 ALL) doing ALL the things above
 EOF
 
@@ -120,10 +120,17 @@ then
         echo "Directory exists, skip downloading"
     fi
 	echo "Linking Scripts"
+    if [ ! -d "${user_main_dir}/.local/bin" ]
+    then
+        mkdir -p ${user_main_dir}/.local/bin/
+        echo "${user_main_dir}/.local/bin created" 
+    fi
     for i in `ls ${user_main_dir}/scripts/systools`
     do
-        bin_name=`echo $i | awk -F '.' '{print $1}'`
-        sudo ln -si ${user_main_dir}/scripts/systools/$i /usr/bin/${bin_name}
+        bin_name=`echo $i | awk -F '.' '{print $1}'`  # dip the .sh postfix
+        #sudo ln -si ${user_main_dir}/scripts/systools/$i /usr/local/bin/${bin_name}
+        sudo ln -si ${user_main_dir}/scripts/systools/$i ${user_main_dir}/.local/bin/${bin_name}
         echo "processed compeleted for $i"
     done
 fi
+
