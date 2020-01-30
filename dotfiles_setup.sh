@@ -114,10 +114,10 @@ then
         echo "Directory exists, skip downloading"
     fi
 	echo "Linking Scripts"
-    for i in `ls ${user_main_dir}/scripts/systools`:
+    for i in `ls ${user_main_dir}/scripts/systools`
     do
         bin_name=`echo $i | awk -F '.' '{print $1}'`
-        ln -si ${user_main_dir}/scripts/systools/$i /usr/bin/${bin_name}
+        sudo ln -si ${user_main_dir}/scripts/systools/$i /usr/bin/${bin_name}
         echo "processed compeleted for $i"
     done
 fi
