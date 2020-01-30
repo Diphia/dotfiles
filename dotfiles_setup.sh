@@ -67,7 +67,14 @@ fi
 if [[ ${input} == *d* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing .zshrc"
-	ln -si ${dotfiles_loc}/.zshrc ${user_main_dir}/.zshrc
+    if [[ `grep "source ${user_main_dir}/dotfiles/.zshrc" ${user_main_dir}/.zshrc` ]]
+    then
+        echo "source command exists, abort adding"
+    else
+        echo "source ${user_main_dir}/dotfiles/.zshrc" >> ${user_main_dir}/.zshrc
+        echo "source command added"
+    fi
+	#ln -si ${dotfiles_loc}/.zshrc ${user_main_dir}/.zshrc
 fi
 
 if [[ ${input} == *e* ]] || [[ ${input} == "ALL" ]]
