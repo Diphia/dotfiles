@@ -51,7 +51,8 @@ fi
 if [[ ${input} == *b* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing vifm config"
-	ln -si ${dotfiles_loc}/vifm/ ${HOME}/.config/
+	#ln -si ${dotfiles_loc}/vifm/ ${HOME}/.config/
+	ln -si ${dotfiles_loc}/vifm/ ${HOME}/.vifm
 fi  
 
 if [[ ${input} == *c* ]] || [[ ${input} == "ALL" ]]
