@@ -8,5 +8,5 @@ include a stupid shell script to create symbolic links
 cd ~
 git clone git@github.com:Diphia/dotfiles.git
 cd dotfiles
-./setup.sh
+sudo bash ./dowfiles_setup.sh
 ```
