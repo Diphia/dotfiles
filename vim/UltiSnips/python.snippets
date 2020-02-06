@@ -30,3 +30,11 @@ for x in ${1:target}:
 	for y in $1[x]:
 		print(y,':',$1[x][y])
 endsnippet
+
+snippet decorator "decorator example" b
+${1:decorator_name}(func):
+	def wrapper(*args,**kw):
+		print('call %s(): % func.__name__')
+		return func(*args,**kw)
+	return wrapper
+endsnippet
