@@ -14,6 +14,7 @@ alias vi='vim'
 alias pc='proxychains'
 alias v="f -e vim"
 alias grep="grep -E --color"
+alias ch="cheat"
 
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
