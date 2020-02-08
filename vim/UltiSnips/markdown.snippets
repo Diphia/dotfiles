@@ -52,6 +52,13 @@ snippet table6 "insert table" b
 | 1 | 2 | 3 | 4 | 5 | 6 |
 endsnippet
 
-snippet ref "in-site reference syntax" i
-{{< ref "${1:file_name}.md" >}}
+snippet [^ "refernce" i
+[^${1:ref_name}]
+
+
+[^$1]:[]()
+endsnippet
+
+snippet [] "set a link" i
+[${VISUAL}](${1:url})
 endsnippet

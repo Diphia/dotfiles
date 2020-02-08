@@ -4,15 +4,18 @@ set rnu
 
 syntax on
 
+" show mode and command
 set showmode
 set showcmd
 
+" set indent
 filetype indent on
 set autoindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set softtabstop=4
+
 
 set scrolloff=10
 
@@ -34,10 +37,24 @@ set scrolloff=10
 :noremap :py :!python % 
 :noremap :sh :!sh % 
 
+"easy move in a wrapped line
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
+
+set foldmethod=manual
+
+" auto mkview and loadview
+au BufWinLeave * silent mkview
+au BufWinEnter * silent loadview
+
+" UltiSnips Trigger
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
+" vim_plug load
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips',
+Plug 'kien/ctrlp.vim'
 call plug#end()
+

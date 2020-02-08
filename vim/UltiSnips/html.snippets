@@ -1,0 +1,153 @@
+snippet h1 "h1 tag" b
+<h1>${1:head_name}</h1>
+endsnippet
+
+snippet h2 "h2 tag" b
+<h2>${1:head_name}</h2>
+endsnippet
+
+snippet h3 "h3 tag" b
+<h3>${1:head_name}</h3>
+endsnippet
+
+snippet h4 "h4 tag" b
+<h4>${1:head_name}</h4>
+endsnippet
+
+snippet h5 "h5 tag" b
+<h5>${1:head_name}</h5>
+endsnippet
+
+snippet h6 "h6 tag" b
+<h6>${1:head_name}</h6>
+endsnippet
+
+snippet para "paragraph tag" b
+<p>${1:paragraph_name}</p>
+endsnippet
+
+snippet href "href tag" b
+<a href="${1:http://www.google.com}">${2:This is a link}</a>
+endsnippet
+
+snippet link "href tag" b
+<a href="${1:http://www.google.com}">${2:This is a link}</a>
+endsnippet
+
+snippet name "name (anchor)" b
+<a name="${1:anchor_name}">${2:name_content}</a>
+endsnippet
+
+snippet img "img tag" b
+<img src="${1:w3school.jpg}" width="104" height="142" />
+endsnippet
+
+snippet table "table" b
+<table border="1">
+<tr>
+<th>Heading for cell1</th>
+<th>Heading for cell2</th>
+</tr>
+<tr>
+<td>row 1, cell 1</td>
+<td>row 1, cell 2</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>row 2, cell 2</td>
+</tr>
+</table>
+endsnippet
+
+snippet list- "list without order" b
+<ul>
+<li>${1:item1}</li>
+<li>item2</li>
+</ul>
+endsnippet
+
+snippet list1 "list with order" b
+<ol>
+<li>${1:item1}</li>
+<li>item2</li>
+</ol>
+endsnippet
+
+snippet img_alt "img tag with alt" b
+<img src="${1:w3school.jpg} alt="${2:w3school}"}" width="104" height="142" />
+endsnippet
+
+snippet hr "horizontal rule" b
+<hr />
+endsnippet
+
+snippet comment "comment block" i
+<!-- ${VISUAL} -->
+endsnippet
+
+snippet bg "style background color" i 
+style="background-color:${1:red}"
+endsnippet
+
+snippet font "style font-family" i 
+style="font-family:${1:arial};color:red;font-size:20px;"
+endsnippet
+
+snippet align "style align" i 
+style="text-align:${1:center}"
+endsnippet
+
+snippet blockquote "blockquote" b
+<blockquote cite="${1:https://xxx.html}">
+${2:content}
+</blockquote>
+endsnippet
+
+snippet abbr "abbreviation" i
+<abbr title="${1:World Health Organization}">${2:WHO}</abbr>
+endsnippet
+
+snippet code "code block with pre" b
+<code>
+<pre>
+var person = {
+	firstName:"Bill",
+	lastName:"Gates",
+	age:50,
+	eyeColor:"blue"
+}
+</pre>
+</code>
+endsnippet
+
+snippet equation "equation(variable)" i
+<var>E</var> = <var>m</var><var>c</var><sup>2</sup>
+endsnippet
+
+snippet style "style define block" b
+<style>
+.${1:style_name} {
+background-color:black;
+color:white;
+margin:20px;
+padding:20px;
+} 
+</style>
+
+<body>
+<div class=$1>
+</div>
+</body>
+endsnippet
+
+snippet style_span "style define block for span" b
+<style>
+	span.${1:style_name} {color:red;}
+</style>
+
+<body>
+<h1>My <span class="$1">Important</span> Heading</h1>
+</body>
+endsnippet
+
+

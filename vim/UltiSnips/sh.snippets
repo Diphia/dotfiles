@@ -12,7 +12,6 @@ then
 fi
 endsnippet
 
-
 snippet if-else "if else statement" b
 if [[ ${1:condition} ]]
 then
@@ -31,6 +30,7 @@ then
 	yyy
 fi
 endsnippet
+
 
 snippet for "for statement" b
 for i in ${1: \`seq 1 100\` }
@@ -53,4 +53,13 @@ snippet comment "create a block comment" b
 comment(){
 ${VISUAL}
 }
+endsnippet
+
+snippet success "success or not" b
+if [[ $? == 0 ]]
+then
+	echo "success"
+else
+	echo "failed"
+fi
 endsnippet

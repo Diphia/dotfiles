@@ -109,6 +109,7 @@ then
 	fi
 	ln -si ${dotfiles_loc}/vim/plug.vim ${HOME}/.vim/autoload/plug.vim
 	ln -si ${dotfiles_loc}/vim/UltiSnips ${HOME}/.vim
+	ln -si ${dotfiles_loc}/vim/view ${HOME}/.vim
 fi
 
 if [[ ${input} == *h* ]] || [[ ${input} == "ALL" ]]
