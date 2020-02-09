@@ -14,7 +14,7 @@ vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*fu\%[nctio
 nnoremap <buffer> <silent> ]] m':call search('^\s*fu\%[nction]\>', "W")
 setlocal keymap=
 setlocal noarabic
-setlocal autoindent
+setlocal noautoindent
 setlocal backupcopy=
 setlocal balloonexpr=
 setlocal nobinary
@@ -45,7 +45,7 @@ setlocal dictionary=
 setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
-setlocal expandtab
+setlocal noexpandtab
 if &filetype != 'vim'
 setlocal filetype=vim
 endif
@@ -102,7 +102,7 @@ setlocal noshortname
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
-setlocal softtabstop=4
+setlocal softtabstop=0
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
@@ -121,7 +121,7 @@ setlocal tags=
 setlocal termwinkey=
 setlocal termwinscroll=10000
 setlocal termwinsize=
-setlocal textwidth=78
+setlocal textwidth=0
 setlocal thesaurus=
 setlocal noundofile
 setlocal undolevels=-123456
@@ -133,27 +133,40 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-1,3fold
-7,9fold
-11,18fold
-22,34fold
+3,5fold
+7,10fold
+12,19fold
+23,24fold
+26,27fold
+29,30fold
+32,34fold
 36,38fold
-40,42fold
-46,48fold
-50,52fold
-50,53fold
-54,60fold
-50,60fold
-50
+42,42fold
+42,43fold
+42,43fold
+45,47fold
+45,47fold
+49,52fold
+54,55fold
+59,64fold
+42
 normal! zo
-50
+42
 normal! zo
-let s:l = 44 - ((33 * winheight(0) + 8) / 17)
+42
+normal! zc
+45
+normal! zo
+45
+normal! zo
+54
+normal! zo
+let s:l = 47 - ((11 * winheight(0) + 8) / 17)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-44
-normal! 021|
+47
+normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 nohlsearch
 doautoall SessionLoadPost

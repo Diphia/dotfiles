@@ -1,25 +1,11 @@
-snippet h1 "h1 tag" b
-<h1>${1:head_name}</h1>
+snippet h "inset html heads" i 
+<h${1:1}>${2:content}</h$1>
 endsnippet
 
-snippet h2 "h2 tag" b
-<h2>${1:head_name}</h2>
-endsnippet
-
-snippet h3 "h3 tag" b
-<h3>${1:head_name}</h3>
-endsnippet
-
-snippet h4 "h4 tag" b
-<h4>${1:head_name}</h4>
-endsnippet
-
-snippet h5 "h5 tag" b
-<h5>${1:head_name}</h5>
-endsnippet
-
-snippet h6 "h6 tag" b
-<h6>${1:head_name}</h6>
+snippet tag "HTML tag" b
+<${1:div}>
+	Hello World
+<${1/(\w+).*/$1/}>
 endsnippet
 
 snippet para "paragraph tag" b
@@ -149,5 +135,4 @@ snippet style_span "style define block for span" b
 <h1>My <span class="$1">Important</span> Heading</h1>
 </body>
 endsnippet
-
 

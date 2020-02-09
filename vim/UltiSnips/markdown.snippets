@@ -17,41 +17,6 @@ snippet png "insert png for hugo markdown file" b
 ![img1](/post/img/`!p snip.rv = snip.basename`_1.png)
 endsnippet
 
-snippet table2 "insert table" b
-| 1 | 2 |
-|:---:|:---:|
-| 1 | 2 |
-| 1 | 2 |
-endsnippet
-
-snippet table3 "insert table" b
-| 1 | 2 | 3 |
-|:---:|:---:|:---:|
-| 1 | 2 | 3 |
-| 1 | 2 | 3 |
-endsnippet
-
-snippet table4 "insert table" b
-| 1 | 2 | 3 | 4 |
-|:---:|:---:|:---:|:---:|
-| 1 | 2 | 3 | 4 |
-| 1 | 2 | 3 | 4 |
-endsnippet
-
-snippet table5 "insert table" b
-| 1 | 2 | 3 | 4 | 5 |
-|:---:|:---:|:---:|:---:|:---:|
-| 1 | 2 | 3 | 4 | 5 |
-| 1 | 2 | 3 | 4 | 5 |
-endsnippet
-
-snippet table6 "insert table" b
-| 1 | 2 | 3 | 4 | 5 | 6 |
-|:---:|:---:|:---:|:---:|:---:|:---:|
-| 1 | 2 | 3 | 4 | 5 | 6 |
-| 1 | 2 | 3 | 4 | 5 | 6 |
-endsnippet
-
 snippet [^ "refernce" i
 [^${1:ref_name}]
 [$1]:[]()
@@ -59,4 +24,22 @@ endsnippet
 
 snippet [] "set a link" i
 [${VISUAL}](${1:url})
+endsnippet
+
+global !p
+def table_insert(row,column):
+	content=""
+	for r in range(1,row+3):
+		for c in range(1,column+1):
+			if(r==2):
+				element=":---:"
+			else:
+				element=" "+str(c)+" "
+			content+="|"+element	
+		content+="|\n"
+	return content
+endglobal
+
+snippet "table(\d+)x(\d+)" "expand a table (row)x(column)" r 
+`!p snip.rv = table_insert(int(match.group(1)),int(match.group(2)))`
 endsnippet

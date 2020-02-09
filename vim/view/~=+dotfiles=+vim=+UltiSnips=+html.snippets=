@@ -42,7 +42,7 @@ setlocal foldcolumn=0
 setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
-setlocal foldlevel=99
+setlocal foldlevel=0
 setlocal foldmarker={{{,}}}
 setlocal foldmethod=manual
 setlocal foldminlines=1
@@ -122,96 +122,37 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 1,3fold
-1,4fold
-5,7fold
-9,11fold
-13,15fold
-17,19fold
-21,23fold
-25,27fold
-29,31fold
-33,35fold
-37,39fold
-41,43fold
-45,60fold
-62,67fold
-69,74fold
-76,78fold
-80,82fold
-84,86fold
-88,90fold
+5,9fold
+11,13fold
+15,17fold
+19,21fold
+23,25fold
+27,29fold
+31,46fold
+48,53fold
+55,60fold
+62,64fold
+66,68fold
+70,72fold
+74,76fold
+78,80fold
+82,84fold
+86,90fold
 92,94fold
-96,98fold
-100,104fold
-106,108fold
-110,121fold
-123,125fold
-127,141fold
-148,151fold
-143,151fold
-1
+96,107fold
+109,111fold
+113,127fold
+134,137fold
+129,137fold
+129
 normal! zo
-1
+129
 normal! zc
-5
-normal! zc
-9
-normal! zc
-13
-normal! zc
-17
-normal! zc
-21
-normal! zc
-25
-normal! zc
-29
-normal! zc
-33
-normal! zc
-37
-normal! zc
-41
-normal! zc
-45
-normal! zc
-62
-normal! zc
-69
-normal! zc
-76
-normal! zc
-80
-normal! zc
-84
-normal! zc
-88
-normal! zc
-92
-normal! zc
-96
-normal! zc
-100
-normal! zc
-106
-normal! zc
-110
-normal! zc
-123
-normal! zc
-127
-normal! zc
-143
-normal! zo
-148
-normal! zc
-143
-normal! zc
-let s:l = 122 - ((31 * winheight(0) + 9) / 18)
+let s:l = 138 - ((120 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-122
+138
 normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 nohlsearch

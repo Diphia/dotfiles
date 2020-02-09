@@ -2,7 +2,7 @@ let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 argglobal
 setlocal keymap=
 setlocal noarabic
-setlocal autoindent
+setlocal noautoindent
 setlocal backupcopy=
 setlocal balloonexpr=
 setlocal nobinary
@@ -90,7 +90,7 @@ setlocal noshortname
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
-setlocal softtabstop=4
+setlocal softtabstop=0
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
@@ -124,25 +124,15 @@ silent! normal! zE
 1,10fold
 1,10fold
 12,14fold
-12,14fold
 16,18fold
 16,18fold
-20,25fold
-27,32fold
-34,39fold
-41,46fold
-48,53fold
-55,58fold
-60,62fold
+20,23fold
+25,27fold
 1
 normal! zo
 1
 normal! zc
 1
-normal! zc
-12
-normal! zo
-12
 normal! zc
 12
 normal! zc
@@ -154,21 +144,13 @@ normal! zc
 normal! zc
 20
 normal! zc
-27
+25
 normal! zc
-34
-normal! zc
-41
-normal! zc
-48
-normal! zc
-55
-normal! zc
-let s:l = 62 - ((61 * winheight(0) + 18) / 37)
+let s:l = 12 - ((11 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-62
+12
 normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 nohlsearch
