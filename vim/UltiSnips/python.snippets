@@ -1,40 +1,48 @@
+# Head for Python file
 snippet head "comment at the head of a python file" b
 #!/usr/bin/python3
 # `!v expand('%')`
 # diphia@`date +"%Y"`
-# This script is used to ..
+# This script is used to ${1}
 endsnippet
 
-snippet for "typical for block" b
-for i in range(1,100):
-	xxx
+# For
+snippet for "for syntax" b
+for ${1:i} in ${2:range(1,100)}:
+	${3:xxx}
 endsnippet
 
+# Try
 snippet try "typical try block" b
 try:
-	xxx
+	${1:xxx}
 except:
-	pass
+	${2:pass}
 endsnippet
 
-snippet data "typical request data statement" b
-data={
-	'${1:username}':'${2:\{content\}}'.format(content=content),
-	'${3:password}':'${4:content}',
-}
-endsnippet
-
-snippet dict_out "output the dict var row by row" b
-for x in ${1:target}:
-	print(x)
-	for y in $1[x]:
-		print(y,':',$1[x][y])
-endsnippet
-
-snippet decorator "decorator example" b
-${1:decorator_name}(func):
+# Decorator
+snippet decorator "basic decorator" b
+${1:decorator_name}(${2:func_name}):
 	def wrapper(*args,**kw):
-		print('call %s(): % func.__name__')
+		${3:print('call %s(): % func.__name__')}
 		return func(*args,**kw)
 	return wrapper
+endsnippet
+
+# Main
+snippet main "insert a main function" b
+if __name__=="__main__":
+	${1}
+endsnippet
+
+# Open File
+snippet open "open a file" b
+with open('${1:data.txt}','${2:r}') as ${3:f}:
+	data = $3.read()
+endsnippet
+
+# Run Shell
+snippet shell "run shell script and get output" b
+import os
+${1:str} = os.popen("${2:ls}").read()
 endsnippet
