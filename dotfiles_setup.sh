@@ -134,11 +134,11 @@ then
         mkdir -p ${HOME}/.local/bin/
         echo "${HOME}/.local/bin created" 
     fi
-    for i in `ls ${HOME}/scripts/systools`
+    for i in `ls ${HOME}/scripts`
     do
         bin_name=`echo $i | awk -F '.' '{print $1}'`  # dip the .sh postfix
-        #sudo ln -si ${HOME}/scripts/systools/$i /usr/local/bin/${bin_name}
-        sudo ln -si ${HOME}/scripts/systools/$i ${HOME}/.local/bin/${bin_name}
+        #sudo ln -si ${HOME}/scripts/$i /usr/local/bin/${bin_name}
+        sudo ln -si ${HOME}/scripts/$i ${HOME}/.local/bin/${bin_name}
         echo "processed compeleted for $i"
     done
 fi

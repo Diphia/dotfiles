@@ -1,95 +1,126 @@
-snippet h "inset html heads" i 
-<h${1:1}>${2:content}</h$1>
+# Head
+snippet "h(\d)" "inset html heads" r 
+<h`!p snip.rv = int(match.group(1))`>${1:content}</h`!p snip.rv = int(match.group(1))`>
 endsnippet
 
-snippet tag "HTML tag" b
-<${1:div}>
-	Hello World
-<${1/(\w+).*/$1/}>
-endsnippet
-
+# Paragraph
 snippet p "paragraph tag" b
 <p>${1:paragraph_name}</p>
 endsnippet
 
+# href
 snippet href "href tag" b
-<a href="${1:http://www.google.com}">${2:This is a link}</a>
+<a href="`xclip -o`">${VISUAL}</a>
 endsnippet
 
-snippet name "name (anchor)" b
+# Anchor
+snippet anchor "anchor" b
 <a name="${1:anchor_name}">${2:name_content}</a>
 endsnippet
 
-snippet img "img tag" b
-<img src="${1:w3school.jpg}" width="104" height="142" />
-endsnippet
+# Table
+global !p 
+def table_insert(row,column):
+    content=""
+    for r in range(1,row+1):
+        content+="<tr>\n"
+        for c in range(1,column+1):
+            if(r==1):
+                tag="th"
+            else:
+                tag="td"
+            content+="<"+tag+">0"+"</"+tag+">\n"
+        content+="</tr>\n"
+    return content
+endglobal
 
-snippet table "table" b
-<table border="1">
-<tr>
-<th>Heading for cell1</th>
-<th>Heading for cell2</th>
-</tr>
-<tr>
-<td>row 1, cell 1</td>
-<td>row 1, cell 2</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>row 2, cell 2</td>
-</tr>
+snippet "table(\d)x(\d)" "expand a table (row)x(column)" r
+<table border="${1:1}">
+`!p snip.rv = table_insert(int(match.group(1)),int(match.group(2)))`
 </table>
 endsnippet
 
-snippet list- "list without order" b
+# <ol> and <ul>
+global !p 
+def list_insert(row):
+    content=""
+    for r in range(1,row+1):
+        content+="<li>"+str(r)+"</li>\n"
+    return content
+endglobal
+
+snippet "ul(\d)" "unordered list" r
 <ul>
-<li>${1:item1}</li>
-<li>item2</li>
-</ul>
+`!p snip.rv = list_insert(int(match.group(1)))`</ul>
 endsnippet
 
-snippet list1 "list with order" b
+snippet "ol(\d)" "ordered list" r
 <ol>
-<li>${1:item1}</li>
-<li>item2</li>
-</ol>
+`!p snip.rv = list_insert(int(match.group(1)))`</ol>
 endsnippet
 
-snippet img_alt "img tag with alt" b
-<img src="${1:w3school.jpg} alt="${2:w3school}"}" width="104" height="142" />
+# Image
+global !p 
+import os
+def img_loc(visual):
+    content = ""
+    if(visual==""):
+        try:
+            content = os.popen("xclip -o").read()
+        except:
+            content = "Failed"
+    return content
+def img_name(visual):
+    content = ""
+    if(visual==""):
+        try:
+            content = os.popen("xclip -o").read()
+        except:
+            content = "Failed"
+    try:
+        name = content.split("/")[-1]
+    except:
+        content = "Failed"
+    return name
+endglobal
+
+snippet img "img tag with alt" b
+<img src="${VISUAL}`!p snip.rv = img_loc(snip.v.text)`" alt="`!p snip.rv = img_name(snip.v.text)`" width="${3:100}" height="${4:100}">
 endsnippet
 
-snippet hr "horizontal rule" b
-<hr />
-endsnippet
-
+# Comment
 snippet comment "comment block" i
 <!-- ${VISUAL} -->
 endsnippet
 
-snippet bg "style background color" i 
+# Background Color
+snippet bgc "style background color" i 
 style="background-color:${1:red}"
 endsnippet
 
+# Font
 snippet font "style font-family" i 
 style="font-family:${1:arial};color:red;font-size:20px;"
 endsnippet
 
+# Align
 snippet align "style align" i 
 style="text-align:${1:center}"
 endsnippet
 
+# Blockquote
 snippet blockquote "blockquote" b
-<blockquote cite="${1:https://xxx.html}">
-${2:content}
+<blockquote cite="`xclip -o`">
+${VISUAL}
 </blockquote>
 endsnippet
 
+# Abbreviation
 snippet abbr "abbreviation" i
 <abbr title="${1:World Health Organization}">${2:WHO}</abbr>
 endsnippet
 
-snippet code "code block with pre" b
+# Code snippet code "code block with pre" b
 <code>
 <pre>
 var person = {
@@ -102,10 +133,12 @@ var person = {
 </code>
 endsnippet
 
+# Equation
 snippet equation "equation(variable)" i
 <var>E</var> = <var>m</var><var>c</var><sup>2</sup>
 endsnippet
 
+# Style
 snippet style "style define block" b
 <style>
 .${1:style_name} {
@@ -122,6 +155,7 @@ padding:20px;
 </body>
 endsnippet
 
+# Style (Span)
 snippet style_span "style define block for span" b
 <style>
 	span.${1:style_name} {color:red;}

@@ -27,9 +27,23 @@ endsnippet
 
 
 # Reference
+global !p 
+import os
+def ref_name():
+    try:
+        content = os.popen("xclip -o").read()
+        if(content[-1] == "/"):
+            name = content.split("/")[-2]
+        else:
+            name = content.split("/")[-1]
+    except:
+        name = "Failed"
+    return name
+endglobal
+
 snippet ref "insert refernce" i
-[^${1:ref_name}]
-[$1]:[](`xclip -o`)
+[^`!p snip.rv = ref_name()`]
+[^`!p snip.rv = ref_name()`]:[`!p snip.rv = ref_name()`](`xclip -o`)
 
 endsnippet
 
@@ -81,4 +95,10 @@ endglobal
 snippet table_transform "transform selected lines to a table" i
 `!p snip.rv = table_transform(snip.v.text)`
 ${VISUAL}
+endsnippet
+
+# More
+snippet more "insert a hugo more tag" b
+<!--more-->
+$1
 endsnippet

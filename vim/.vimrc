@@ -18,7 +18,7 @@ set expandtab
 set softtabstop=4
 
 
-" Operations
+" Behaviour
 
 " set case insensitive in searching
 set ignorecase
@@ -29,30 +29,44 @@ set foldmethod=manual
 " set scrolloff 
 set scrolloff=10
 
-"easy move in a wrapped line
-nnoremap <expr> j v:count ? 'j' : 'gj'
-nnoremap <expr> k v:count ? 'k' : 'gk'
-
 " auto mkview and loadview
 au BufWinLeave * silent mkview
 au BufWinEnter * silent loadview
 
+
 " Keys
 
-" Keybinding
-let mapleader = "["
+" Leader Key
+let mapleader = "\<space>"
 
 " UltiSnips Trigger
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnipsJumpForwardTrigger="<C-l>"
+let g:UltiSnipsJumpBackwardTrigger="<C-h>"
 
-"fast switch bewteen buffers
-nnoremap <leader>1 :1b<CR>
-nnoremap <leader>2 :2b<CR>
-nnoremap <leader>3 :3b<CR> 
+" Yank and Paste (Corss-instaces)
+vmap <leader>y :w! /tmp/vitmp<CR>                                                                   
+nmap <leader>p :r! cat /tmp/vitmp<CR>
 
-" toggle paste
-set pastetoggle=<leader>p
+" Tabs
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
+
+" LeaderF Keymap
+let g:Lf_ShortcutF = '<C-P>'
+nnoremap <leader>t :LeaderfBufTag<CR>
+let g:Lf_CommandMap = {'<C-K>': ['<C-P>'], '<C-J>': ['<C-N>']}
+
+"easy move in a wrapped line
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
+
 
 " Plug
 
@@ -60,5 +74,6 @@ set pastetoggle=<leader>p
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips',
-Plug 'kien/ctrlp.vim'
+Plug 'Yggdroot/LeaderF',{'do':'.\install.bat'}
 call plug#end()
+

@@ -1,0 +1,158 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+nnoremap <buffer> <silent> 	 :exec g:Lf_py "fileExplManager.input()"
+nnoremap <buffer> <silent>  :exec g:Lf_py "fileExplManager.accept()"
+nnoremap <buffer> <silent> a :exec g:Lf_py "fileExplManager.selectAll()"
+nnoremap <buffer> <silent> c :exec g:Lf_py "fileExplManager.clearSelections()"
+nnoremap <buffer> <silent> i :exec g:Lf_py "fileExplManager.input()"
+nnoremap <buffer> <silent> j j:exec g:Lf_py "fileExplManager._previewResult(False)"
+nnoremap <buffer> <silent> k k:exec g:Lf_py "fileExplManager._previewResult(False)"
+nnoremap <buffer> <silent> o :exec g:Lf_py "fileExplManager.accept()"
+nnoremap <buffer> <silent> p :exec g:Lf_py "fileExplManager._previewResult(True)"
+nnoremap <buffer> <silent> q :exec g:Lf_py "fileExplManager.quit()"
+nnoremap <buffer> <silent> s :exec g:Lf_py "fileExplManager.addSelections()"
+nnoremap <buffer> <silent> t :exec g:Lf_py "fileExplManager.accept('t')"
+nnoremap <buffer> <silent> v :exec g:Lf_py "fileExplManager.accept('v')"
+nnoremap <buffer> <silent> x :exec g:Lf_py "fileExplManager.accept('h')"
+let s:cpo_save=&cpo
+set cpo&vim
+nnoremap <buffer> <silent> <LeftMouse> <LeftMouse>:exec g:Lf_py "fileExplManager._previewResult(False)"
+nnoremap <buffer> <silent> <PageDown> <PageDown>:exec g:Lf_py "fileExplManager._previewResult(False)"
+nnoremap <buffer> <silent> <PageUp> <PageUp>:exec g:Lf_py "fileExplManager._previewResult(False)"
+nnoremap <buffer> <silent> <Down> <Down>:exec g:Lf_py "fileExplManager._previewResult(False)"
+nnoremap <buffer> <silent> <Up> <Up>:exec g:Lf_py "fileExplManager._previewResult(False)"
+nnoremap <buffer> <silent> <F5> :exec g:Lf_py "fileExplManager.refresh()"
+nnoremap <buffer> <silent> <F1> :exec g:Lf_py "fileExplManager.toggleHelp()"
+nnoremap <buffer> <silent> <2-LeftMouse> :exec g:Lf_py "fileExplManager.accept()"
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=hide
+setlocal nobuflisted
+setlocal buftype=nofile
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'leaderf'
+setlocal filetype=leaderf
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal nofoldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal nomodifiable
+setlocal nrformats=bin,octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal sidescrolloff=-1
+setlocal signcolumn=no
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%#Lf_hl_stlName#\ LeaderF\ %#Lf_hl_File_stlSeparator0#%{g:Lf_StlSeparator.left}%#Lf_hl_stlCategory#\ %{g:Lf_File_StlCategory}\ %#Lf_hl_File_stlSeparator1#%{g:Lf_StlSeparator.left}%#Lf_hl_File_stlMode#\ %(%{g:Lf_File_StlMode}%)\ %#Lf_hl_File_stlSeparator2#%{g:Lf_StlSeparator.left}%#Lf_hl_stlCwd#\ %<%{g:Lf_File_StlCwd}\ %#Lf_hl_File_stlSeparator3#%{g:Lf_StlSeparator.left}%=%#Lf_hl_stlBlank#%#Lf_hl_File_stlSeparator4#%{g:Lf_StlSeparator.right}%#Lf_hl_stlLineInfo#\ %l/%{g:Lf_File_StlResultsCount}\ %#Lf_hl_File_stlSeparator5#%{g:Lf_StlSeparator.right}%#Lf_hl_stlTotal#\ Total%{g:Lf_File_StlRunning}\ %{g:Lf_File_StlTotal}\ 
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'leaderf'
+setlocal syntax=leaderf
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-1
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+let s:l = 4 - ((3 * winheight(0) + 10) / 20)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+4
+normal! 0
+let &so = s:so_save | let &siso = s:siso_save
+nohlsearch
+doautoall SessionLoadPost
+" vim: set ft=vim :
