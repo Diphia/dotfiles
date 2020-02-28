@@ -15,7 +15,8 @@ endsnippet
 # Try
 snippet try "typical try block" b
 try:
-	${1:xxx}
+	${VISUAL}
+	${1}
 except:
 	${2:pass}
 endsnippet
@@ -45,4 +46,16 @@ endsnippet
 snippet shell "run shell script and get output" b
 import os
 ${1:str} = os.popen("${2:ls}").read()
+endsnippet
+
+# If
+snippet if "if statement" b
+if($1):
+	$2
+endsnippet
+
+# Def
+snippet def "define function" b
+def ${1}():
+	$2
 endsnippet

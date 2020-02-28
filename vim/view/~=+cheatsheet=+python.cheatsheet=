@@ -42,7 +42,7 @@ setlocal foldcolumn=0
 setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
-setlocal foldlevel=0
+setlocal foldlevel=3
 setlocal foldmarker={{{,}}}
 setlocal foldmethod=indent
 setlocal foldminlines=1
@@ -120,40 +120,12 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-2
-normal! zo
-2
-normal! zc
-41
-normal! zo
-41
-normal! zc
-53
-normal! zo
-56
-normal! zo
-56
-normal! zc
-53
-normal! zc
-70
-normal! zo
-70
-normal! zc
-78
-normal! zo
-80
-normal! zo
-80
-normal! zc
-78
-normal! zc
-let s:l = 78 - ((33 * winheight(0) + 18) / 37)
+let s:l = 86 - ((15 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-78
-normal! 0
+86
+normal! 05|
 let &so = s:so_save | let &siso = s:siso_save
 nohlsearch
 doautoall SessionLoadPost
