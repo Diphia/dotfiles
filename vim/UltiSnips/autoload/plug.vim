@@ -1,0 +1,1 @@
+/home/diphia/dotfiles/vim/plug.vim
