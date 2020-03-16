@@ -184,9 +184,10 @@ bindsym $mod+d mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+        mode hide
         status_command i3status
-        font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-        font pango:Noto Mono Bold 10
+        #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+        font pango:Noto Sans Mono Medium 8
 		position top
 	#colors{
 		#background #002B36
