@@ -2,12 +2,12 @@ let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
-inoremap <buffer> <nowait> <silent> <C-H> =UltiSnips#JumpBackwards()
 inoremap <buffer> <nowait> <silent> <C-L> =UltiSnips#JumpForwards()
+inoremap <buffer> <nowait> <silent> <C-H> =UltiSnips#JumpBackwards()
 snoremap <buffer> <nowait> <silent>  :call UltiSnips#JumpBackwards()
 snoremap <buffer> <nowait> <silent>  :call UltiSnips#JumpForwards()
-snoremap <buffer> <nowait> <silent> <C-H> :call UltiSnips#JumpBackwards()
 snoremap <buffer> <nowait> <silent> <C-L> :call UltiSnips#JumpForwards()
+snoremap <buffer> <nowait> <silent> <C-H> :call UltiSnips#JumpBackwards()
 inoremap <buffer> <nowait> <silent>  =UltiSnips#JumpBackwards()
 inoremap <buffer> <nowait> <silent>  =UltiSnips#JumpForwards()
 let &cpo=s:cpo_save
@@ -46,15 +46,15 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'python.snippets'
-setlocal filetype=python.snippets
+if &filetype != 'python'
+setlocal filetype=python
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
-setlocal foldlevel=1
+setlocal foldlevel=0
 setlocal foldmarker={{{,}}}
 setlocal foldmethod=manual
 setlocal foldminlines=1
@@ -70,7 +70,7 @@ setlocal imsearch=-1
 setlocal include=^\\s*\\(from\\|import\\)
 setlocal includeexpr=substitute(substitute(substitute(v:fname,b:grandparent_match,b:grandparent_sub,''),b:parent_match,b:parent_sub,''),b:child_match,b:child_sub,'g')
 setlocal indentexpr=GetPythonIndent(v:lnum)
-setlocal indentkeys=0{,0},0),0],:,!^F,o,O,e
+setlocal indentkeys=0{,0},0),0],:,!^F,o,O,e,<:>,=elif,=except
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=pydoc
@@ -111,8 +111,8 @@ setlocal statusline=
 setlocal suffixesadd=.py
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'python.snippets'
-setlocal syntax=python.snippets
+if &syntax != 'python'
+setlocal syntax=python
 endif
 setlocal tabstop=8
 setlocal tagcase=
@@ -133,34 +133,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-1,10fold
-12,27fold
-29,48fold
-50,53fold
-55,72fold
-74,98fold
-100,104fold
-1
-normal! zc
-12
-normal! zc
-29
-normal! zc
-50
-normal! zc
-55
-normal! zc
-74
-normal! zc
-100
-normal! zc
-let s:l = 105 - ((104 * winheight(0) + 19) / 39)
+let s:l = 28 - ((27 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-105
-normal! 0
+28
+normal! 0115|
 let &so = s:so_save | let &siso = s:siso_save
-nohlsearch
 doautoall SessionLoadPost
 " vim: set ft=vim :

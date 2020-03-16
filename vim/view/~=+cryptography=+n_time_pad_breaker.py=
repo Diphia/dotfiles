@@ -58,7 +58,7 @@ setlocal imsearch=-1
 setlocal include=^\\s*\\(from\\|import\\)
 setlocal includeexpr=substitute(substitute(substitute(v:fname,b:grandparent_match,b:grandparent_sub,''),b:parent_match,b:parent_sub,''),b:child_match,b:child_sub,'g')
 setlocal indentexpr=GetPythonIndent(v:lnum)
-setlocal indentkeys=0{,0},0),0],:,!^F,o,O,e
+setlocal indentkeys=0{,0},0),0],:,!^F,o,O,e,<:>,=elif,=except
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=pydoc
@@ -121,20 +121,13 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-21,25fold
-11,25fold
-11
-normal! zo
-21
-normal! zo
-11
-normal! zc
-let s:l = 9 - ((8 * winheight(0) + 19) / 39)
+8,21fold
+let s:l = 49 - ((13 * winheight(0) + 9) / 18)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-9
-normal! 0
+49
+normal! 014|
 let &so = s:so_save | let &siso = s:siso_save
 nohlsearch
 doautoall SessionLoadPost
