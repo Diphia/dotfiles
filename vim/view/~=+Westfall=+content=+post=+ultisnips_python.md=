@@ -127,16 +127,17 @@ silent! normal! zE
 59,98fold
 105,124fold
 126,181fold
+126,181fold
 45
 normal! zo
 126
 normal! zo
-let s:l = 13 - ((8 * winheight(0) + 19) / 39)
+let s:l = 11 - ((10 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-13
-normal! 0
+11
+normal! 011|
 let &so = s:so_save | let &siso = s:siso_save
 nohlsearch
 doautoall SessionLoadPost

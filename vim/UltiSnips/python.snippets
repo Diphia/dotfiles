@@ -37,8 +37,8 @@ if __name__=="__main__":
 endsnippet
 
 # Open File
-snippet open "open a file" b
-with open('${1:data.txt}','${2:r}') as ${3:f}:
+snippet open_as "open a file as" b
+with open(${1:data.txt},'${2:r}') as ${3:f}:
 	data = $3.read()
 endsnippet
 
@@ -64,4 +64,51 @@ endsnippet
 snippet alphabet "insert a list of alphabet" i
 import string
 l = string.ascii_lowercase
+endsnippet
+
+# Print without newline
+snippet print_no_newline "print something without newline" b
+print($1,end='')
+endsnippet
+
+# Directly Open File
+snippet open "open a file " b
+try:
+	${3:f} = open(${1:'data.txt'}, '${2:r}',errors = '${ignore}')
+finally:
+	if($3):
+		$3.close()
+endsnippet
+
+# HOME
+snippet HOME "HOME directory" b
+os.environ['HOME']
+endsnippet
+
+# Class Define
+snippet class "insert a class" b
+class ${1:class_name}(object):
+	${2}
+endsnippet
+
+# Open File
+snippet with_open "open a file as" b
+with open(${1:data.txt},'${2:r}') as ${3:f}:
+	data = $3.read()
+endsnippet
+
+# Class Init
+snippet init "init an object" b
+def __init__(self,name):
+	self.name = name
+endsnippet
+
+# Today
+snippet today "insert a senteces for today in datetime lib" i
+datetime.today().strftime("%Y-%m-%d")
+endsnippet
+
+# Reverse Dict
+snippet rev_dict "reverse the key and value in a dict" b
+new_dict = {$1{v}:${2:k} for $2,$1 in ${3:dict_name}.items()}
 endsnippet

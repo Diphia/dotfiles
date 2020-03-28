@@ -128,11 +128,13 @@ silent! normal! zE
 38,44fold
 46,51fold
 53,61fold
-let s:l = 1 - ((0 * winheight(0) + 18) / 37)
+53
+normal! zo
+let s:l = 53 - ((8 * winheight(0) + 4) / 8)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+53
 normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 nohlsearch

@@ -2,12 +2,12 @@ let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
-inoremap <buffer> <nowait> <silent> <C-H> =UltiSnips#JumpBackwards()
 inoremap <buffer> <nowait> <silent> <C-L> =UltiSnips#JumpForwards()
+inoremap <buffer> <nowait> <silent> <C-H> =UltiSnips#JumpBackwards()
 snoremap <buffer> <nowait> <silent>  :call UltiSnips#JumpBackwards()
 snoremap <buffer> <nowait> <silent>  :call UltiSnips#JumpForwards()
-snoremap <buffer> <nowait> <silent> <C-H> :call UltiSnips#JumpBackwards()
 snoremap <buffer> <nowait> <silent> <C-L> :call UltiSnips#JumpForwards()
+snoremap <buffer> <nowait> <silent> <C-H> :call UltiSnips#JumpBackwards()
 inoremap <buffer> <nowait> <silent>  =UltiSnips#JumpBackwards()
 inoremap <buffer> <nowait> <silent>  =UltiSnips#JumpForwards()
 let &cpo=s:cpo_save
@@ -148,17 +148,15 @@ normal! zc
 normal! zc
 50
 normal! zc
-55
-normal! zc
 74
 normal! zc
 100
 normal! zc
-let s:l = 105 - ((104 * winheight(0) + 19) / 39)
+let s:l = 11 - ((10 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-105
+11
 normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 nohlsearch

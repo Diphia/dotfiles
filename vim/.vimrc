@@ -33,7 +33,6 @@ set scrolloff=10
 au BufWinLeave * silent mkview
 au BufWinEnter * silent loadview
 
-
 " Keys
 
 " Leader Key
@@ -58,6 +57,10 @@ nnoremap <leader>7 7gt
 nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 
+" Page Up and Page Down (Half)
+nnoremap <C-j> <C-d>
+nnoremap <C-k> <C-u>
+
 " LeaderF Keymap
 let g:Lf_ShortcutF = '<C-P>'
 nnoremap <leader>t :LeaderfBufTag<CR>
@@ -66,7 +69,6 @@ let g:Lf_CommandMap = {'<C-K>': ['<C-P>'], '<C-J>': ['<C-N>']}
 "easy move in a wrapped line
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
-
 
 " Plug
 

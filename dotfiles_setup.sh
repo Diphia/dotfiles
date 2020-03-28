@@ -35,6 +35,7 @@ e) i3wm
 f) i3status
 g) vim
 h) proxychains
+i) asynctask
 z) download and link some personal scripts to ~/.local/bin
 ALL) doing ALL the things above
 EOF
@@ -116,6 +117,10 @@ if [[ ${input} == *h* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing proxychains"
     ln -si ${dotfiles_loc}/proxychains.conf /etc/proxychains.conf
+    if [[ $? != 0 ]]
+    then
+        echo "proxychains failed"
+    fi
 fi
 
 
@@ -139,7 +144,21 @@ then
         bin_name=`echo $i | awk -F '.' '{print $1}'`  # dip the .sh postfix
         #sudo ln -si ${HOME}/scripts/$i /usr/local/bin/${bin_name}
         sudo ln -si ${HOME}/scripts/$i ${HOME}/.local/bin/${bin_name}
-        echo "processed compeleted for $i"
+        if [[ $? == 0 ]]
+        then
+            echo "processed compeleted for $i"
+        else
+            echo "processed failed for $i"
+        fi
     done
 fi
 
+if [[ ${input} == *i* ]] || [[ ${input} == "ALL" ]]
+then
+	echo "Processing asynctask"
+    ln -si ${dotfiles_loc}/asynctask/tasks.ini ${HOME}/.config/asynctask/tasks.ini
+    if [[ $? != 0 ]]
+    then
+        echo "asynctask failed"
+    fi
+fi

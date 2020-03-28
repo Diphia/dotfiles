@@ -140,20 +140,19 @@ silent! normal! zE
 26,27fold
 29,30fold
 32,34fold
-39,40fold
-42,44fold
-46,48fold
-50,59fold
-61,64fold
-66,68fold
-73,78fold
-12
-normal! zo
-let s:l = 15 - ((14 * winheight(0) + 19) / 39)
+38,39fold
+41,43fold
+45,47fold
+49,58fold
+60,62fold
+64,67fold
+69,71fold
+75,80fold
+let s:l = 49 - ((48 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-15
+49
 normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 nohlsearch

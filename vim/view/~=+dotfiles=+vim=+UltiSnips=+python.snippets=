@@ -1,5 +1,17 @@
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+inoremap <buffer> <nowait> <silent> <C-H> =UltiSnips#JumpBackwards()
+inoremap <buffer> <nowait> <silent> <C-L> =UltiSnips#JumpForwards()
+snoremap <buffer> <nowait> <silent>  :call UltiSnips#JumpBackwards()
+snoremap <buffer> <nowait> <silent>  :call UltiSnips#JumpForwards()
+snoremap <buffer> <nowait> <silent> <C-H> :call UltiSnips#JumpBackwards()
+snoremap <buffer> <nowait> <silent> <C-L> :call UltiSnips#JumpForwards()
+inoremap <buffer> <nowait> <silent>  =UltiSnips#JumpBackwards()
+inoremap <buffer> <nowait> <silent>  =UltiSnips#JumpForwards()
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -131,14 +143,18 @@ silent! normal! zE
 51,55fold
 57,61fold
 63,67fold
-63
-normal! zo
-let s:l = 64 - ((63 * winheight(0) + 19) / 39)
+69,72fold
+74,81fold
+83,86fold
+88,92fold
+94,98fold
+100,104fold
+let s:l = 113 - ((105 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-64
-normal! 046|
+113
+normal! 051|
 let &so = s:so_save | let &siso = s:siso_save
 nohlsearch
 doautoall SessionLoadPost
