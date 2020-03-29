@@ -12,12 +12,22 @@ DOTFILES="${HOME}/dotfiles"
 
 echo ${PKG_MANAGER}
 
+
+
 # Git
 echo "installing Git..."
 nohup ${PKG_MANAGER} git
 if [[ $? != 0 ]]
 then
     echo "git installation failed"
+fi
+
+# Curl
+echo "installing Curl..."
+nohup ${PKG_MANAGER} curl
+if [[ $? != 0 ]]
+then
+    echo "curl installation failed"
 fi
 
 # Clone dotfiles and scripts
@@ -46,7 +56,7 @@ echo "installing oh-my-zsh..."
 nohup git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
 rm ${HOME}/.zshrc
 touch ${HOME}/.zshrc
-echo "source ${DOTFILES/.zshrc}" >> ${HOME}/.zshrc
+echo "source ${DOTFILES}/.zshrc" >> ${HOME}/.zshrc
 
 # Tmux
 echo "installing Tmux..."
@@ -91,7 +101,7 @@ touch ${HOME}/.vimrc
 echo "source ${DOTFILES}/vim/.vimrc" >> ${HOME}/.vimrc
 rm -r ${HOME}/.vim
 mkdir ${HOME}/.vim
-ln -s ${DOTFILES}/vim/plug.vim ${HOME}/.vim/plug.vim
+curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s ${DOTFILES}/vim/UltiSnips ${HOME}/.vim/UltiSnips
 ln -s ${DOTFILES}/vim/view ${HOME}/.vim/view
 
