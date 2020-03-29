@@ -12,8 +12,6 @@ DOTFILES="${HOME}/dotfiles"
 
 echo ${PKG_MANAGER}
 
-
-
 # Git
 echo "installing Git..."
 nohup ${PKG_MANAGER} git
@@ -28,6 +26,25 @@ nohup ${PKG_MANAGER} curl
 if [[ $? != 0 ]]
 then
     echo "curl installation failed"
+fi
+
+#build-essential
+nohup ${PKG_MANAGER} build-essential
+if [[ $? != 0 ]]
+then
+    echo "build-essential installation failed"
+fi
+
+# NodeJS, npm
+nohup ${PKG_MANAGER} nodejs
+if [[ $? != 0 ]]
+then
+    echo "nodejs installation failed"
+fi
+nohup ${PKG_MANAGER} npm
+if [[ $? != 0 ]]
+then
+    echo "npm installation failed"
 fi
 
 # Clone dotfiles and scripts
