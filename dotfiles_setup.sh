@@ -12,6 +12,7 @@ then
     exit
 fi
 
+# Select OS : Linux or macOS
 os=`uname -s`
 if [ ${os} == "Linux" ]
 then
@@ -25,6 +26,7 @@ then
 	HOME="/Users/${username}"
 fi
 
+# Menu
 cat << EOF
 Please select dotfiles you want to sync:
 a) .tmux.config
@@ -43,12 +45,14 @@ EOF
 echo -n "-> "
 read input
 
+# Tmux
 if [[ ${input} == *a* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing Tmux config"
 	ln -si ${dotfiles_loc}/.tmux.conf ${HOME}/.tmux.conf
 fi  
 
+# Vifm
 if [[ ${input} == *b* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing vifm config"
@@ -56,6 +60,7 @@ then
 	ln -si ${dotfiles_loc}/vifm/ ${HOME}/.vifm
 fi  
 
+# SSH Config
 if [[ ${input} == *c* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing ssh config"
@@ -66,6 +71,7 @@ then
 	ln -si ${dotfiles_loc}/ssh_config ${HOME}/.ssh/config
 fi
 
+# ZSH
 if [[ ${input} == *d* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing .zshrc"
@@ -79,6 +85,7 @@ then
 	#ln -si ${dotfiles_loc}/.zshrc ${HOME}/.zshrc
 fi
 
+# i3wm
 if [[ ${input} == *e* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing i3wm config"
@@ -89,6 +96,7 @@ then
 	ln -si ${dotfiles_loc}/i3_config ${HOME}/.config/i3/config
 fi
 
+# i3status
 if [[ ${input} == *f* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing i3status config"
@@ -99,7 +107,7 @@ then
 	ln -si ${dotfiles_loc}/i3status_config ${HOME}/.config/i3status/config
 fi
 
-
+# Vim
 if [[ ${input} == *g* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing vim config"
@@ -113,6 +121,7 @@ then
 	ln -si ${dotfiles_loc}/vim/view ${HOME}/.vim
 fi
 
+# Proxychains
 if [[ ${input} == *h* ]] || [[ ${input} == "ALL" ]]
 then
 	echo "Processing proxychains"
@@ -123,7 +132,7 @@ then
     fi
 fi
 
-
+# Scripts
 if [[ ${input} == *z* ]] || [[ ${input} == "ALL" ]]
 then
     if [ ! -d "${HOME}/scripts/" ]
@@ -151,14 +160,4 @@ then
             echo "processed failed for $i"
         fi
     done
-fi
-
-if [[ ${input} == *i* ]] || [[ ${input} == "ALL" ]]
-then
-	echo "Processing asynctask"
-    ln -si ${dotfiles_loc}/asynctask/tasks.ini ${HOME}/.config/asynctask/tasks.ini
-    if [[ $? != 0 ]]
-    then
-        echo "asynctask failed"
-    fi
 fi

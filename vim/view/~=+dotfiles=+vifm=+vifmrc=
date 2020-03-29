@@ -1,8 +1,5 @@
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 argglobal
-nnoremap <buffer> <silent> D :PlugDiff
-nnoremap <buffer> <silent> S :PlugStatus
-nnoremap <buffer> <silent> q :if b:plug_preview==1|pc|endif|bd
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -11,9 +8,9 @@ setlocal balloonexpr=
 setlocal nobinary
 setlocal nobreakindent
 setlocal breakindentopt=
-setlocal bufhidden=wipe
-setlocal nobuflisted
-setlocal buftype=nofile
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
@@ -29,7 +26,7 @@ setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
 setlocal nocursorcolumn
-setlocal cursorline
+setlocal nocursorline
 setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
@@ -37,8 +34,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'vim-plug'
-setlocal filetype=vim-plug
+if &filetype != ''
+setlocal filetype=
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -73,7 +70,7 @@ setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal modeline
-setlocal nomodifiable
+setlocal modifiable
 setlocal nrformats=bin,octal,hex
 setlocal number
 setlocal numberwidth=4
@@ -100,10 +97,10 @@ setlocal spellfile=
 setlocal spelllang=en
 setlocal statusline=
 setlocal suffixesadd=
-setlocal noswapfile
+setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'vim-plug'
-setlocal syntax=vim-plug
+if &syntax != ''
+setlocal syntax=
 endif
 setlocal tabstop=4
 setlocal tagcase=
@@ -121,13 +118,14 @@ setlocal vartabstop=
 setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
-setlocal nowrap
+setlocal wrap
 setlocal wrapmargin=0
-let s:l = 3 - ((2 * winheight(0) + 20) / 40)
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-3
+1
 normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 nohlsearch
