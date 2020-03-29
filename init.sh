@@ -76,7 +76,7 @@ if [[ $? != 0 ]]
 then
     echo "ZSH installation failed"
 fi
-chsh -s /bin/zsh
+sudo chsh -s /bin/zsh ${USER}
 echo "installing oh-my-zsh..."
 nohup git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
 rm ${HOME}/.zshrc
