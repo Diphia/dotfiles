@@ -12,6 +12,9 @@ DOTFILES="${HOME}/dotfiles"
 
 echo ${PKG_MANAGER}
 
+# Permission
+sudo chmod 777 ${HOME}
+
 # Git
 echo "installing Git..."
 sudo nohup ${PKG_MANAGER} git
@@ -43,7 +46,7 @@ if [[ $? != 0 ]]
 then
     echo "nodejs installation failed"
 fi
-echo "installing npm"
+echo "installing npm..."
 sudo nohup ${PKG_MANAGER} npm
 if [[ $? != 0 ]]
 then
@@ -52,9 +55,9 @@ fi
 
 # Clone dotfiles and scripts
 echo "cloning dotfiles..."
-nohup git clone https://github.com/Diphia/dotfiles.git ${HOME}/dotfiles
+sudo nohup git clone https://github.com/Diphia/dotfiles.git ${HOME}/dotfiles
 echo "cloning scripts..."
-nohup git clone https://github.com/Diphia/scripts.git ${HOME}/scripts
+sudo nohup git clone https://github.com/Diphia/scripts.git ${HOME}/scripts
 
 # SSH
 echo "installing SSH..."
