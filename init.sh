@@ -83,6 +83,17 @@ rm ${HOME}/.zshrc
 touch ${HOME}/.zshrc
 echo "source ${DOTFILES}/.zshrc" >> ${HOME}/.zshrc
 
+# Fasd
+echo "installing Fasd..."
+cd ${HOME}
+sudo git clone https://github.com/clvv/fasd.git
+make install
+if [[ $? != 0 ]]
+then
+    echo "Fasd installation failed"
+fi
+
+
 # Tmux
 echo "installing Tmux..."
 sudo nohup ${PKG_MANAGER} tmux
