@@ -66,7 +66,10 @@ if [[ $? != 0 ]]
 then
     echo "SSH installation failed"
 fi
-rm -r ${HOME}/.ssh
+if [ -d "${HOME}/.ssh" ]
+then
+    rm -r ${HOME}/.ssh
+fi
 mkdir ${HOME}/.ssh
 
 # ZSH & oh-my-zsh
@@ -79,7 +82,10 @@ fi
 sudo chsh -s /bin/zsh ${USER}
 echo "installing oh-my-zsh..."
 sudo nohup git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
-rm ${HOME}/.zshrc
+if [ -f "${HOME}/.zshrc" ]
+then
+    rm ${HOME}/.zshrc
+fi
 touch ${HOME}/.zshrc
 echo "source ${DOTFILES}/.zshrc" >> ${HOME}/.zshrc
 
@@ -88,12 +94,19 @@ echo "installing Fasd..."
 cd ${HOME}
 sudo git clone https://github.com/clvv/fasd.git
 cd ${HOME}/fasd
-make install
+sudo make install
 if [[ $? != 0 ]]
 then
     echo "Fasd installation failed"
 fi
 
+# zsh-autosuggestions
+echo "installing zsh-autosuggestions..."
+sudo git clone https://github.com/zsh-users/zsh-autosuggestions ${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+if [[ $? != 0 ]]
+then
+    echo "zsh-autosuggestions installation failed"
+fi
 
 # Tmux
 echo "installing Tmux..."
@@ -102,7 +115,10 @@ if [[ $? != 0 ]]
 then
     echo "Tmux installation failed"
 fi
-rm ${HOME}/.tmux.conf
+if [ -f "${HOME}/.tmux.conf" ]
+then
+    rm ${HOME}/.tmux.conf
+fi
 touch ${HOME}/.tmux.conf
 echo "source ${DOTFILES}/.tmux.conf" >> ${HOME}/.tmux.conf
 
@@ -113,7 +129,10 @@ if [[ $? != 0 ]]
 then
     echo "Tmux installation failed"
 fi
-rm -r ${HOME}/.vifm
+if [ -d "${HOME}/.vifm" ]
+then
+    rm -r ${HOME}/.vifm
+fi
 mkdir ${HOME}/.vifm
 touch ${HOME}/.vifm/vifmrc
 echo "source ${DOTFILES}/vifm/vifmrc" >> ${HOME}/.vifm/vifmrc
@@ -133,10 +152,16 @@ if [[ $? != 0 ]]
 then
     echo "Vim installation failed"
 fi
-rm ${HOME}/.vimrc
+if [ -f "${HOME}/.vimrc" ]
+then
+    rm ${HOME}/.vimrc
+fi
 touch ${HOME}/.vimrc
 echo "source ${DOTFILES}/vim/.vimrc" >> ${HOME}/.vimrc
-rm -r ${HOME}/.vim
+if [ -d "${HOME}/.vim" ]
+then
+    rm -r ${HOME}/.vim
+fi
 mkdir ${HOME}/.vim
 curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s ${DOTFILES}/vim/UltiSnips ${HOME}/.vim/UltiSnips
