@@ -3,12 +3,12 @@
 # diphia@2020
 # This script is used to auto install pkgs for newly deployed system
 
-USER = "diphia"
-PKG_MANAGER = "apt install"
-#PKG_MANAGER = "pacman -S"
+USER="diphia"
+PKG_MANAGER="apt install --assume-yes"
+#PKG_MANAGER="pacman -S --noconfirm"
 
-HOME = "/home/${USER}"
-DOTFILES = "${HOME}/dotfiles"
+HOME="/home/${USER}"
+DOTFILES="${HOME}/dotfiles"
 
 echo ${PKG_MANAGER}
 
