@@ -14,7 +14,7 @@ echo ${PKG_MANAGER}
 
 # Git
 echo "installing Git..."
-nohup ${PKG_MANAGER} git
+sudo nohup ${PKG_MANAGER} git
 if [[ $? != 0 ]]
 then
     echo "git installation failed"
@@ -22,38 +22,43 @@ fi
 
 # Curl
 echo "installing Curl..."
-nohup ${PKG_MANAGER} curl
+sudo nohup ${PKG_MANAGER} curl
 if [[ $? != 0 ]]
 then
     echo "curl installation failed"
 fi
 
 #build-essential
-nohup ${PKG_MANAGER} build-essential
+echo "installing build-essential..."
+sudo nohup ${PKG_MANAGER} build-essential
 if [[ $? != 0 ]]
 then
     echo "build-essential installation failed"
 fi
 
 # NodeJS, npm
-nohup ${PKG_MANAGER} nodejs
+echo "installing nodejs..."
+sudo nohup ${PKG_MANAGER} nodejs
 if [[ $? != 0 ]]
 then
     echo "nodejs installation failed"
 fi
-nohup ${PKG_MANAGER} npm
+echo "installing npm"
+sudo nohup ${PKG_MANAGER} npm
 if [[ $? != 0 ]]
 then
     echo "npm installation failed"
 fi
 
 # Clone dotfiles and scripts
+echo "cloning dotfiles..."
 nohup git clone https://github.com/Diphia/dotfiles.git ${HOME}/dotfiles
+echo "cloning scripts..."
 nohup git clone https://github.com/Diphia/scripts.git ${HOME}/scripts
 
 # SSH
 echo "installing SSH..."
-nohup ${PKG_MANAGER} openssh-server
+sudo nohup ${PKG_MANAGER} openssh-server
 if [[ $? != 0 ]]
 then
     echo "SSH installation failed"
@@ -63,12 +68,12 @@ mkdir ${HOME}/.ssh
 
 # ZSH & oh-my-zsh
 echo "installing ZSH..."
-nohup ${PKG_MANAGER} zsh
+sudo nohup ${PKG_MANAGER} zsh
 if [[ $? != 0 ]]
 then
     echo "ZSH installation failed"
 fi
-sudo chsh -s /bin/zsh
+chsh -s /bin/zsh
 echo "installing oh-my-zsh..."
 nohup git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
 rm ${HOME}/.zshrc
@@ -77,7 +82,7 @@ echo "source ${DOTFILES}/.zshrc" >> ${HOME}/.zshrc
 
 # Tmux
 echo "installing Tmux..."
-nohup ${PKG_MANAGER} tmux
+sudo nohup ${PKG_MANAGER} tmux
 if [[ $? != 0 ]]
 then
     echo "Tmux installation failed"
@@ -88,7 +93,7 @@ echo "source ${DOTFILES}/.tmux.conf" >> ${HOME}/.tmux.conf
 
 # Vifm
 echo "installing Vifm..."
-nohup ${PKG_MANAGER} vifm
+sudo nohup ${PKG_MANAGER} vifm
 if [[ $? != 0 ]]
 then
     echo "Tmux installation failed"
@@ -100,7 +105,7 @@ echo "source ${DOTFILES}/vifm/vifmrc" >> ${HOME}/.vifm/vifmrc
 
 # Proxychains
 echo "Installing Proxychains..."
-nohup ${PKG_MANAGER} proxychains
+sudo nohup ${PKG_MANAGER} proxychains
 if [[ $? != 0 ]]
 then
     echo "Proxychains installation failed"
@@ -108,7 +113,7 @@ fi
 
 # Vim
 echo "Installing Vim..."
-nohup ${PKG_MANAGER} vim
+sudo nohup ${PKG_MANAGER} vim
 if [[ $? != 0 ]]
 then
     echo "Vim installation failed"
@@ -120,12 +125,13 @@ rm -r ${HOME}/.vim
 mkdir ${HOME}/.vim
 curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s ${DOTFILES}/vim/UltiSnips ${HOME}/.vim/UltiSnips
-ln -s ${DOTFILES}/vim/view ${HOME}/.vim/view
+#ln -s ${DOTFILES}/vim/view ${HOME}/.vim/view
 
 # Mosh
 echo "Installing Mosh"
-nohup ${PKG_MANAGER} mosh
+sudo nohup ${PKG_MANAGER} mosh
 if [[ $? != 0 ]]
 then
     echo "Mosh installation failed"
 fi
+
