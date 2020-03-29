@@ -21,8 +21,8 @@ then
 fi
 
 # Clone dotfiles and scripts
-nohup git clone https://github.com/Diphia/dotfiles.git ${HOME}
-nohup git clone https://github.com/Diphia/scripts.git ${HOME}
+nohup git clone https://github.com/Diphia/dotfiles.git ${HOME}/dotfiles
+nohup git clone https://github.com/Diphia/scripts.git ${HOME}/scripts
 
 # SSH
 echo "installing SSH..."
@@ -88,7 +88,7 @@ then
 fi
 rm ${HOME}/.vimrc
 touch ${HOME}/.vimrc
-cat "source ${DOTFILES}/vim/.vimrc" >> ${HOME}/.vimrc
+echo "source ${DOTFILES}/vim/.vimrc" >> ${HOME}/.vimrc
 rm -r ${HOME}/.vim
 mkdir ${HOME}/.vim
 ln -s ${DOTFILES}/vim/plug.vim ${HOME}/.vim/plug.vim
