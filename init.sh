@@ -78,7 +78,7 @@ then
 fi
 sudo chsh -s /bin/zsh ${USER}
 echo "installing oh-my-zsh..."
-nohup git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
+sudo nohup git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
 rm ${HOME}/.zshrc
 touch ${HOME}/.zshrc
 echo "source ${DOTFILES}/.zshrc" >> ${HOME}/.zshrc
@@ -87,6 +87,7 @@ echo "source ${DOTFILES}/.zshrc" >> ${HOME}/.zshrc
 echo "installing Fasd..."
 cd ${HOME}
 sudo git clone https://github.com/clvv/fasd.git
+cd ${HOME}/fasd
 make install
 if [[ $? != 0 ]]
 then
