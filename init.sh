@@ -7,7 +7,13 @@ USER="diphia"
 PKG_MANAGER="apt install --assume-yes"
 #PKG_MANAGER="pacman -S --noconfirm"
 
-HOME="/home/${USER}"
+# Set PATH
+if [[ ${USER} == "root" ]]
+then
+    HOME="/root"
+else
+    HOME="/home/${USER}"
+fi
 DOTFILES="${HOME}/dotfiles"
 
 echo ${PKG_MANAGER}
@@ -174,4 +180,3 @@ if [[ $? != 0 ]]
 then
     echo "Mosh installation failed"
 fi
-
