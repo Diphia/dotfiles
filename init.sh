@@ -4,8 +4,8 @@
 # This script is used to auto install pkgs for newly deployed system
 
 USER="diphia"
-#PKG_MANAGER = "apt"
-PKG_MANAGER = "pacman"
+#PKG_MANAGER="apt"
+PKG_MANAGER="pacman"
 
 if [[ ${PKG_MANAGER} == "apt" ]]
 then
@@ -88,9 +88,9 @@ fi
 
 # Clone dotfiles and scripts
 echo "cloning dotfiles..."
-nohup git clone https://github.com/Diphia/dotfiles.git ${HOME}/dotfiles
+sudo nohup git clone https://github.com/Diphia/dotfiles.git ${HOME}/dotfiles
 echo "cloning scripts..."
-nohup git clone https://github.com/Diphia/scripts.git ${HOME}/scripts
+sudo nohup git clone https://github.com/Diphia/scripts.git ${HOME}/scripts
 
 # SSH
 echo "installing SSH..."
@@ -114,7 +114,7 @@ then
 fi
 sudo chsh -s /bin/zsh ${USER}
 echo "installing oh-my-zsh..."
-nohup git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
+sudo nohup git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
 if [ -f "${HOME}/.zshrc" ]
 then
     rm ${HOME}/.zshrc
@@ -125,7 +125,7 @@ echo "source ${DOTFILES}/.zshrc" >> ${HOME}/.zshrc
 # Fasd
 echo "installing Fasd..."
 cd ${HOME}
-git clone https://github.com/clvv/fasd.git
+sudo git clone https://github.com/clvv/fasd.git
 cd ${HOME}/fasd
 sudo make install
 if [[ $? != 0 ]]
@@ -135,7 +135,7 @@ fi
 
 # zsh-autosuggestions
 echo "installing zsh-autosuggestions..."
-git clone https://github.com/zsh-users/zsh-autosuggestions ${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+sudo git clone https://github.com/zsh-users/zsh-autosuggestions ${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 if [[ $? != 0 ]]
 then
     echo "zsh-autosuggestions installation failed"
