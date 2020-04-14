@@ -65,7 +65,7 @@ then
 elif [[ ${PKG_MANAGER} == "pacman" ]]
 then
     echo "installing make..."
-    sudo nohup ${PKG_MANAGER_CMDA} make
+    sudo nohup ${PKG_MANAGER_CMD} make
     if [[ $? != 0 ]]
     then
         echo "make installation failed"
@@ -89,8 +89,12 @@ fi
 # Clone dotfiles and scripts
 echo "cloning dotfiles..."
 sudo nohup git clone https://github.com/Diphia/dotfiles.git ${HOME}/dotfiles
+sudo chown -R ${USER} ${HOME}/dotfiles
+sudo chgrp -R ${USER} ${HOME}/dotfiles
 echo "cloning scripts..."
 sudo nohup git clone https://github.com/Diphia/scripts.git ${HOME}/scripts
+sudo chown -R ${USER} ${HOME}/scripts
+sudo chgrp -R ${USER} ${HOME}/scripts
 
 # SSH
 echo "installing SSH..."
@@ -115,6 +119,8 @@ fi
 sudo chsh -s /bin/zsh ${USER}
 echo "installing oh-my-zsh..."
 sudo nohup git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
+sudo chown -R ${USER} ${HOME}/.oh-my-zsh
+sudo chgrp -R ${USER} ${HOME}/.oh-my-zsh
 if [ -f "${HOME}/.zshrc" ]
 then
     rm ${HOME}/.zshrc
@@ -126,6 +132,8 @@ echo "source ${DOTFILES}/.zshrc" >> ${HOME}/.zshrc
 echo "installing Fasd..."
 cd ${HOME}
 sudo git clone https://github.com/clvv/fasd.git
+sudo chown -R ${USER} ${HOME}/fasd
+sudo chgrp -R ${USER} ${HOME}/fasd
 cd ${HOME}/fasd
 sudo make install
 if [[ $? != 0 ]]
@@ -136,6 +144,8 @@ fi
 # zsh-autosuggestions
 echo "installing zsh-autosuggestions..."
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions ${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+sudo chown -R ${USER} ${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+sudo chgrp -R ${USER} ${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 if [[ $? != 0 ]]
 then
     echo "zsh-autosuggestions installation failed"
@@ -198,6 +208,8 @@ fi
 mkdir ${HOME}/.vim
 curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s ${DOTFILES}/vim/UltiSnips ${HOME}/.vim/UltiSnips
+echo "Installing coc-ultisnips"
+npm i coc-ultisnips
 #ln -s ${DOTFILES}/vim/view ${HOME}/.vim/view
 
 # Mosh
