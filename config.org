@@ -1,0 +1,160 @@
+* Package Management 
+#+BEGIN_SRC emacs-lisp
+(package-initialize)
+(setq package-check-signature nil)
+(when (>= emacs-major-version 24)
+     (require 'package)
+     (package-initialize)
+     (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+                      ("melpa" . "http://elpa.emacs-china.org/melpa/"))))
+
+ ;; cl - Common Lisp Extension
+ (require 'cl)
+
+ ;; Add Packages
+ (defvar my/packages '(
+                company
+                evil
+                nlinum-relative
+                yasnippet
+                ox-hugo
+                helm
+                monokai-theme
+                hungry-delete
+                swiper
+                counsel
+                smartparens
+                popwin
+                ) "Default packages")
+
+ (setq package-selected-packages my/packages)
+
+ (defun my/packages-installed-p ()
+     (loop for pkg in my/packages
+           when (not (package-installed-p pkg)) do (return nil)
+           finally (return t)))
+
+ (unless (my/packages-installed-p)
+     (message "%s" "Refreshing package database...")
+     (package-refresh-contents)
+     (dolist (pkg my/packages)
+       (when (not (package-installed-p pkg))
+         (package-install pkg))))
+#+END_SRC 
+* UI
+** Tool Bar & Menu Bar & Scroll Bar
+#+BEGIN_SRC emacs-lisp
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+#+END_SRC
+** Welcome Screen
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-splash-screen 1)
+#+END_SRC
+** Relative Line Number
+#+BEGIN_SRC emacs-lisp
+(require 'nlinum-relative)
+(nlinum-relative-setup-evil)                    ;; setup for evil
+(add-hook 'prog-mode-hook 'nlinum-relative-mode)
+(add-hook 'text-mode-hook 'nlinum-relative-mode)
+(setq nlinum-relative-current-symbol "")      ;; or "" for display current line number
+(setq nlinum-relative-redisplay-delay 0)      ;; delay
+(setq nlinum-relative-offset 0)                 ;; 1 if you want 0, 2, 3...
+#+END_SRC
+* Keybindings
+** Evil
+#+BEGIN_SRC emacs-lisp
+(setq evil-want-C-i-jump nil) ;; use tab in normal mode while editing org file
+(evil-mode 1) 
+#+END_SRC
+** Ivy Mode
+#+BEGIN_SRC emacs-lisp
+(ivy-mode 1)
+#+END_SRC
+** Recentf
+#+BEGIN_SRC emacs-lisp
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
+#+END_SRC
+** Shortcuts
+*** Open Config
+#+BEGIN_SRC emacs-lisp
+(defun open-init-file()
+  (interactive)
+  (find-file "~/dotfiles/config.org"))
+(global-set-key (kbd "<f2>") 'open-init-file)
+#+END_SRC
+*** Ctrl-w to delelte word
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-w") 'backward-kill-word)
+#+END_SRC
+*** Ctrl-h as Backspace
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-h") 'delete-backward-char)
+#+END_SRC
+*** Ctrl-s as Swiper
+#+BEGIN_SRC emacs-lisp
+(global-set-key "\C-s" 'swiper)
+#+END_SRC
+*** Meta-x as consel-M-x
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "M-x") 'counsel-M-x)
+#+END_SRC
+*** Ctrl-c p f as consel-git
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c p f") 'counsel-git)
+#+END_SRC
+* Org
+** ox-hugo
+#+BEGIN_SRC emacs-lisp
+(with-eval-after-load 'ox
+  (require 'ox-hugo))
+#+END_SRC
+** org-indent
+#+BEGIN_SRC emacs-lisp
+(setq org-startup-indented t)
+#+END_SRC
+* Editor
+** Company
+#+BEGIN_SRC emacs-lisp
+(global-company-mode t)
+#+END_SRC
+** Hungry-delete
+#+BEGIN_SRC emacs-lisp
+(require 'hungry-delete)
+(global-hungry-delete-mode)
+#+END_SRC
+** Show-paren
+#+BEGIN_SRC emacs-lisp
+(add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
+#+END_SRC
+** Smartparen
+#+BEGIN_SRC emacs-lisp
+(require 'smartparens-config)
+(smartparens-global-mode t)
+#+END_SRC
+* Better Defaults
+** Auto Backup & Auto Save
+#+BEGIN_SRC emacs-lisp
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+#+END_SRC
+** Auto Revert
+#+BEGIN_SRC emacs-lisp
+(global-auto-revert-mode t)
+#+END_SRC
+** Popwin
+#+BEGIN_SRC emacs-lisp
+(require 'popwin)
+(popwin-mode t)
+#+END_SRC
+* Abbrev
+#+BEGIN_SRC emacs-lisp
+(abbrev-mode t)
+(define-abbrev-table 'global-abbrev-table '(
+					    ("8em" "emacs")
+					    ))
+#+END_SRC
