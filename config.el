@@ -23,6 +23,8 @@
                 counsel
                 smartparens
                 popwin
+                evil-collection
+                slime
                 ) "Default packages")
 
  (setq package-selected-packages my/packages)
@@ -53,8 +55,11 @@
 (setq nlinum-relative-redisplay-delay 0)      ;; delay
 (setq nlinum-relative-offset 0)                 ;; 1 if you want 0, 2, 3...
 
+(setq evil-want-keybinding nil)
 (setq evil-want-C-i-jump nil) ;; use tab in normal mode while editing org file
 (evil-mode 1)
+
+(evil-collection-init)
 
 (ivy-mode 1)
 
@@ -101,7 +106,16 @@
 (require 'popwin)
 (popwin-mode t)
 
+(require 'dired-x)
+(setq dired-dwin-target 1)
+
 (abbrev-mode t)
 (define-abbrev-table 'global-abbrev-table '(
 					    ("8em" "emacs")
 					    ))
+
+(setq inferior-lisp-program "/usr/bin/sbcl")
+    (add-to-list 'load-path "/usr/local/bin/slime/")
+    (require 'slime)
+    (slime-setup)
+(slime-setup '(slime-fancy))

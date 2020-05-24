@@ -219,3 +219,23 @@ if [[ $? != 0 ]]
 then
     echo "Mosh installation failed"
 fi
+
+# Emacs
+echo "Installing Emacs"
+sudo nohup ${PKG_MANAGER_CMD} emacs
+if [[ $? != 0 ]]
+then
+    echo "emacs installation failed"
+fi
+mkdir ${HOME}/.emacs.d
+touch ${HOME}/.emacs.d/init.el
+echo "source ${DOTFILES}/vifm/vifmrc" >> ${HOME}/.vifm/vifmrc
+cat ${DOTFILES}/init.el >> ${HOME}/.emacs.d/init.el
+
+# Slime
+echo "Installing Slime"
+sudo nohup ${PKG_MANAGER_CMD} slime
+if [[ $? != 0 ]]
+then
+    echo "Slime installation failed"
+fi

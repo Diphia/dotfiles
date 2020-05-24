@@ -25,6 +25,8 @@
                 counsel
                 smartparens
                 popwin
+                evil-collection
+                slime
                 ) "Default packages")
 
  (setq package-selected-packages my/packages)
@@ -65,8 +67,13 @@
 * Keybindings
 ** Evil
 #+BEGIN_SRC emacs-lisp
+(setq evil-want-keybinding nil)
 (setq evil-want-C-i-jump nil) ;; use tab in normal mode while editing org file
 (evil-mode 1) 
+#+END_SRC
+** Evil Collection
+#+BEGIN_SRC emacs-lisp
+(evil-collection-init)
 #+END_SRC
 ** Ivy Mode
 #+BEGIN_SRC emacs-lisp
@@ -80,7 +87,7 @@
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 #+END_SRC
 ** Shortcuts
-*** Open Config
+*** F2 to Open Config
 #+BEGIN_SRC emacs-lisp
 (defun open-init-file()
   (interactive)
@@ -151,10 +158,24 @@
 (require 'popwin)
 (popwin-mode t)
 #+END_SRC
+** Dired-x
+#+BEGIN_SRC emacs-lisp
+(require 'dired-x)
+(setq dired-dwin-target 1)
+#+END_SRC
 * Abbrev
 #+BEGIN_SRC emacs-lisp
 (abbrev-mode t)
 (define-abbrev-table 'global-abbrev-table '(
 					    ("8em" "emacs")
 					    ))
+#+END_SRC
+* Language Support
+** Common Lisp
+#+BEGIN_SRC emacs-lisp
+(setq inferior-lisp-program "/usr/bin/sbcl")
+    (add-to-list 'load-path "/usr/local/bin/slime/")
+    (require 'slime)
+    (slime-setup)
+(slime-setup '(slime-fancy))
 #+END_SRC
