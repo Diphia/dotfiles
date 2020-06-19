@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: properties in ox-hugo
+# key: prop
+# --
+
+:PROPERTIES:
+:EXPORT_FILE_NAME: ${1:filename}
+:EXPORT_DATE: ${2:2020-01-01}
+:END:

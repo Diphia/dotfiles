@@ -21,10 +21,11 @@
                 hungry-delete
                 swiper
                 counsel
-                smartparens
                 popwin
                 evil-collection
                 slime
+                paredit
+                geiser
                 ) "Default packages")
 
  (setq package-selected-packages my/packages)
@@ -83,20 +84,44 @@
 
 (global-set-key (kbd "C-c p f") 'counsel-git)
 
+(defun evil-keyboard-quit ()
+  "Keyboard quit and force normal state."
+  (interactive)
+  (and evil-mode (evil-force-normal-state))
+  (keyboard-quit))
+
+(define-key evil-normal-state-map   (kbd "C-g") #'evil-keyboard-quit) 
+(define-key evil-motion-state-map   (kbd "C-g") #'evil-keyboard-quit) 
+(define-key evil-insert-state-map   (kbd "C-g") #'evil-keyboard-quit) 
+(define-key evil-window-map         (kbd "C-g") #'evil-keyboard-quit) 
+(define-key evil-operator-state-map (kbd "C-g") #'evil-keyboard-quit)
+
 (with-eval-after-load 'ox
   (require 'ox-hugo))
 
 (setq org-startup-indented t)
 
+(org-babel-do-load-languages
+'org-babel-load-languages
+'((scheme . t)
+ (emacs-lisp . t)
+ (ruby . t)
+ (R . t)
+ (python . t)
+ (C . t)
+ (sh . t)))
+
 (global-company-mode t)
+
+(setq yas-snippet-dirs
+'("~/dotfiles/snippets"
+    ))
+(yas-global-mode 1)
 
 (require 'hungry-delete)
 (global-hungry-delete-mode)
 
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
-
-(require 'smartparens-config)
-(smartparens-global-mode t)
 
 (setq make-backup-files nil)
 (setq auto-save-default nil)
@@ -119,3 +144,5 @@
     (require 'slime)
     (slime-setup)
 (slime-setup '(slime-fancy))
+
+(setq scheme-program-name "scm")

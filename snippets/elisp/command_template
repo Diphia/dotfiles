@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: command_template
+# key: command
+# --
+(defun ${1:my-command}()
+    \"${2:description}\"
+    (interactive)
+    (let (var1 var2)
+        (setq var1)
+        (setq var2)
+        ;;lisp code
+    ))

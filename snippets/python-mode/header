@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: header
+# key: head
+# --
+#!/usr/bin/python3
+# ${1:filename}.py
+# diphia@2020
+# This script is used to ${2}

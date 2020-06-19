@@ -23,10 +23,11 @@
                 hungry-delete
                 swiper
                 counsel
-                smartparens
                 popwin
                 evil-collection
                 slime
+                paredit
+                geiser
                 ) "Default packages")
 
  (setq package-selected-packages my/packages)
@@ -114,6 +115,23 @@
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c p f") 'counsel-git)
 #+END_SRC
+*** Ctrl-g as esc
+**** function define
+#+BEGIN_SRC emacs-lisp
+(defun evil-keyboard-quit ()
+  "Keyboard quit and force normal state."
+  (interactive)
+  (and evil-mode (evil-force-normal-state))
+  (keyboard-quit))
+#+END_SRC
+**** Keybinding
+#+BEGIN_SRC emacs-lisp
+(define-key evil-normal-state-map   (kbd "C-g") #'evil-keyboard-quit) 
+(define-key evil-motion-state-map   (kbd "C-g") #'evil-keyboard-quit) 
+(define-key evil-insert-state-map   (kbd "C-g") #'evil-keyboard-quit) 
+(define-key evil-window-map         (kbd "C-g") #'evil-keyboard-quit) 
+(define-key evil-operator-state-map (kbd "C-g") #'evil-keyboard-quit) 
+#+END_SRC
 * Org
 ** ox-hugo
 #+BEGIN_SRC emacs-lisp
@@ -124,10 +142,29 @@
 #+BEGIN_SRC emacs-lisp
 (setq org-startup-indented t)
 #+END_SRC
+** Common Lisp & Scheme
+#+BEGIN_SRC emacs-lisp
+     (org-babel-do-load-languages
+  'org-babel-load-languages
+  '((scheme . t)
+   (emacs-lisp . t)
+   (ruby . t)
+   (R . t)
+   (python . t)
+   (C . t)
+   (sh . t)))
+#+END_SRC
 * Editor
 ** Company
 #+BEGIN_SRC emacs-lisp
 (global-company-mode t)
+#+END_SRC
+** yasnippet
+#+BEGIN_SRC emacs-lisp
+(setq yas-snippet-dirs
+'("~/dotfiles/snippets"
+    ))
+(yas-global-mode 1)
 #+END_SRC
 ** Hungry-delete
 #+BEGIN_SRC emacs-lisp
@@ -137,11 +174,6 @@
 ** Show-paren
 #+BEGIN_SRC emacs-lisp
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
-#+END_SRC
-** Smartparen
-#+BEGIN_SRC emacs-lisp
-(require 'smartparens-config)
-(smartparens-global-mode t)
 #+END_SRC
 * Better Defaults
 ** Auto Backup & Auto Save
@@ -179,3 +211,8 @@
     (slime-setup)
 (slime-setup '(slime-fancy))
 #+END_SRC
+** Scheme
+#+BEGIN_SRC emacs-lisp
+(setq scheme-program-name "scm")
+#+END_SRC
+
