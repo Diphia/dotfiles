@@ -73,9 +73,3 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 " Plug
 
 " vim_plug load
-call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'SirVer/ultisnips',
-Plug 'Yggdroot/LeaderF',{'do':'.\install.bat'}
-call plug#end()
-
