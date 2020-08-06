@@ -4,8 +4,8 @@
 # This script is used to auto install pkgs for newly deployed system
 
 USER="diphia"
-#PKG_MANAGER="apt"
-PKG_MANAGER="pacman"
+PKG_MANAGER="apt"
+#PKG_MANAGER="pacman"
 
 if [[ ${PKG_MANAGER} == "apt" ]]
 then
@@ -221,6 +221,15 @@ then
 fi
 
 # Emacs
+echo "Installing Emacs"
+sudo nohup ${PKG_MANAGER_CMD} emacs
+if [[ $? != 0 ]]
+then
+    echo "Emacs installation failed"
+fi
+
+
+# Emacs
 #echo "Installing Emacs"
 #sudo nohup ${PKG_MANAGER_CMD} emacs
 #if [[ $? != 0 ]]
@@ -231,10 +240,3 @@ fi
 #touch ${HOME}/.emacs.d/init.el
 #cat ${DOTFILES}/init.el >> ${HOME}/.emacs.d/init.el
 
-# Slime
-#echo "Installing Slime"
-#sudo nohup ${PKG_MANAGER_CMD} slime
-#if [[ $? != 0 ]]
-#then
-    #echo "Slime installation failed"
-#fi
