@@ -227,6 +227,12 @@ if [[ $? != 0 ]]
 then
     echo "Emacs installation failed"
 fi
+if [ -d "${HOME}/.spacemacs.d" ]
+then
+    rm -r ${HOME}/.spacemacs.d
+fi
+mkdir ${HOME}/.spacemacs.d
+ln -s ${HOME}/dotfiles/init.el ${HOME}/.spacemacs.d/init.el
 
 
 # Emacs
