@@ -170,7 +170,7 @@ echo "installing Vifm..."
 sudo nohup ${PKG_MANAGER_CMD} vifm
 if [[ $? != 0 ]]
 then
-    echo "Tmux installation failed"
+    echo "Vifm installation failed"
 fi
 if [ -d "${HOME}/.vifm" ]
 then
@@ -195,21 +195,21 @@ if [[ $? != 0 ]]
 then
     echo "Vim installation failed"
 fi
-if [ -f "${HOME}/.vimrc" ]
-then
-    rm ${HOME}/.vimrc
-fi
-touch ${HOME}/.vimrc
-echo "source ${DOTFILES}/vim/.vimrc" >> ${HOME}/.vimrc
-if [ -d "${HOME}/.vim" ]
-then
-    rm -r ${HOME}/.vim
-fi
-mkdir ${HOME}/.vim
-curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-ln -s ${DOTFILES}/vim/UltiSnips ${HOME}/.vim/UltiSnips
-echo "Installing coc-ultisnips"
-npm i coc-ultisnips
+#if [ -f "${HOME}/.vimrc" ]
+#then
+    #rm ${HOME}/.vimrc
+#fi
+#touch ${HOME}/.vimrc
+#echo "source ${DOTFILES}/vim/.vimrc" >> ${HOME}/.vimrc
+#if [ -d "${HOME}/.vim" ]
+#then
+    #rm -r ${HOME}/.vim
+#fi
+#mkdir ${HOME}/.vim
+#curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+#ln -s ${DOTFILES}/vim/UltiSnips ${HOME}/.vim/UltiSnips
+#echo "Installing coc-ultisnips"
+#npm i coc-ultisnips
 #ln -s ${DOTFILES}/vim/view ${HOME}/.vim/view
 
 # Mosh
