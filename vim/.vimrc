@@ -38,9 +38,6 @@ au BufWinEnter * silent loadview
 " Leader Key
 let mapleader = "\<space>"
 
-" UltiSnips Trigger
-let g:UltiSnipsJumpForwardTrigger="<C-l>"
-let g:UltiSnipsJumpBackwardTrigger="<C-h>"
 
 " Yank and Paste (Corss-instaces)
 vmap <leader>y :w! /tmp/vitmp<CR>                                                                   
@@ -61,15 +58,7 @@ nnoremap <leader>9 9gt
 nnoremap <C-j> <C-d>
 nnoremap <C-k> <C-u>
 
-" LeaderF Keymap
-let g:Lf_ShortcutF = '<C-P>'
-nnoremap <leader>t :LeaderfBufTag<CR>
-let g:Lf_CommandMap = {'<C-K>': ['<C-P>'], '<C-J>': ['<C-N>']}
-
 "easy move in a wrapped line
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
-" Plug
-
-" vim_plug load
