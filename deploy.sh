@@ -55,4 +55,7 @@ then
 fi
 ln -s ${HOME}/dotfiles/.spacemacs ${HOME}/.spacemacs
 
+tic -x -o ~/.terminfo ${DOTFILES}/.xterm-24bit.terminfo
+
+
 

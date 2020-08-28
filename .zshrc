@@ -24,4 +24,5 @@ alias -s zip='unzip'
 alias -s bz2='tar xjvf'
 
 export PATH="/home/diphia/.local/bin:$PATH"
+export TERM="xterm-24bit"
 
