@@ -1,18 +1,19 @@
-export ZSH="/home/diphia/.oh-my-zsh"
+#export ZSH="/home/diphia/.oh-my-zsh"
 
-ZSH_THEME="kafeitu"
+#ZSH_THEME="kafeitu"
 
 DISABLE_AUTO_TITLE="true"
 
 eval "$(fasd --init auto)"
-plugins=(git zsh-autosuggestions)
+#plugins=(git autosuggestions)
+#plugins=(git)
 bindkey '^l' autosuggest-accept
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#6b6b6b,bg=bold,underline"
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 alias vi='vim'
-alias pc='proxychains'
+alias pc='proxychains4'
 alias v="f -e vim"
 alias grep="grep -E --color"
 alias ch="cheat"

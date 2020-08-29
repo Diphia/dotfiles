@@ -1,12 +1,13 @@
-# dotfiles
-Linux &amp; macOS dotfiles
 
-include a stupid shell script to create symbolic links
+# Table of Contents
 
-## Usage
-```bash
-cd ~
-git clone git@github.com:Diphia/dotfiles.git
-cd dotfiles
-sudo bash ./dowfiles_setup.sh
-```
+1.  [Usage](#org7462bfd)
+
+
+
+<a id="org7462bfd"></a>
+
+# Usage
+
+    $ bash depoly.sh
+

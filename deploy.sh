@@ -49,11 +49,18 @@ fi
 touch ${HOME}/.vimrc
 echo "source ${DOTFILES}/vim/.vimrc" >> ${HOME}/.vimrc
 
-if [ -d "${HOME}/.spacemacs" ]
+if [ -d "${HOME}/.emacs.d" ]
+then
+    rm -rf ${HOME}/.emacs.d
+fi
+nohup git clone https://github.com/syl20bnr/spacemacs ${HOME}/.emacs.d
+
+if [ -f "${HOME}/.spacemacs" ]
 then
     rm ${HOME}/.spacemacs
 fi
 ln -s ${HOME}/dotfiles/.spacemacs ${HOME}/.spacemacs
+ln -s ${HOME}/dotfiles/snippets/ ${HOME}/.emacs.d/private/snippets/
 
 tic -x -o ~/.terminfo ${DOTFILES}/.xterm-24bit.terminfo
 

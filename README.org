@@ -1,0 +1,6 @@
+#+title: dotfiles management
+
+* Usage
+#+BEGIN_SRC sh
+  $ bash depoly.sh
+#+END_SRC
