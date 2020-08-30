@@ -25,9 +25,9 @@ sudo chown -R ${USER} ${HOME}/scripts
 sudo chgrp -R ${USER} ${HOME}/scripts
 
 echo "installing oh-my-zsh..."
-sudo nohup git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
-sudo chown -R ${USER} ${HOME}/.oh-my-zsh
-sudo chgrp -R ${USER} ${HOME}/.oh-my-zsh
+#sudo nohup git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
+#sudo chown -R ${USER} ${HOME}/.oh-my-zsh
+#sudo chgrp -R ${USER} ${HOME}/.oh-my-zsh
 if [ -f "${HOME}/.zshrc" ]
 then
     rm ${HOME}/.zshrc
@@ -64,5 +64,6 @@ ln -s ${HOME}/dotfiles/snippets/ ${HOME}/.emacs.d/private/snippets/
 
 tic -x -o ~/.terminfo ${DOTFILES}/.xterm-24bit.terminfo
 
-
-
+# frp
+#ln -s ${HOME}/dotfiles/frps.ini ${HOME}/frps.ini
+#ln -s ${HOME}/dotfiles/frpc.ini ${HOME}/frpc.ini

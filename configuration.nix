@@ -43,6 +43,25 @@
   time.timeZone = "Asia/Shanghai";
 
   nix.binaryCaches = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
+
+  systemd.services.frpc = {
+     enable = true;
+     wantedBy = [ "multi-user.target" ]; 
+     description = "Start the frp client daemon.";
+     serviceConfig = {
+       ExecStart = ''/home/diphia/.nix-profile/bin/frpc -c /home/diphia/dotfiles/frpc.ini'';         
+     };
+  };
+
+  systemd.services.frps = {
+     enable = false;
+     wantedBy = [ "multi-user.target" ]; 
+     description = "Start the frp server daemon.";
+     serviceConfig = {
+       ExecStart = ''/home/diphia/.nix-profile/bin/frps -c /home/diphia/dotfiles/frps.ini'';         
+     };
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -60,6 +79,8 @@
     neofetch
     proxychains
     htop
+    sqlite
+    frp
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
