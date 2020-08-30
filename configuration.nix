@@ -49,7 +49,7 @@
      wantedBy = [ "multi-user.target" ]; 
      description = "Start the frp client daemon.";
      serviceConfig = {
-       ExecStart = ''/home/diphia/.nix-profile/bin/frpc -c /home/diphia/dotfiles/frpc.ini'';         
+       ExecStart = ''/home/diphia/.nix-profile/bin/frpc -c /home/diphia/frpc.ini'';         
      };
   };
 
@@ -58,29 +58,13 @@
      wantedBy = [ "multi-user.target" ]; 
      description = "Start the frp server daemon.";
      serviceConfig = {
-       ExecStart = ''/home/diphia/.nix-profile/bin/frps -c /home/diphia/dotfiles/frps.ini'';         
+       ExecStart = ''/home/diphia/.nix-profile/bin/frps -c /home/diphia/frps.ini'';         
      };
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget
-    vim
-    emacs
-    zsh
-    zsh-autosuggestions
-    fasd
-    python3
-    git
-    curl
-    nodejs
-    tmux
-    neofetch
-    proxychains
-    htop
-    sqlite
-    frp
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -91,13 +75,6 @@
   #   enableSSHSupport = true;
   #   pinentryFlavor = "gnome3";
   # };
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    ohMyZsh.enable = true;
-    ohMyZsh.plugins = [ "git" ];
-    ohMyZsh.theme = "kafeitu";
-    };
 
   # List services that you want to enable:
 
