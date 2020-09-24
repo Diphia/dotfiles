@@ -1,0 +1,45 @@
+{ config, pkgs, ... }:
+
+{
+
+nix.binaryCaches = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" "https://cache.nixos.org/" ];
+# List packages installed in system profile. To search by name, run:
+# $ nix-env -qaP | grep wget
+environment.systemPackages =
+  [ pkgs.vim
+  ];
+
+services.yabai = {
+  enable = true;
+  package = pkgs.yabai;
+  enableScriptingAddition = true;
+  config = {
+    layout = "bsp";
+    top_padding = 10;
+    bottom_padding = 15;
+    left_padding = 10;
+    right_padding = 10;
+    window_gap = 10;
+  };
+  extraConfig = ''
+    #rules
+    yabai -m rule --add app='System Preference' manage=off
+  '';
+};
+
+# Use a custom configuration.nix location.
+  # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
+  # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
+
+  # Auto upgrade nix package and the daemon service.
+  # services.nix-daemon.enable = true;
+  # nix.package = pkgs.nix;
+
+  # Create /etc/bashrc that loads the nix-darwin environment.
+  programs.zsh.enable = true;  # default shell on catalina
+  # programs.fish.enable = true;
+
+  # Used for backwards compatibility, please read the changelog before changing.
+  # $ darwin-rebuild changelog
+  system.stateVersion = 4;
+}

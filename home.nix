@@ -8,7 +8,7 @@ home.packages = [
   pkgs.emacs
   pkgs.zsh-autosuggestions
   pkgs.fasd
-  pkgs.proxychains
+  #pkgs.proxychains
   pkgs.nodejs
   pkgs.curl
   pkgs.frp
@@ -19,6 +19,8 @@ home.packages = [
   pkgs.htop
   pkgs.neofetch
   pkgs.gnupg
+  pkgs.youtube-dl
+  pkgs.imagemagick
 ];
 
 programs.zsh = {
@@ -32,6 +34,8 @@ programs.zsh = {
         pc = "proxychains4";
         grep = "grep -E --color";
         ssh = "TERM=xterm-256color ssh";
+        em = "emacsclient -c -nw";
+        emgui = "emacsclient -c -n";
     };
     initExtra = ''
         eval "$(fasd --init auto)"
@@ -44,6 +48,9 @@ programs.zsh = {
         alias -s bz2='tar xjvf'
         export PATH="/home/diphia/.local/bin:$PATH"
         export TERM="xterm-24bit"
+        export LC_ALL=en_US.UTF-8  
+        export LANG=en_US.UTF-8
+        source /Users/diphia/nix.sh
     '';
 };
 
@@ -146,7 +153,9 @@ home.file.".spacemacs".text = ''
      git
      ;; markdown
      org
+     org-roam
      scheme
+     html
      javascript
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -159,7 +168,7 @@ home.file.".spacemacs".text = ''
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(cnfonts)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -237,8 +246,9 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Ubuntu Mono"
-                               :size 20
+
+   dotspacemacs-default-font '("JetBrains Mono"
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 0.8)
@@ -420,6 +430,24 @@ values."
   )
 
 (defun dotspacemacs/user-config ()
+
+  (setq geiser-chicken-binary "csi")
+  (setq geiser-scheme-implementation 'chicken)
+
+  (use-package cnfonts
+    :config
+    (cnfonts-enable)
+    (setq cnfonts-use-face-font-rescale t))
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((scheme . t)
+     (emacs-lisp . t)
+     (python . t)
+     (js . t)))
+
+  (setq org-image-actual-width nil)
+
   (spacemacs/declare-prefix "ar" "org-roam")
   (spacemacs/set-leader-keys
     "arl" 'org-roam
@@ -427,7 +455,13 @@ values."
     "arf" 'org-roam-find-file
     "arg" 'org-roam-graph)
 
+  (setq scheme-program-name "chicken")
+
+  (setq org-hide-emphasis-markers t)
   (setq org-roam-graph-viewer "/usr/bin/open")
+
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
 
   (eval-after-load "dired-mode"
     (evilified-state-evilify dired-mode dired-mode-map
@@ -448,23 +482,8 @@ values."
           org-roam-server-network-label-truncate-length 60
           org-roam-server-network-label-wrap-length 20))
 
-  (defun evil-keyboard-quit ()
-    "keyboard quit and force normal status"
-    (interactive)
-    (and evil-mode (evil-force-normal-state))
-    (keyboard-quit))
-
   (global-set-key (kbd "C-w") 'backward-kill-word)
 
-  (setq geiser-chicken-binary "csi")
-  (setq geiser-scheme-implementation 'chicken)
-
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((scheme . t)
-     (emacs-lisp . t)
-     (python . t)
-     (js . t)))
 
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -485,9 +504,12 @@ you should place your code here."
    (quote
     ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
  '(evil-want-Y-yank-to-eol nil)
+ '(org-format-latex-options
+ '(:foreground default :background default :scale 1.5 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+                  ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(package-selected-packages
    (quote
-    (web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode mmm-mode markdown-toc markdown-mode gh-md dired+ org-roam-server org-roam ox-hugo geiser yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy evil-magit magit git-commit with-editor transient company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+    (cnfonts mixed-pitch web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode mmm-mode markdown-toc markdown-mode gh-md dired+ org-roam-server org-roam ox-hugo geiser yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy evil-magit magit git-commit with-editor transient company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
  '(safe-local-variable-values
    (quote
     ((org-hugo-footer . "
