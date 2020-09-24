@@ -15,11 +15,7 @@ services.yabai = {
   enableScriptingAddition = true;
   config = {
     layout = "bsp";
-    top_padding = 10;
-    bottom_padding = 15;
-    left_padding = 10;
-    right_padding = 10;
-    window_gap = 10;
+    window_gap = 5;
   };
   extraConfig = ''
     #rules
