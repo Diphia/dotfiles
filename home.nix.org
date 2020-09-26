@@ -2,6 +2,7 @@
 :PROPERTIES:
 :header-args: :tangle ~/dotfiles/home.nix
 :END:
+should be linked to [[~/.config/nixpkgs/home.nix]]
 ** header
 #+BEGIN_SRC nix
   { config, pkgs, ... }:
@@ -459,10 +460,14 @@
     (setq geiser-chicken-binary "csi")
     (setq geiser-scheme-implementation 'chicken)
 
+    (setq org-agenda-files (file-expand-wildcards "~/org-files/agenda.org"))
+
+
     (use-package cnfonts
       :config
       (cnfonts-enable)
       (setq cnfonts-use-face-font-rescale t))
+
 
     (org-babel-do-load-languages
      'org-babel-load-languages
@@ -600,6 +605,7 @@
 :PROPERTIES:
 :header-args: :tangle ~/dotfiles/darwin-configuration.nix
 :END:
+should be linked to [[~/.nixpkgs/darwin-configuration.nix]]
 ** header
 #+BEGIN_SRC conf
   { config, pkgs, ... }:
@@ -626,9 +632,40 @@
       window_gap = 5;
     };
     extraConfig = ''
+      yabai -m config mouse_follows_focus on
       #rules
       yabai -m rule --add app='System Preference' manage=off
+      yabai -m rule --add app='zoom.us' space=4
+      yabai -m rule --add app='Maps' space=4
+      yabai -m rule --add app='iTerm' space=2
+      yabai -m rule --add app='Anki' space=5
+      yabai -m rule --add app='WeChat' space=5
+      yabai -m rule --add app='VirtualBox' space=8
+      yabai -m rule --add app='VirtualBox VM' space=4
     '';
+  };
+#+END_SRC
+** skhd
+#+BEGIN_SRC conf
+  services.skhd = {
+    enable = true;
+    package = pkgs.skhd;
+    skhdConfig = "
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+ctrl - j : yabai -m display --focus 2
+ctrl - k : yabai -m display --focus 1
+ctrl - 1 : yabai -m space --focus 1
+ctrl - 2 : yabai -m space --focus 2
+ctrl - 3 : yabai -m space --focus 3
+ctrl - 4 : yabai -m space --focus 4
+ctrl + cmd - 1 : yabai -m space --focus 5
+ctrl + cmd - 2 : yabai -m space --focus 6
+ctrl + cmd - 3 : yabai -m space --focus 7
+ctrl + cmd - 4 : yabai -m space --focus 8
+    ";
   };
 #+END_SRC
 ** foot

@@ -434,10 +434,14 @@ values."
   (setq geiser-chicken-binary "csi")
   (setq geiser-scheme-implementation 'chicken)
 
+  (setq org-agenda-files (file-expand-wildcards "~/org-files/agenda.org"))
+
+
   (use-package cnfonts
     :config
     (cnfonts-enable)
     (setq cnfonts-use-face-font-rescale t))
+
 
   (org-babel-do-load-languages
    'org-babel-load-languages
