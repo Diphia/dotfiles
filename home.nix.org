@@ -21,6 +21,7 @@ should be linked to [[~/.config/nixpkgs/home.nix]]
       pkgs.nodejs
       pkgs.curl
       pkgs.frp
+      pkgs.vifm
       pkgs.sqlite
       pkgs.python3
       pkgs.wget
@@ -455,106 +456,155 @@ should be linked to [[~/.config/nixpkgs/home.nix]]
 #+END_SRC
 *** user-config()
 #+BEGIN_SRC conf
-  (defun dotspacemacs/user-config ()
+      (defun dotspacemacs/user-config ()
 
-    (setq geiser-chicken-binary "csi")
-    (setq geiser-scheme-implementation 'chicken)
+        (setq geiser-chicken-binary "csi")
+        (setq geiser-scheme-implementation 'chicken)
 
-    (setq org-agenda-files (file-expand-wildcards "~/org-files/agenda.org"))
+        (setq org-agenda-files (file-expand-wildcards "~/org-files/agenda.org"))
 
+        (add-hook 'org-agenda-mode-hook
+                  (lambda ()
+                    (add-hook 'auto-save-hook 'org-save-all-org-buffers nil t)
+                    (auto-save-mode)))
 
-    (use-package cnfonts
-      :config
-      (cnfonts-enable)
-      (setq cnfonts-use-face-font-rescale t))
-
-
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((scheme . t)
-       (emacs-lisp . t)
-       (python . t)
-       (js . t)))
-
-    (setq org-image-actual-width nil)
-
-    (spacemacs/declare-prefix "ar" "org-roam")
-    (spacemacs/set-leader-keys
-      "arl" 'org-roam
-      "art" 'org-roam-dailies-today
-      "arf" 'org-roam-find-file
-      "arg" 'org-roam-graph)
-
-    (setq scheme-program-name "chicken")
-
-    (setq org-hide-emphasis-markers t)
-    (setq org-roam-graph-viewer "/usr/bin/open")
-
-    (menu-bar-mode -1)
-    (tool-bar-mode -1)
-
-    (eval-after-load "dired-mode"
-      (evilified-state-evilify dired-mode dired-mode-map
-        "gg" 'ao/dired-back-to-top
-        "G" 'ao/dired-jump-to-bottom))
-
-    (use-package org-roam-server
-      :ensure t
-      :config
-      (setq org-roam-server-host "0.0.0.0"
-            org-roam-server-port 8080
-            org-roam-server-network-autoreload nil
-            org-roam-server-export-inlinE-images t
-            org-roam-server-authenticate nil
-            org-roam-server-network-poll nil
-            org-roam-server-network-arrows nil
-            org-roam-server-network-label-truncate t
-            org-roam-server-network-label-truncate-length 60
-            org-roam-server-network-label-wrap-length 20))
-
-    (global-set-key (kbd "C-w") 'backward-kill-word)
-
-    (setq org-default-notes-file "~/org/inbox.org")
+        (use-package cnfonts
+          :config
+          (cnfonts-enable)
+          (setq cnfonts-use-face-font-rescale t))
 
 
-    "Configuration function for user code.
-  This function is called at the very end of Spacemacs initialization after
-  layers configuration.
-  This is the place where most of your configurations should be done. Unless it is
-  explicitly specified that a variable should be set before a package is loaded,
-  you should place your code here."
-    )
+        (org-babel-do-load-languages
+         'org-babel-load-languages
+         '((scheme . t)
+           (emacs-lisp . t)
+           (python . t)
+           (js . t)))
 
-  ;; Do not write anything past this comment. This is where Emacs will
-  ;; auto-generate custom variable definitions.
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(custom-safe-themes
-     (quote
-      ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
-   '(evil-want-Y-yank-to-eol nil)
-   '(org-format-latex-options
-   '(:foreground default :background default :scale 1.5 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
-                    ("begin" "$1" "$" "$$" "\\(" "\\[")))
-   '(package-selected-packages
-     (quote
-      (cnfonts mixed-pitch web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode mmm-mode markdown-toc markdown-mode gh-md dired+ org-roam-server org-roam ox-hugo geiser yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy evil-magit magit git-commit with-editor transient company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
-   '(safe-local-variable-values
-     (quote
-      ((org-hugo-footer . "
+        (setq org-image-actual-width nil)
 
-  [//]: # \"Exported with love from a post written in Org mode\"
-  [//]: # \"- https://github.com/kaushalmodi/ox-hugo\"")))))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   )
-  '';
+        (spacemacs/declare-prefix "ar" "org-roam")
+        (spacemacs/set-leader-keys
+          "arl" 'org-roam
+          "art" 'org-roam-dailies-today
+          "arf" 'org-roam-find-file
+          "arg" 'org-roam-graph)
+
+        (setq scheme-program-name "chicken")
+
+        (setq org-hide-emphasis-markers t)
+        (setq org-roam-graph-viewer "/usr/bin/open")
+
+        (menu-bar-mode -1)
+        (tool-bar-mode -1)
+
+        (eval-after-load "dired-mode"
+          (evilified-state-evilify dired-mode dired-mode-map
+            "gg" 'ao/dired-back-to-top
+            "G" 'ao/dired-jump-to-bottom))
+
+        (use-package org-roam-server
+          :ensure t
+          :config
+          (setq org-roam-server-host "0.0.0.0"
+                org-roam-server-port 8080
+                org-roam-server-network-autoreload nil
+                org-roam-server-export-inlinE-images t
+                org-roam-server-authenticate nil
+                org-roam-server-network-poll nil
+                org-roam-server-network-arrows nil
+                org-roam-server-network-label-truncate t
+                org-roam-server-network-label-truncate-length 60
+                org-roam-server-network-label-wrap-length 20))
+
+        (global-set-key (kbd "C-w") 'backward-kill-word)
+
+        (setq org-default-notes-file "~/org/inbox.org")
+
+        (add-to-list 'org-capture-templates
+                     '("t" "Standard Tasks" entry
+                       (file+headline "~/org-files/agenda.org" "Studying & Working & Reading")
+                       "** TODO %^{todo_content}\n   SCHEDULED: %^t\n"))
+
+        (add-to-list 'org-capture-templates
+                     '("s" "Shopping Items" entry
+                       (file+headline "~/org-files/agenda.org" "Shopping")
+                       "** TODO buy %^{item}\n   SCHEDULED: %t\n"))
+
+        ;; #+LaTeX_CLASS: beamer in org files
+        (unless (boundp 'org-export-latex-classes)
+          (setq org-export-latex-classes nil))
+        (add-to-list 'org-export-latex-classes
+                     ;; beamer class, for presentations
+                     '("beamer"
+                       "\\documentclass[11pt]{beamer}\n
+          \\mode<{{{beamermode}}}>\n
+          \\usetheme{{{{beamertheme}}}}\n
+          \\usecolortheme{{{{beamercolortheme}}}}\n
+          \\beamertemplateballitem\n
+          \\setbeameroption{show notes}
+          \\usepackage[utf8]{inputenc}\n
+          \\usepackage[T1]{fontenc}\n
+          \\usepackage{hyperref}\n
+          \\usepackage{color}
+          \\usepackage{listings}
+          \\lstset{numbers=none,language=[ISO]C++,tabsize=4,
+      frame=single,
+      basicstyle=\\small,
+      showspaces=false,showstringspaces=false,
+      showtabs=false,
+      keywordstyle=\\color{blue}\\bfseries,
+      commentstyle=\\color{red},
+      }\n
+          \\usepackage{verbatim}\n
+          \\institute{{{{beamerinstitute}}}}\n
+           \\subject{{{{beamersubject}}}}\n"
+
+                       ("\\section{%s}" . "\\section*{%s}")
+
+                       ("\\begin{frame}[fragile]\\frametitle{%s}"
+                        "\\end{frame}"
+                        "\\begin{frame}[fragile]\\frametitle{%s}"
+                        "\\end{frame}")))
+
+        "Configuration function for user code.
+      This function is called at the very end of Spacemacs initialization after
+      layers configuration.
+      This is the place where most of your configurations should be done. Unless it is
+      explicitly specified that a variable should be set before a package is loaded,
+      you should place your code here."
+        )
+
+      ;; Do not write anything past this comment. This is where Emacs will
+      ;; auto-generate custom variable definitions.
+      (custom-set-variables
+       ;; custom-set-variables was added by Custom.
+       ;; If you edit it by hand, you could mess it up, so be careful.
+       ;; Your init file should contain only one such instance.
+       ;; If there is more than one, they won't work right.
+       '(custom-safe-themes
+         (quote
+          ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
+       '(evil-want-Y-yank-to-eol nil)
+       '(org-format-latex-options
+       '(:foreground default :background default :scale 1.5 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+                        ("begin" "$1" "$" "$$" "\\(" "\\[")))
+       '(package-selected-packages
+         (quote
+          (cnfonts mixed-pitch web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode mmm-mode markdown-toc markdown-mode gh-md dired+ org-roam-server org-roam ox-hugo geiser yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy evil-magit magit git-commit with-editor transient company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+       '(safe-local-variable-values
+         (quote
+          ((org-hugo-footer . "
+
+      [//]: # \"Exported with love from a post written in Org mode\"
+      [//]: # \"- https://github.com/kaushalmodi/ox-hugo\"")))))
+      (custom-set-faces
+       ;; custom-set-faces was added by Custom.
+       ;; If you edit it by hand, you could mess it up, so be careful.
+       ;; Your init file should contain only one such instance.
+       ;; If there is more than one, they won't work right.
+       )
+      '';
 #+END_SRC
 ** xterm-24bit
 #+BEGIN_SRC conf
@@ -589,6 +639,70 @@ should be linked to [[~/.config/nixpkgs/home.nix]]
     bind_port = 7453
   '';
 #+END_SRC
+** vifm
+#+BEGIN_SRC conf
+  home.file.".vifm/vifmrc".text = ''
+set undolevels=10
+set history=100
+
+set noiec  
+"Use KiB instead of KB
+
+colorscheme snowwhite.vifm
+
+set ignorecase 
+" ignore case in search patterns
+
+set smartcase 
+" if it contains at leaset one uppercase , do not ignore case
+
+set nohlsearch 
+" do not highlight the search result file , but still highlight the mathed characters
+
+set incsearch 
+" Use increment searching (search while typing)
+
+set statusline="  %t%= %A %10u:%-7g %15s %20d  "custom statusline
+
+nnoremap S :shell<cr>
+nnoremap s :sort<cr>
+nnoremap q :view<cr>
+nnoremap Q :view<cr>gv
+nnoremap r :rename<cr>
+
+" two-panel file managers mappings
+nnoremap <f3> :!less %f<cr>
+nnoremap <f4> :edit<cr>
+nnoremap <f5> :copy<cr>
+nnoremap <f6> :move<cr>
+nnoremap <f7> :mkdir<space>
+
+nnoremap x :delete
+
+nnoremap = :cd %d %d<cr>
+" use = to force sync path
+
+" VimDesktop style favs
+nmap d '
+
+" filetype *.mp4,*.avi,*.mkv,*.jpg,*.png,*.doc,*.docx,*.xls,*.xlsx,*.pdf,*.dmg,*.gsheet,*.gdoc,*.gslides open
+
+filetype *.jpg,*.png feh -F
+
+fileviewer *.jpg,*.png 
+	\ imgt %px %py %pw %ph %c
+	\ %pc
+	\ imgc %px %py %pw %ph
+
+fileviewer *.md,*.cpp,*.sh,*.py,*.c env -uCOLORTERM bat --color always --wrap never --pager never %c -p
+
+filetype * open
+
+" file types
+" set classify='D :dir:/,E :exe:'
+  '';
+#+END_SRC
+   
 ** foot
 #+BEGIN_SRC conf
     # This value determines the Home Manager release that your
@@ -640,8 +754,6 @@ should be linked to [[~/.nixpkgs/darwin-configuration.nix]]
       yabai -m rule --add app='zoom.us' space=4
       yabai -m rule --add app='Maps' space=4
       yabai -m rule --add app='iTerm' space=2
-      yabai -m rule --add app='Anki' space=5
-      yabai -m rule --add app='WeChat' space=5
       yabai -m rule --add app='VirtualBox' space=8
       yabai -m rule --add app='VirtualBox VM' space=4
     '';
@@ -667,6 +779,7 @@ ctrl + cmd - 1 : yabai -m space --focus 5
 ctrl + cmd - 2 : yabai -m space --focus 6
 ctrl + cmd - 3 : yabai -m space --focus 7
 ctrl + cmd - 4 : yabai -m space --focus 8
+alt - f : yabai -m window --toggle zoom-fullscreen
     ";
   };
 #+END_SRC

@@ -12,6 +12,7 @@ home.packages = [
   pkgs.nodejs
   pkgs.curl
   pkgs.frp
+  pkgs.vifm
   pkgs.sqlite
   pkgs.python3
   pkgs.wget
@@ -436,6 +437,10 @@ values."
 
   (setq org-agenda-files (file-expand-wildcards "~/org-files/agenda.org"))
 
+  (add-hook 'org-agenda-mode-hook
+            (lambda ()
+              (add-hook 'auto-save-hook 'org-save-all-org-buffers nil t)
+              (auto-save-mode)))
 
   (use-package cnfonts
     :config
@@ -488,6 +493,53 @@ values."
 
   (global-set-key (kbd "C-w") 'backward-kill-word)
 
+  (setq org-default-notes-file "~/org/inbox.org")
+
+  (add-to-list 'org-capture-templates
+               '("t" "Standard Tasks" entry
+                 (file+headline "~/org-files/agenda.org" "Studying & Working & Reading")
+                 "** TODO %^{todo_content}\n   SCHEDULED: %^t\n"))
+
+  (add-to-list 'org-capture-templates
+               '("s" "Shopping Items" entry
+                 (file+headline "~/org-files/agenda.org" "Shopping")
+                 "** TODO buy %^{item}\n   SCHEDULED: %t\n"))
+
+  ;; #+LaTeX_CLASS: beamer in org files
+  (unless (boundp 'org-export-latex-classes)
+    (setq org-export-latex-classes nil))
+  (add-to-list 'org-export-latex-classes
+               ;; beamer class, for presentations
+               '("beamer"
+                 "\\documentclass[11pt]{beamer}\n
+    \\mode<{{{beamermode}}}>\n
+    \\usetheme{{{{beamertheme}}}}\n
+    \\usecolortheme{{{{beamercolortheme}}}}\n
+    \\beamertemplateballitem\n
+    \\setbeameroption{show notes}
+    \\usepackage[utf8]{inputenc}\n
+    \\usepackage[T1]{fontenc}\n
+    \\usepackage{hyperref}\n
+    \\usepackage{color}
+    \\usepackage{listings}
+    \\lstset{numbers=none,language=[ISO]C++,tabsize=4,
+frame=single,
+basicstyle=\\small,
+showspaces=false,showstringspaces=false,
+showtabs=false,
+keywordstyle=\\color{blue}\\bfseries,
+commentstyle=\\color{red},
+}\n
+    \\usepackage{verbatim}\n
+    \\institute{{{{beamerinstitute}}}}\n
+     \\subject{{{{beamersubject}}}}\n"
+
+                 ("\\section{%s}" . "\\section*{%s}")
+
+                 ("\\begin{frame}[fragile]\\frametitle{%s}"
+                  "\\end{frame}"
+                  "\\begin{frame}[fragile]\\frametitle{%s}"
+                  "\\end{frame}")))
 
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -553,6 +605,67 @@ home.file."frps.ini".text = ''
   [common]
   bind_port = 7453
 '';
+
+home.file.".vifm/vifmrc".text = ''
+set undolevels=10
+set history=100
+
+set noiec  
+"Use KiB instead of KB
+
+colorscheme snowwhite.vifm
+
+set ignorecase 
+" ignore case in search patterns
+
+set smartcase 
+" if it contains at leaset one uppercase , do not ignore case
+
+set nohlsearch 
+" do not highlight the search result file , but still highlight the mathed characters
+
+set incsearch 
+" Use increment searching (search while typing)
+
+set statusline="  %t%= %A %10u:%-7g %15s %20d  "custom statusline
+
+nnoremap S :shell<cr>
+nnoremap s :sort<cr>
+nnoremap q :view<cr>
+nnoremap Q :view<cr>gv
+nnoremap r :rename<cr>
+
+" two-panel file managers mappings
+nnoremap <f3> :!less %f<cr>
+nnoremap <f4> :edit<cr>
+nnoremap <f5> :copy<cr>
+nnoremap <f6> :move<cr>
+nnoremap <f7> :mkdir<space>
+
+nnoremap x :delete
+
+nnoremap = :cd %d %d<cr>
+" use = to force sync path
+
+" VimDesktop style favs
+nmap d '
+
+" filetype *.mp4,*.avi,*.mkv,*.jpg,*.png,*.doc,*.docx,*.xls,*.xlsx,*.pdf,*.dmg,*.gsheet,*.gdoc,*.gslides open
+
+filetype *.jpg,*.png feh -F
+
+fileviewer *.jpg,*.png 
+	\ imgt %px %py %pw %ph %c
+	\ %pc
+	\ imgc %px %py %pw %ph
+
+fileviewer *.md,*.cpp,*.sh,*.py,*.c env -uCOLORTERM bat --color always --wrap never --pager never %c -p
+
+filetype * open
+
+" file types
+" set classify='D :dir:/,E :exe:'
+  '';
 
 # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

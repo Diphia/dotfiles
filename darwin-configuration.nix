@@ -24,8 +24,6 @@ services.yabai = {
     yabai -m rule --add app='zoom.us' space=4
     yabai -m rule --add app='Maps' space=4
     yabai -m rule --add app='iTerm' space=2
-    yabai -m rule --add app='Anki' space=5
-    yabai -m rule --add app='WeChat' space=5
     yabai -m rule --add app='VirtualBox' space=8
     yabai -m rule --add app='VirtualBox VM' space=4
   '';
@@ -49,6 +47,7 @@ ctrl + cmd - 1 : yabai -m space --focus 5
 ctrl + cmd - 2 : yabai -m space --focus 6
 ctrl + cmd - 3 : yabai -m space --focus 7
 ctrl + cmd - 4 : yabai -m space --focus 8
+alt - f : yabai -m window --toggle zoom-fullscreen
     ";
   };
 
