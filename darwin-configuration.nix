@@ -6,7 +6,7 @@ nix.binaryCaches = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" "
 # List packages installed in system profile. To search by name, run:
 # $ nix-env -qaP | grep wget
 environment.systemPackages =
-  [ pkgs.vim
+[
   ];
 
 services.yabai = {

@@ -23,7 +23,6 @@ should be linked to [[~/.config/nixpkgs/home.nix]]
       pkgs.frp
       pkgs.vifm
       pkgs.sqlite
-      pkgs.python3
       pkgs.wget
       pkgs.tree
       pkgs.htop
@@ -31,6 +30,7 @@ should be linked to [[~/.config/nixpkgs/home.nix]]
       pkgs.gnupg
       pkgs.youtube-dl
       pkgs.imagemagick
+      pkgs.exif
     ];
 #+END_SRC
 ** zsh
@@ -730,12 +730,12 @@ should be linked to [[~/.nixpkgs/darwin-configuration.nix]]
 #+END_SRC
 ** packages
 #+BEGIN_SRC conf
-  nix.binaryCaches = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" "https://cache.nixos.org/" ];
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment.systemPackages =
-    [ pkgs.vim
-    ];
+    nix.binaryCaches = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" "https://cache.nixos.org/" ];
+    # List packages installed in system profile. To search by name, run:
+    # $ nix-env -qaP | grep wget
+    environment.systemPackages =
+    [
+      ];
 #+END_SRC
 ** yabai
 #+BEGIN_SRC conf

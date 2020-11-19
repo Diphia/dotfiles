@@ -14,7 +14,6 @@ home.packages = [
   pkgs.frp
   pkgs.vifm
   pkgs.sqlite
-  pkgs.python3
   pkgs.wget
   pkgs.tree
   pkgs.htop
@@ -22,6 +21,7 @@ home.packages = [
   pkgs.gnupg
   pkgs.youtube-dl
   pkgs.imagemagick
+  pkgs.exif
 ];
 
 programs.zsh = {
