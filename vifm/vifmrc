@@ -35,8 +35,19 @@ nnoremap <f7> :mkdir<space>
 
 nnoremap x :delete
 
-nnoremap = :cd %d %d<cr>
 " use = to force sync path
+nnoremap = :cd %d %d<cr>
+
+" yf to copy current file path to system clipboard (for macOS)
+nnoremap yf :!echo -n %c:p | pbcopy %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+
+" yf to copy current path to system clipboard (for macOS)
+nnoremap yd :!echo -n %d | pbcopy %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
+
+" yf to copy current filename without path to system clipboard (for macOS)
+nnoremap yn :!echo -n %c | pbcopy %i<cr>:echo expand('%"c') "is yanked to clipboard"<cr>
+
+
 
 " VimDesktop style favs
 nmap d '
