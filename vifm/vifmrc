@@ -40,6 +40,7 @@ nnoremap = :cd %d %d<cr>
 
 " yf to copy current file path to system clipboard (for macOS)
 nnoremap yf :!echo -n %c:p | pbcopy %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+nnoremap Y :!echo -n %c:p | pbcopy %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
 
 " yf to copy current path to system clipboard (for macOS)
 nnoremap yd :!echo -n %d | pbcopy %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
