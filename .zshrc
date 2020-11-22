@@ -1,16 +1,20 @@
-#export ZSH="/home/diphia/.oh-my-zsh"
+export ZSH="/Users/diphia/.oh-my-zsh"
 
-#ZSH_THEME="kafeitu"
+ZSH_THEME="kafeitu"
 
-DISABLE_AUTO_TITLE="true"
 
 eval "$(fasd --init auto)"
-#plugins=(git autosuggestions)
-#plugins=(git)
+plugins=(git)
+plugins=(zsh-autosuggestions)
+
+ZSH_DISABLE_COMPFIX=true
+DISABLE_AUTO_TITLE="true"
+
+source $ZSH/oh-my-zsh.sh
+
 bindkey '^l' autosuggest-accept
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#6b6b6b,bg=bold,underline"
 
-#source $ZSH/oh-my-zsh.sh
 
 alias vi='vim'
 alias pc='proxychains4'
@@ -25,5 +29,5 @@ alias -s zip='unzip'
 alias -s bz2='tar xjvf'
 
 export PATH="/home/diphia/.local/bin:$PATH"
-export TERM="xterm-24bit"
+#export TERM="xterm-24bit"
 
