@@ -53,18 +53,14 @@ nnoremap yn :!echo -n %c | pbcopy %i<cr>:echo expand('%"c') "is yanked to clipbo
 " VimDesktop style favs
 nmap d '
 
-" filetype *.mp4,*.avi,*.mkv,*.jpg,*.png,*.doc,*.docx,*.xls,*.xlsx,*.pdf,*.dmg,*.gsheet,*.gdoc,*.gslides open
-
-filetype *.jpg,*.png feh -F
+filetype *.mp4,*.avi,*.mkv,*.jpg,*.png,*.doc,*.docx,*.xls,*.xlsx,*.pdf,*.dmg,*.gsheet,*.gdoc,*.gslides open
 
 fileviewer *.jpg,*.png 
 	\ imgt %px %py %pw %ph %c
 	\ %pc
 	\ imgc %px %py %pw %ph
 
-fileviewer *.md,*.cpp,*.sh,*.py,*.c env -uCOLORTERM bat --color always --wrap never --pager never %c -p
-
-filetype * open
+filetype * vi
 
 " file types
 " set classify='D :dir:/,E :exe:'
