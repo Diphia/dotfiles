@@ -46,12 +46,18 @@ nnoremap yd :!echo -n %d | pbcopy %i<cr>:echo expand('%"d') "is yanked to clipbo
 " yf to copy current filename without path to system clipboard (for macOS)
 nnoremap yn :!echo -n %c | pbcopy %i<cr>:echo expand('%"c') "is yanked to clipboard"<cr>
 
-
+nnoremap <f1> :!emacsclient %f&<cr>
+nnoremap O :!open ./<cr>
+nnoremap o :!open %f&<cr>
 
 " VimDesktop style favs
 nmap d '
 
-filetype *.mp4,*.avi,*.mkv,*.jpg,*.png,*.doc,*.docx,*.xls,*.xlsx,*.pdf,*.dmg,*.gsheet,*.gdoc,*.gslides open
+filetype *.mp4,*.avi,*.mkv open
+filetype *.jpg,*.png open
+filetype *.doc,*.docx,*.xls,*.xlsx open
+filetype *.pdf open
+filetype *.dmg open
 
 fileviewer *.jpg,*.png 
 	\ imgt %px %py %pw %ph %c
@@ -62,5 +68,4 @@ filetype * vi
 
 " file types
 " set classify='D :dir:/,E :exe:'
-
 
