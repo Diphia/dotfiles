@@ -1,6 +1,0 @@
-# key: src
-# name: source code in org-mode
-# --
-#+BEGIN_SRC ${1:emacs-lisp}
-${2:code}
-#+END_SRC
