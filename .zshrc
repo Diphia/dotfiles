@@ -1,4 +1,14 @@
-export ZSH="/Users/diphia/.oh-my-zsh"
+USER="diphia"
+
+if [[ $OSTYPE == linux* ]]
+then
+    HOME=/home/$USER
+elif [[ $OSTYPE == darwin* ]]
+then
+    HOME=/Users/$USER
+fi
+
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="kafeitu"
 
