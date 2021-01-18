@@ -47,7 +47,7 @@ echo "Finished: ${HOME}/.tmux.conf"
 
 # .vifm/vifmrc
 VIFMRC="${HOME}/.vifm/vifmrc"
-VIFMRC_LOCAL="${HOME}/.vifmrc/vifmrc.local"
+VIFMRC_LOCAL="${HOME}/.vifm/vifmrc.local"
 if [ ! -d ${HOME}/.vifm ]
 then
     mkdir ${HOME}/.vifm
