@@ -8,22 +8,22 @@ PKG_MGR_CMD="apt install"
 
 # confirm of user and package manager
 echo -e "
-User: ${USER}\n
+User: ${USER}
 Package manager command: ${PKG_MGR_CMD}\n
 "
-read -r -p "Are You Sure? [Y/n] " input
+read -r -p "Do you want to continue? [Y/n] " input
 case $input in
     [yY][eE][sS]|[yY])
-		echo "Yes"
 		;;
     *)
-        echo "Invalid input..."
 		exit 1
 		;;
 esac
 
 PACKAGE_LIST="
 zsh
+vim
+emacs
 tmux
 vifm
 fasd
@@ -37,7 +37,7 @@ else
     HOME="/home/${USER}"
 fi
 DOTFILES="${HOME}/dotfiles"
-echo ${PACKAGE_LIST}
+echo "Packages to install: ${PACKAGE_LIST}"
 
 # Installation with package manager
 sudo ${PKG_MGR_CMD} ${PACKAGE_LIST}

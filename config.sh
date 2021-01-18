@@ -63,3 +63,16 @@ fi
 echo -e "source ${DOTFILES}/vifmrc\nsource ${VIFMRC_LOCAL}" > ${VIFMRC}
 echo "Finished: ${HOME}/.vifm/vifmrc"
 
+# .vimrc
+VIMRC="${HOME}/.vimrc"
+VIMRC_LOCAL="${HOME}/.vimrc.local"
+if [ -f ${VIMRC} ]
+then
+    rm ${VIMRC}
+fi
+if [ ! -f ${VIMRC_LOCAL} ]
+then
+    touch ${VIMRC_LOCAL}
+fi
+echo -e "source ${DOTFILES}/.vimrc\nsource ${VIMRC_LOCAL}" > ${VIMRC}
+echo "Finished: ${HOME}/.vimrc"
