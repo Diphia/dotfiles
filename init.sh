@@ -18,19 +18,22 @@ DOTFILES="${HOME}/dotfiles"
 
 # .zshrc
 ZSHRC="${HOME}/.zshrc"
-if [ ! -f ${ZSHRC} ]
+if [ -f ${ZSHRC} ]
 then
-    touch ${ZSHRC}
+    rm ${ZSHRC}
 fi
-(echo "source ${DOTFILES}/.zshrc" && cat ${ZSHRC}) > ${TMP} && mv ${TMP} ${ZSHRC}
+echo "source ${DOTFILES}/.zshrc\nsource ${HOME}/.zshrc.local" > ${ZSHRC}
+#(echo "source ${DOTFILES}/.zshrc" && cat ${ZSHRC}) > ${TMP} && mv ${TMP} ${ZSHRC}
+echo "Finished: ${HOME}/.zshrc"
 
 # .tmux.conf
 TMUXCONF="${HOME}/.tmux.conf"
-if [ ! -f ${TMUXCONF} ]
+if [ -f ${TMUXCONF} ]
 then
-    touch ${TMUXCONF}
+    rm ${TMUXCONF}
 fi
-(echo "source ${DOTFILES}/.tmux.conf" && cat ${TMUXCONF}) > ${TMP} && mv ${TMP} ${TMUXCONF}
+echo "source ${DOTFILES}/.tmux.conf\nsource ${HOME}/.tmux.conf.local" > ${TMUXCONF}
+echo "Finished: ${HOME}/.tmux.conf"
 
 # .vifm/vifmrc
 VIFMRC="${HOME}/.vifm/vifmrc"
@@ -38,11 +41,13 @@ if [ ! -d ${HOME}/.vifm ]
 then
     mkdir ${HOME}/.vifm
 fi
-if [ ! -f ${VIFMRC} ]
+if [ -f ${VIFMRC} ]
 then
-    touch ${VIFMRC}
+    rm ${VIFMRC}
 fi
-(echo "source ${DOTFILES}/vifmrc" && cat ${VIFMRC}) > ${TMP} && mv ${TMP} ${VIFMRC}
+echo "source ${DOTFILES}/vifmrc\nsource ${HOME}/.vifm/vifmrc.local" > ${VIFMRC}
+echo "Finished: ${HOME}/.vifm/vifmrc"
 
 # .doom.d
 ln -s ${DOTFILES}/.doom.d ${HOME}/.doom.d
+echo "Finished: ${HOME}/.doom.d"
