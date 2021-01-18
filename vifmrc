@@ -2,6 +2,7 @@
 set undolevels=10
 set history=100
 
+
 set noiec  
 "Use KiB instead of KB
 
@@ -46,6 +47,7 @@ elseif $OS == 'Linux'
 endif
 
 nnoremap <f1> :!emacsclient %f&<cr>
+nnoremap e :!emacsclient %f&<cr>
 nnoremap O :!open ./<cr>
 nnoremap o :!open %f&<cr>
 
@@ -63,7 +65,7 @@ fileviewer *.jpg,*.png
 	\ %pc
 	\ imgc %px %py %pw %ph
 
-filetype * vi
+fileviewer *.html,*.go,*.css,*.py,*.yaml.*.sh highlight -O xterm256 -s dante %c
 
 " file types
 " set classify='D :dir:/,E :exe:'

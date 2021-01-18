@@ -32,6 +32,8 @@ alias v="f -e vim"
 alias grep="grep -E --color"
 alias ch="cheat"
 alias ssh="TERM=xterm-256color ssh"
+alias em="emacsclient -nw"
+alias e="f -e emacsclient -nw"
 
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
@@ -39,5 +41,7 @@ alias -s zip='unzip'
 alias -s bz2='tar xjvf'
 
 export PATH="/home/diphia/.local/bin:$PATH"
+export EDITOR=vim
+export VISUAL=vim
 #export TERM="xterm-24bit"
 

@@ -3,7 +3,7 @@ set -euo pipefail
 
 USER="diphia"
 
-TMP="${HOME}/.deploy_tmp"
+TMP="${HOME}/.init_tmp"
 
 # Set PATH
 if [[ ${USER} == "root" ]]

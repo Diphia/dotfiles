@@ -1,0 +1,6 @@
+# key: bash
+# name: bash source code
+# --
+#+BEGIN_SRC bash
+$1
+#+END_SRC
