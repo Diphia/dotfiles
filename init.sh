@@ -11,7 +11,6 @@ zsh
 tmux
 vifm
 fasd
-htop
 "
 
 # Set PATH
@@ -29,3 +28,6 @@ sudo apt install ${PACKAGE_LIST}
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# zsh-autosuggestion
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions

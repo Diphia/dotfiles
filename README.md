@@ -1,13 +1,13 @@
 
-# Table of Contents
+# dotfiles
+## Usage
 
-1.  [Usage](#org7462bfd)
+- Use `init.sh` to install the packages
+- Use `config.sh` to sync the dotfiles
 
-
-
-<a id="org7462bfd"></a>
-
-# Usage
-
-    $ bash depoly.sh
+``` sh
+$ git clone https://github.com/Diphia/dotfiles.git
+$ bash init.sh
+$ bash config.sh
+```
 
