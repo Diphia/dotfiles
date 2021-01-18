@@ -1,7 +1,6 @@
-#+TITLE: Readme
+#+TITLE: Dotfiles
 
-* Dotfiles
-** Usage
+* Usage
 - use ~init.sh~ to install the pakcages
 - use ~config.sh~ to sync the dotfiles
 
