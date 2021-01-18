@@ -3,16 +3,17 @@ set -euo pipefail
 
 USER="diphia"
 
-TMP="${HOME}/.init_tmp"
-
 # Set PATH
-if [[ ${USER} == "root" ]]
+if [[ $OSTYPE == linux* ]]
 then
-    HOME="/root"
-else
-    HOME="/home/${USER}"
+    HOME=/home/$USER
+elif [[ $OSTYPE == darwin* ]]
+then
+    HOME=/Users/$USER
 fi
 DOTFILES="${HOME}/dotfiles"
+
+TMP="${HOME}/.init_tmp"
 
 # add code to local file
 
