@@ -63,6 +63,3 @@ fi
 echo -e "source ${DOTFILES}/vifmrc\nsource ${VIFMRC_LOCAL}" > ${VIFMRC}
 echo "Finished: ${HOME}/.vifm/vifmrc"
 
-# .doom.d
-ln -s ${DOTFILES}/.doom.d ${HOME}/.doom.d
-echo "Finished: ${HOME}/.doom.d"
