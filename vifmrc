@@ -47,7 +47,7 @@ elseif $OS == 'Linux'
 endif
 
 nnoremap <f1> :!emacsclient %f&<cr>
-nnoremap e :!emacsclient %f&<cr>
+nnoremap e :!emacsclient -n %f<cr>
 nnoremap O :!open ./<cr>
 nnoremap o :!open %f&<cr>
 
