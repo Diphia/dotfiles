@@ -3,8 +3,24 @@ set -euo pipefail
 
 USER="diphia"
 
-PKG_MANAGER="apt"
-#PKG_MANAGER="pacman"
+PKG_MGR_CMD="apt install"
+#PKG_MGR_CMD="pacman -S"
+
+# confirm of user and package manager
+echo -e "
+User: ${USER}\n
+Package manager command: ${PKG_MGR_CMD}\n
+"
+read -r -p "Are You Sure? [Y/n] " input
+case $input in
+    [yY][eE][sS]|[yY])
+		echo "Yes"
+		;;
+    *)
+        echo "Invalid input..."
+		exit 1
+		;;
+esac
 
 PACKAGE_LIST="
 zsh
@@ -24,7 +40,7 @@ DOTFILES="${HOME}/dotfiles"
 echo ${PACKAGE_LIST}
 
 # Installation with package manager
-sudo apt install ${PACKAGE_LIST}
+sudo ${PKG_MGR_CMD} ${PACKAGE_LIST}
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
