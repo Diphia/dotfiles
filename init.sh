@@ -22,7 +22,7 @@ if [ -f ${ZSHRC} ]
 then
     rm ${ZSHRC}
 fi
-echo "source ${DOTFILES}/.zshrc\nsource ${HOME}/.zshrc.local" > ${ZSHRC}
+echo -e "source ${DOTFILES}/.zshrc\nsource ${HOME}/.zshrc.local" > ${ZSHRC}
 #(echo "source ${DOTFILES}/.zshrc" && cat ${ZSHRC}) > ${TMP} && mv ${TMP} ${ZSHRC}
 echo "Finished: ${HOME}/.zshrc"
 
@@ -32,7 +32,7 @@ if [ -f ${TMUXCONF} ]
 then
     rm ${TMUXCONF}
 fi
-echo "source ${DOTFILES}/.tmux.conf\nsource ${HOME}/.tmux.conf.local" > ${TMUXCONF}
+echo -e "source ${DOTFILES}/.tmux.conf\nsource ${HOME}/.tmux.conf.local" > ${TMUXCONF}
 echo "Finished: ${HOME}/.tmux.conf"
 
 # .vifm/vifmrc
@@ -45,7 +45,7 @@ if [ -f ${VIFMRC} ]
 then
     rm ${VIFMRC}
 fi
-echo "source ${DOTFILES}/vifmrc\nsource ${HOME}/.vifm/vifmrc.local" > ${VIFMRC}
+echo -e "source ${DOTFILES}/vifmrc\nsource ${HOME}/.vifm/vifmrc.local" > ${VIFMRC}
 echo "Finished: ${HOME}/.vifm/vifmrc"
 
 # .doom.d
