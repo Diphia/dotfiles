@@ -78,3 +78,13 @@
         org-roam-server-network-label-truncate t
         org-roam-server-network-label-truncate-length 60
         org-roam-server-network-label-wrap-length 20))
+
+(add-to-list 'org-capture-templates
+             '("t" "work and study tasks" entry
+               (file+headline "~/org-files/agenda.org" "Work & Study")
+               "** TODO %^{todo_content}\n   SCHEDULED: %^t\n"))
+
+(add-to-list 'org-capture-templates
+             '("l" "life related tasks" entry
+               (file+headline "~/org-files/agenda.org" "Life")
+               "** TODO %^{todo_content}\n   SCHEDULED: %^t\n"))
