@@ -32,7 +32,8 @@ alias v="f -e vim"
 alias grep="grep -E --color"
 alias ch="cheat"
 alias ssh="TERM=xterm-256color ssh"
-alias em="emacsclient -nw"
+alias em="emacsclient"
+alias emnw="emacsclient -nw"
 alias e="f -e emacsclient -nw"
 
 alias -s gz='tar -xzvf'
