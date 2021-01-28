@@ -34,11 +34,12 @@ alias ch="cheat"
 alias ssh="TERM=xterm-256color ssh"
 alias em="emacsclient"
 alias emnw="emacsclient -nw"
-alias e="f -e emacsclient -nw"
+alias e="f -e emacsclient"
 alias hg="history | grep "
 alias h="history | percol"
 alias cdp="cd \$(ls|percol)"
 alias vip="vi \$(ls|percol)"
+alias cal="cal --monday"
 
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
