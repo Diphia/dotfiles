@@ -77,3 +77,16 @@ then
 fi
 echo -e "source ${DOTFILES}/.vimrc\nsource ${VIMRC_LOCAL}" > ${VIMRC}
 echo "Finished: ${HOME}/.vimrc"
+
+# .percol.d/rc.py
+PERCOLRC="${HOME}/.percol.d/rc.py"
+if [ ! -d ${HOME}/.percol.d ]
+then
+    mkdir ${HOME}/.percol.d
+fi
+if [ -f ${PERCOLRC} ]
+then
+    rm ${PERCOLRC}
+fi
+ln -s ${HOME}/dotfiles/rc.py ${PERCOLRC}
+echo "Finished: ${HOME}/percol.d/rc.py"
