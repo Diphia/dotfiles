@@ -88,3 +88,8 @@
              '("l" "life related tasks" entry
                (file+headline "~/org-files/agenda.org" "Life")
                "** TODO %^{todo_content}\n   SCHEDULED: %^t\n"))
+
+(add-to-list 'org-capture-templates
+             '("e" "new english world" entry
+               (file+headline "~/org-files/roam/20200720175038-english.org" "Inbox")
+               "**- %^{content}\n"))
