@@ -81,29 +81,14 @@
         org-roam-server-network-label-truncate-length 60
         org-roam-server-network-label-wrap-length 20))
 
-;;(add-to-list 'org-capture-templates
-             ;;'("t" "work and study tasks" entry
-               ;;(file+headline "~/org-files/agenda.org" "Work & Study")
-               ;;"** TODO %^{todo_content}\n   SCHEDULED: %^t\n"))
-
-;;(add-to-list 'org-capture-templates
-             ;;'("l" "life related tasks" entry
-               ;;(file+headline "~/org-files/agenda.org" "Life")
-               ;;"** TODO %^{todo_content}\n   SCHEDULED: %^t\n"))
-
-;;(add-to-list 'org-capture-templates
-             ;;'("e" "new english world" entry
-               ;;(file+headline "~/org-files/roam/20200720175038-english.org" "Inbox")
-               ;;"**- %^{content}\n"))
 
 (setq org-capture-templates
       '(("j" "Journal" entry
          (file+datetree "~/org-files/journal.org")
          "* %U %?\n %i\n%a")
-         ;;"* %?\nEntered on %U\n  %i\n  %a")
-        ("e" "new english world" entry
-         (file+headline "~/org-files/roam/20200720175038-english.org" "Inbox")
-         "**- %^{content}\n")
+        ("w" "Journal-webpage" entry
+         (file+datetree "~/org-files/journal.org")
+         "* %U [[%x][%?] \n")
         ("l" "life related tasks" entry
          (file+headline "~/org-files/agenda.org" "Life")
          "** TODO %^{todo_content}\n   SCHEDULED: %^t\n")
