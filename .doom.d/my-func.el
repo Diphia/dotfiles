@@ -14,3 +14,9 @@
   (interactive)
   (kill-new (get-current-heading-link)))
 
+
+(defun extract-org-mode-link ()
+  "extract the link from a org-mode link like [[LINK][DESCRPTION]]"
+  (interactive)
+  (insert (org-element-context))
+  )
