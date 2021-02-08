@@ -55,6 +55,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+(load! "my-func.el")
 
 
 (setq org-hide-emphasis-markers t)
@@ -97,5 +98,4 @@
          "** TODO %^{todo_content}\n   SCHEDULED: %^t\n")
         ("r" "refiled tasks" entry
          (file+headline "~/org-files/agenda.org" "Refiled")
-         "** TODO %a \n  SCHEDULED: %^t\n")
-        ))
+         "** TODO %a \n  SCHEDULED: %^t\n")))
