@@ -14,9 +14,9 @@
   (interactive)
   (kill-new (get-current-heading-link)))
 
-
 (defun extract-org-mode-link ()
-  "extract the link from a org-mode link like [[LINK][DESCRPTION]]"
+  "extract the link from a org-mode link like [[LINK][DESCRPTION]] or [[LINK]]"
   (interactive)
-  (insert (org-element-context))
-  )
+  (let ((selection (thing-at-point 'line t)))
+    (when (string-match "\\[\\[\\(.*\\)\\]?.*" selection)
+      (kill-new (match-string 1 selection)))))
