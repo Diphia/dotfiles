@@ -99,3 +99,5 @@
         ("r" "refiled tasks" entry
          (file+headline "~/org-files/agenda.org" "Refiled")
          "** TODO %a \n  SCHEDULED: %^t\n")))
+
+(setq org-extend-today-until 4)
