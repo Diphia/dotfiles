@@ -21,3 +21,13 @@
     (when (string-match "\\[\\[\\(.*?\\)\\].*" selection) ;;non-greedy match
       (kill-new (match-string 1 selection)))))
 
+(defun new-scratch-code ()
+  "create a buffer for speciffic programming language as scratch"
+  (interactive)
+  (let ((code-extension (replace-regexp-in-string
+                         "py" "python"
+                         (read-string "Enter the language name: "))))
+    (with-temp-buffer
+      (find-file (format "~/temp/scratch.org" code-extension))
+      (erase-buffer)
+      (insert (format "#+begin_src %s\n#+end_src" code-extension)))))

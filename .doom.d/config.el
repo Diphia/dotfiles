@@ -67,7 +67,6 @@
   (setq cnfonts-use-face-font-rescale t)
   )
 
-
 (use-package! org-roam-server
   :ensure t
   :config
