@@ -1,9 +1,8 @@
 #+TITLE: Dotfiles
-#+OPTIONS: \n:t
 
 * Usage
-use ~init.sh~ to install the pakcages
-use ~config.sh~ to sync the dotfiles
+- use ~init.sh~ to install the pakcages
+- use ~config.sh~ to sync the dotfiles
 
 #+BEGIN_SRC bash
 $ git clone https://github.com/Diphia/dotfiles.git
