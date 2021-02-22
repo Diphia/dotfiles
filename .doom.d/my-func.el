@@ -20,3 +20,4 @@
   (let ((selection (thing-at-point 'line t)))
     (when (string-match "\\[\\[\\(.*?\\)\\].*" selection) ;;non-greedy match
       (kill-new (match-string 1 selection)))))
+
