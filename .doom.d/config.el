@@ -103,3 +103,11 @@
 (setq org-extend-today-until 4)
 
 (setq geiser-active-implementations '(racket))
+
+(if (eq system-type 'darwin) ;; manually set the racket execution path for macos
+    (setq racket-racket-program "/Applications/Racket/bin//racket"))
+
+
+(defun calibre-open (path-to-media)
+  (shell-command "open /Applications/calibre.app" ))
+(org-add-link-type "calibre" 'calibre-open)
