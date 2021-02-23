@@ -1,0 +1,6 @@
+# key: scm
+# name: scheme code block
+# --
+#+begin_src scheme
+$1
+#+end_src

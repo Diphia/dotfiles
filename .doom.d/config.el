@@ -101,3 +101,5 @@
          "** TODO %a \n  SCHEDULED: %^t\n")))
 
 (setq org-extend-today-until 4)
+
+(setq geiser-active-implementations '(racket))
