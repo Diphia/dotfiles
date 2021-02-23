@@ -22,12 +22,11 @@
       (kill-new (match-string 1 selection)))))
 
 (defun new-scratch-code ()
-  "create a buffer for speciffic programming language as scratch"
+  "create an org-mode buffer for speciffic programming language as scratch"
   (interactive)
-  (let ((code-extension (replace-regexp-in-string
-                         "py" "python"
-                         (read-string "Enter the language name: "))))
+  (let ((code-extension (completing-read "Enter the language name: " '("emacs-lisp" "python" "scheme"))))
     (with-temp-buffer
       (find-file (format "~/temp/scratch.org" code-extension))
       (erase-buffer)
-      (insert (format "#+begin_src %s\n#+end_src" code-extension)))))
+      (insert (format "#+begin_src %s\n#+end_src\n\n#+begin_src %s :results output\n#+end_src" code-extension code-extension)))))
+
