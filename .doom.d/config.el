@@ -30,6 +30,7 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org-files/")
 (setq org-roam-directory "~/org-files/roam")
+(setq +org-roam-open-buffer-on-find-file nil)
 
 (custom-set-variables
  '(org-agenda-files (list org-directory)))
@@ -111,3 +112,5 @@
 (defun calibre-open (path-to-media)
   (shell-command "open /Applications/calibre.app" ))
 (org-add-link-type "calibre" 'calibre-open)
+
+(setq truncate-lines t)
