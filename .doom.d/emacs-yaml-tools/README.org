@@ -27,7 +27,7 @@ And you will get format like this in your kill-ring:
 this function will help you to get the value inside executable blocks like ~{{ .Values.global.name }}~
 
 the values file will from:
-- for ~_test.yaml~ files (for [[https://github.com/lrills/helm-unittest][helm-unittest]]), the values will come from the defined file in the header of block
+- for ~_test.yaml~ files (which is the convention of [[https://github.com/lrills/helm-unittest][helm-unittest]]), the values will come from the defined file in the header of block
 - for normal yaml files in a helm chart, the file will be ~<CHART_NAME>/values.yaml~
 
 
