@@ -1,4 +1,4 @@
-#+TITLE: emacs-yaml-tools
+#+TITLE: Emacs-Yaml-Tools
 
 Several useful tools for editing yaml (and helm chart) files with Emacs.
 
