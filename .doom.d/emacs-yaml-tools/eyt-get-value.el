@@ -14,17 +14,20 @@
         (cond ((and (string-match "^\s*values" (extract-yaml-key line)) (= level 4))
                (setq values-file-path (replace-regexp-in-string "-\s./" "" (extract-yaml-value line)))
                (setq exitflag t))))
-      (concat (replace-regexp-in-string (buffer-name) "" (buffer-file-name)) (replace-regexp-in-string "\s" "" values-file-path)))))
+      (concat
+       (replace-regexp-in-string (replace-regexp-in-string "<.*>" "" (buffer-name)) "" (buffer-file-name))
+       (replace-regexp-in-string "\s" "" values-file-path)))))
 
 (defun extract-values-file ()
-  (cond ((string-match ".*_test.yaml$" (buffer-name)) (extract-values-file-for-ut))
+  (cond ((string-match ".*_test.yaml$" (replace-regexp-in-string "<.*>" "" (buffer-name)))
+         (extract-values-file-for-ut))
         (t (let ((s (buffer-file-name)))
              (when (string-match "\\(.*/\\)templates.*" s)
                (concat (match-string 1 s) "values.yaml"))))))
 
 (defun extract-value-path ()
   (let ((line (fetch-current-line)))
-    (when (string-match "\\(.Values[.a-z0-9]*\\)" line)
+    (when (string-match "\\(.Values[.a-z0-9_]*\\)" line)
       (strip-string (replace-regexp-in-string "\s*\t*.Values\\." "" (match-string 1 line))))))
 
 (defun read-value-from-yaml (fpath vpath)
@@ -53,6 +56,7 @@
 
 (defun eyt-get-value ()
   (interactive)
-  (let ((result (read-value-from-yaml (extract-values-file) (extract-value-path))))
+  (let ((result (read-value-from-yaml (extract-values-file) (extract-value-path)))
+        (line (fetch-current-line)))
     (message result)
-    (kill-new result)))
+    (kill-new (replace-regexp-in-string "{{.*}}" result line))))

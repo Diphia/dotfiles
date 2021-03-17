@@ -5,5 +5,5 @@
   (let* ((line (fetch-current-line))
          (value (extract-yaml-value line))
          (path (form-path-with-dot (fetch-yaml-path))))
-    (kill-new (concat "- equal:\n" "path: " path "\nvalue: " value))
+    (kill-new (concat "\s\s\s\s\s\s- equal:\n" "\s\s\s\s\s\s\s\s\s\spath: " path "\n\s\s\s\s\s\s\s\s\s\svalue: " value))
     (message (concat "path:" path "  value:" value))))
