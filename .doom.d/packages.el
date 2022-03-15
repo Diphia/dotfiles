@@ -10,8 +10,10 @@
 ;(package! some-package)
 (package! org-super-agenda)
 (package! cnfonts)
-(package! org-roam-server)
 (package! ox-hugo)
+(unpin! org-roam)
+(package! websocket)
+(package! org-roam-ui :recipe (:host github :repo "org-roam/org-roam-ui" :files ("*.el" "out")))
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
