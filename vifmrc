@@ -56,7 +56,7 @@ endif
 nmap d '
 
 filetype *.mp4,*.avi,*.mkv open
-filetype *.jpg,*.png,*.gif open
+filetype *.jpg,*.png,*.gif,*.HEIC open
 filetype *.doc,*.docx,*.xls,*.xlsx open
 filetype *.pdf open
 filetype *.dmg open

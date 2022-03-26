@@ -108,7 +108,7 @@
 (if (eq system-type 'darwin) ;; manually set the racket execution path for macos
     (setq racket-racket-program "/Applications/Racket/bin//racket"))
 
-(setq truncate-lines t)
+;; (setq truncate-lines t)
 
 (use-package ox-hugo
   :ensure t            ;Auto-install the package from Melpa (optional)
