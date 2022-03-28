@@ -1,8 +1,15 @@
 #+TITLE: Dotfiles
 
+* Get Started
+clone this repository
+#+BEGIN_SRC bash
+git clone git@github.com:Diphia/dotfiles.git ~/
+#+END_SRC
+
+it is highly recommanded to config emacs first, then use ~org-babel-execute-src-block~ to run the config commands
 
 * Emacs
-clone doom emacs itself:
+clone doom emacs itself
 #+BEGIN_SRC bash
 git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
 #+END_SRC
@@ -12,18 +19,18 @@ install:
 ~/.emacs.d/bin/doom install
 #+END_SRC
 
-remove the default config and set softlink for doom emacs config:
+remove the default config and set softlink for doom emacs config
 #+BEGIN_SRC bash
 mv ~/.doom.d ~/.doom.d.bak
 ln -s /Users/diphia/dotfiles/.doom.d /Users/diphia/.doom.d
 #+END_SRC
 
-run doom sync to write doom configs to emacs configs:
+run doom sync to write doom configs to emacs configs
 #+BEGIN_SRC bash
 ~/.emacs.d/bin/doom sync
 #+END_SRC
 
-* zsh
+* Zsh
 install oh-my-zsh
 #+BEGIN_SRC bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -34,7 +41,7 @@ clone zsh-autosuggestions:
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 #+END_SRC
 
-remove the default config and source to dotfiles/.zshrc:
+remove the default config and source to dotfiles/.zshrc
 #+BEGIN_SRC bash
 mv ~/.zshrc ~/.zshrc.bak
 touch ~/.zshrc.local
@@ -49,7 +56,7 @@ ln -s /Users/diphia/dotfiles/monas.zsh-theme /Users/diphia/.oh-my-zsh/themes/mon
 #+END_SRC
 
 
-* tmux
+* Tmux
 remove the default config and source to dotfiles/.tmux.conf
 #+BEGIN_SRC bash
 mv ~/.tmux.conf ~/.tmux.conf.bak
@@ -59,7 +66,7 @@ echo "source ~/dotfiles/.tmux.conf" >> ~/.tmux.conf
 echo "source ~/.tmux.conf.local" >> ~/.tmux.conf
 #+END_SRC
 
-* vifm
+* Vifm
 remove the default config and source to dotfiles/vifmrc
 #+BEGIN_SRC bash
 mv ~/.vifm ~/.vifm.bak
@@ -68,4 +75,26 @@ touch ~/.vifm/vifmrc
 touch ~/vifmrc.local
 echo "source ~/dotfiles/vifmrc" >> ~/.vifm/vifmrc
 echo "source ~/vifmrc.local" >> ~/.vifm/vifmrc
+#+END_SRC
+
+* Vim
+remove the default config and source to dotfiles/.vimrc
+#+BEGIN_SRC bash
+mv ~/.vimrc ~/.vimrc.bak
+touch ~/.vimrc.local
+touch ~/.vimrc
+echo "source ~/dotfiles/.vimrc" >> ~/.vimrc
+echo "source ~/.vimrc.local" >> ~/.vimrc
+#+END_SRC
+
+* Scripts
+clone scripts repository
+#+BEGIN_SRC bash
+git clone git@github.com:Diphia/scripts.git ~/
+#+END_SRC
+
+set soft links to ~/usr/local/bin/~
+#+BEGIN_SRC bash
+chmod +x /Users/diphia/scripts/sshl.py && ln -s /Users/diphia/scripts/sshl.py /usr/local/bin/sshl
+chmod +x /Users/diphia/scripts/server-side-copy.py && ln -s /Users/diphia/scripts/server-side-copy.py /usr/local/bin/server-side-copy
 #+END_SRC
