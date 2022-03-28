@@ -1,11 +1,71 @@
 #+TITLE: Dotfiles
 
-* Usage
-- use ~init.sh~ to install the pakcages
-- use ~config.sh~ to sync the dotfiles
 
+* Emacs
+clone doom emacs itself:
 #+BEGIN_SRC bash
-$ git clone https://github.com/Diphia/dotfiles.git
-$ bash init.sh
-$ bash config.sh
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+#+END_SRC
+
+install:
+#+BEGIN_SRC bash
+~/.emacs.d/bin/doom install
+#+END_SRC
+
+remove the default config and set softlink for doom emacs config:
+#+BEGIN_SRC bash
+mv ~/.doom.d ~/.doom.d.bak
+ln -s /Users/diphia/dotfiles/.doom.d /Users/diphia/.doom.d
+#+END_SRC
+
+run doom sync to write doom configs to emacs configs:
+#+BEGIN_SRC bash
+~/.emacs.d/bin/doom sync
+#+END_SRC
+
+* zsh
+install oh-my-zsh
+#+BEGIN_SRC bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#+END_SRC
+
+clone zsh-autosuggestions:
+#+BEGIN_SRC bash
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+#+END_SRC
+
+remove the default config and source to dotfiles/.zshrc:
+#+BEGIN_SRC bash
+mv ~/.zshrc ~/.zshrc.bak
+touch ~/.zshrc.local
+touch ~/.zshrc
+echo "source ~/dotfiles/.zshrc" >> ~/.zshrc
+echo "source ~/.zshrc.local" >> ~/.zshrc
+#+END_SRC
+
+add monas to theme:
+#+BEGIN_SRC bash
+ln -s /Users/diphia/dotfiles/monas.zsh-theme /Users/diphia/.oh-my-zsh/themes/monas.zsh-theme
+#+END_SRC
+
+
+* tmux
+remove the default config and source to dotfiles/.tmux.conf
+#+BEGIN_SRC bash
+mv ~/.tmux.conf ~/.tmux.conf.bak
+touch ~/vifmrc.local
+touch ~/.tmux.conf
+echo "source ~/dotfiles/.tmux.conf" >> ~/.tmux.conf
+echo "source ~/.tmux.conf.local" >> ~/.tmux.conf
+#+END_SRC
+
+* vifm
+remove the default config and source to dotfiles/vifmrc
+#+BEGIN_SRC bash
+mv ~/.vifm ~/.vifm.bak
+mkdir ~/.vifm
+touch ~/.vifm/vifmrc
+touch ~/vifmrc.local
+echo "source ~/dotfiles/vifmrc" >> ~/.vifm/vifmrc
+echo "source ~/vifmrc.local" >> ~/.vifm/vifmrc
 #+END_SRC
