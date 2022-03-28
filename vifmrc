@@ -28,15 +28,15 @@ nnoremap r :rename<cr>
 
 " two-panel file managers mappings
 nnoremap <f3> :!less %f<cr>
-nnoremap <f4> :edit<cr>
+nnoremap <f4> :!server-side-copy %d %f %D/<cr>
 nnoremap <f5> :copy<cr>
 nnoremap <f6> :move<cr>
 nnoremap <f7> :mkdir<space>
 
 nnoremap x :delete
 nnoremap X :!rm -rf %f
-nnoremap <f1> :!emacsclient %f&<cr>
 nnoremap e :!emacsclient -n %f<cr>
+nnoremap E :!emacsclient -n ./<cr>
 nnoremap O :!open ./<cr>
 nnoremap o :!open %f&<cr>
 
@@ -56,7 +56,8 @@ endif
 nmap d '
 
 filetype *.mp4,*.avi,*.mkv open
-filetype *.jpg,*.png,*.gif,*.HEIC open
+filetype *.jpg,*.png,*.gif emacsclient -n
+filetype *.HEIC open
 filetype *.doc,*.docx,*.xls,*.xlsx open
 filetype *.pdf open
 filetype *.dmg open

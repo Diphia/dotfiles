@@ -1,6 +1,0 @@
-# key: src
-# name: source code block
-# --
-#+BEGIN_SRC ${1:bash}
-${2}
-#+END_SRC

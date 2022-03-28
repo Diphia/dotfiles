@@ -23,7 +23,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-oceanic-next)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -58,9 +58,9 @@
 ;; they are implemented.
 (load! "my-func.el")
 (load! "emacs-yaml-tools/yaml-tools-main.el")
-
-
-(setq org-hide-emphasis-markers t)
+(use-package ox-hugo
+  :ensure t            ;Auto-install the package from Melpa (optional)
+  :after ox)
 
 (use-package! cnfonts
   :config
@@ -70,7 +70,6 @@
 
 (use-package! websocket
     :after org-roam)
-
 (use-package! org-roam-ui
     :after org-roam ;; or :after org
 ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
@@ -83,6 +82,7 @@
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
 
+(setq org-hide-emphasis-markers t)
 
 (setq org-capture-templates
       '(("j" "Journal" entry
@@ -104,12 +104,13 @@
 (setq org-extend-today-until 4)
 
 (setq geiser-active-implementations '(racket))
-
 (if (eq system-type 'darwin) ;; manually set the racket execution path for macos
     (setq racket-racket-program "/Applications/Racket/bin//racket"))
 
 ;; (setq truncate-lines t)
 
-(use-package ox-hugo
-  :ensure t            ;Auto-install the package from Melpa (optional)
-  :after ox)
+
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark)) ;; assuming you are using a dark theme
+(setq ns-use-proxy-icon nil)
+(setq frame-title-format '("%b @ Emacs "))

@@ -10,7 +10,8 @@ fi
 
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="kafeitu"
+#ZSH_THEME="kafeitu"
+ZSH_THEME="monas"
 
 
 eval "$(fasd --init auto)"
@@ -30,7 +31,6 @@ alias vi='vim'
 alias pc='proxychains4'
 alias v="f -e vim"
 alias grep="grep -E --color"
-alias ch="cheat"
 alias ssh="TERM=xterm-256color ssh"
 alias e='e(){emacsclient $1&;};e'
 alias hg="history | grep "
