@@ -3,7 +3,7 @@
 * Get Started
 clone this repository
 #+BEGIN_SRC bash
-git clone git@github.com:Diphia/dotfiles.git ~/
+git clone git@github.com:Diphia/dotfiles.git ~/dotfiles
 #+END_SRC
 
 it is highly recommanded to config emacs first, then use ~org-babel-execute-src-block~ to run the config commands
