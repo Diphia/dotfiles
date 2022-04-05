@@ -81,7 +81,7 @@ remove the default config and source to dotfiles/.vimrc
 #+BEGIN_SRC bash
 mv ~/.vimrc ~/.vimrc.bak
 touch ~/.vimrc.local
-touch ~/.vimrc
+
 echo "source ~/dotfiles/.vimrc" >> ~/.vimrc
 echo "source ~/.vimrc.local" >> ~/.vimrc
 #+END_SRC
@@ -102,4 +102,11 @@ chmod +x /Users/diphia/scripts/server-side-copy.py && ln -s /Users/diphia/script
 link complex modification configurations:
 #+BEGIN_SRC bash
 ln -s /Users/diphia/dotfiles/karabiner_complex_modifications/* /Users/diphia/.config/karabiner/assets/complex_modifications
+#+END_SRC
+
+* Hammerspoon
+link hammerspoon configurations:
+#+BEGIN_SRC bash
+mv /Users/diphia/.hammerspoon /Users/diphia/.hammerspoon.bak
+ln -s /Users/diphia/dotfiles/.hammerspoon /Users/diphia/.hammerspoon
 #+END_SRC
