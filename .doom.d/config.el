@@ -86,21 +86,9 @@
 (setq org-hide-emphasis-markers t)
 
 (setq org-capture-templates
-      '(("j" "Journal" entry
-         (file+datetree "~/org-files/journal.org")
-         "* %U %?\n %i\n%a")
-        ("w" "Journal-webpage" entry
-         (file+datetree "~/org-files/journal.org")
-         "* %U [[%x][%?] \n")
-        ("l" "life related tasks" entry
-         (file+headline "~/org-files/agenda.org" "Life")
-         "** TODO %^{todo_content}\n   SCHEDULED: %^t\n")
-        ("t" "work and study tasks" entry
-         (file+headline "~/org-files/agenda.org" "Work & Study")
-         "** TODO %^{todo_content}\n   SCHEDULED: %^t\n")
-        ("r" "refiled tasks" entry
-         (file+headline "~/org-files/agenda.org" "Refiled")
-         "** TODO %a \n  SCHEDULED: %^t\n")))
+      '(("n" "nonroutine tasks" entry
+         (file+headline "~/org-files/agenda.org" "non-routine")
+         "** TODO %^{todo_content}\n   SCHEDULED: %^t\n")))
 
 (setq org-extend-today-until 4)
 
@@ -110,8 +98,12 @@
 
 ;; (setq truncate-lines t)
 
-
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . dark)) ;; assuming you are using a dark theme
 (setq ns-use-proxy-icon nil)
-(setq frame-title-format '("%b @ Emacs "))
+(setq frame-title-format '("GNU Emacs"))
+
+(defun make-org-roam-frame ()
+  (interactive)
+  (make-frame)
+  (set-frame-name "Org Roam"))
