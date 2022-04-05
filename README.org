@@ -55,7 +55,6 @@ add monas to theme:
 ln -s /Users/diphia/dotfiles/monas.zsh-theme /Users/diphia/.oh-my-zsh/themes/monas.zsh-theme
 #+END_SRC
 
-
 * Tmux
 remove the default config and source to dotfiles/.tmux.conf
 #+BEGIN_SRC bash
@@ -97,4 +96,10 @@ set soft links to ~/usr/local/bin/~
 #+BEGIN_SRC bash
 chmod +x /Users/diphia/scripts/sshl.py && ln -s /Users/diphia/scripts/sshl.py /usr/local/bin/sshl
 chmod +x /Users/diphia/scripts/server-side-copy.py && ln -s /Users/diphia/scripts/server-side-copy.py /usr/local/bin/server-side-copy
+#+END_SRC
+
+* Karabiner
+link complex modification configurations:
+#+BEGIN_SRC bash
+ln -s /Users/diphia/dotfiles/karabiner_complex_modifications/* /Users/diphia/.config/karabiner/assets/complex_modifications
 #+END_SRC
