@@ -52,7 +52,7 @@
                       (setq vpath (cdr vpath))
                      (setq target-level (+ target-level 2))))))
         (beginning-of-line 2))
-      result)))
+
 
 (defun eyt-get-value ()
   (interactive)
