@@ -34,6 +34,8 @@ def slice_file(config_file):
     """
     segment, result = [], []
     for l in config_file:
+        if l.strip()[0] == '#':
+            continue
         if l.split(' ')[0] == 'Host' and segment:
             result.append((list(segment)))
             segment = []

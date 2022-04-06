@@ -89,9 +89,10 @@ echo "source ~/.vimrc.local" >> ~/.vimrc
 * Scripts
 set soft links to ~/usr/local/bin/~
 #+BEGIN_SRC bash
-chmod +x /Users/diphia/dotfiles/scripts/sshl.py && ln -s /Users/diphia/scripts/sshl.py /usr/local/bin/sshl
-chmod +x /Users/diphia/dotfiles/scripts/server-side-copy.py && ln -s /Users/diphia/scripts/server-side-copy.py /usr/local/bin/server-side-copy
+chmod +x /Users/diphia/dotfiles/scripts/sshl.py && ln -s /Users/diphia/dotfiles/scripts/sshl.py /usr/local/bin/sshl
+chmod +x /Users/diphia/dotfiles/scripts/server-side-copy.py && ln -s /Users/diphia/dotfiles/scripts/server-side-copy.py /usr/local/bin/server-side-copy
 #+END_SRC
+
 
 * Karabiner
 link complex modification configurations:
