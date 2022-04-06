@@ -103,7 +103,7 @@
 (setq ns-use-proxy-icon nil)
 (setq frame-title-format '("GNU Emacs"))
 
-(defun make-org-roam-frame ()
+(defun make-org-mode-frame ()
   (interactive)
   (make-frame)
-  (set-frame-name "Org Roam"))
+  (set-frame-name "Org Mode"))

@@ -11,7 +11,7 @@ hs.hotkey.bind({"control"}, "3", function()
 end)
 
 hs.hotkey.bind({"control"}, "4", function()
-    hs.window'Org Roam':focus()
+    hs.window'Org Mode':focus()
 end)
 
 hs.hotkey.bind({"command", "option"}, ",", function()
