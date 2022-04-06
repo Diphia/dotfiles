@@ -22,6 +22,6 @@ hs.hotkey.bind({"control"}, "q", function()
     hs.application.launchOrFocus("Webex")
 end)
 
-hs.hotkey.bind({"control"}, "5", function()
+hs.hotkey.bind({"control", "command"}, "q", function()
     hs.application.launchOrFocus("Microsoft Outlook")
 end)
