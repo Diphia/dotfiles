@@ -97,8 +97,10 @@ chmod +x /Users/diphia/dotfiles/scripts/server-side-copy.py && ln -s /Users/diph
 * Karabiner
 link complex modification configurations:
 #+BEGIN_SRC bash
-ln -s /Users/diphia/dotfiles/karabiner_complex_modifications/* /Users/diphia/.config/karabiner/assets/complex_modifications
+mv /Users/diphia/.config/karabiner/assets/complex_modifications /Users/diphia/.config/karabiner/assets/complex_modifications.bak
+ln -s /Users/diphia/dotfiles/karabiner/assets/complex_modifications/ /Users/diphia/.config/karabiner/assets/complex_modifications
 #+END_SRC
+
 
 * Hammerspoon
 link hammerspoon configurations:
