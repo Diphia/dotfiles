@@ -25,3 +25,7 @@ end)
 hs.hotkey.bind({"control", "command"}, "q", function()
     hs.application.launchOrFocus("Microsoft Outlook")
 end)
+
+hs.hotkey.bind({"control"}, "0", function()
+    hs.window'Pure Emacs':focus()
+end)

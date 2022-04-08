@@ -58,6 +58,9 @@
 ;; they are implemented.
 (load! "my-func.el")
 (load! "ox-confluence.el")
+(load! "org-bullets.el")
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 (load! "emacs-yaml-tools/yaml-tools-main.el")
 (use-package ox-hugo
   :ensure t            ;Auto-install the package from Melpa (optional)
@@ -72,7 +75,8 @@
 (use-package! websocket
     :after org-roam)
 (use-package! org-roam-ui
-    :after org-roam ;; or :after org
+    :after org-roam
+    ;; or :after org
 ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
 ;;         a hookable mode anymore, you're advised to pick something yourself
 ;;         if you don't care about startup time, use
@@ -92,18 +96,19 @@
 
 (setq org-extend-today-until 4)
 
-(setq geiser-active-implementations '(racket))
-(if (eq system-type 'darwin) ;; manually set the racket execution path for macos
-    (setq racket-racket-program "/Applications/Racket/bin//racket"))
+;; (setq geiser-active-implementations '(racket))
+;; (if (eq system-type 'darwin) ;; manually set the racket execution path for macos
+    ;; (setq racket-racket-program "/Applications/Racket/bin//racket"))
 
 ;; (setq truncate-lines t)
 
-(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-(add-to-list 'default-frame-alist '(ns-appearance . dark)) ;; assuming you are using a dark theme
+;; (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+;; (add-to-list 'default-frame-alist '(ns-appearance . dark)) ;; assuming you are using a dark theme
 (setq ns-use-proxy-icon nil)
-(setq frame-title-format '("GNU Emacs"))
+
+(setq frame-title-format '("GNU Emacs\n"))
 
 (defun make-org-mode-frame ()
   (interactive)
   (make-frame)
-  (set-frame-name "Org Mode"))
+  (set-frame-name "Org Mode\n"))

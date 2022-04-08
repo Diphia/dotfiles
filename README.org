@@ -101,6 +101,8 @@ mv /Users/diphia/.config/karabiner/assets/complex_modifications /Users/diphia/.c
 ln -s /Users/diphia/dotfiles/karabiner/assets/complex_modifications/ /Users/diphia/.config/karabiner/assets/complex_modifications
 #+END_SRC
 
+#+RESULTS:
+
 
 * Hammerspoon
 link hammerspoon configurations:
