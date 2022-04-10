@@ -93,7 +93,6 @@ chmod +x /Users/diphia/dotfiles/scripts/sshl.py && ln -s /Users/diphia/dotfiles/
 chmod +x /Users/diphia/dotfiles/scripts/server-side-copy.py && ln -s /Users/diphia/dotfiles/scripts/server-side-copy.py /usr/local/bin/server-side-copy
 #+END_SRC
 
-
 * Karabiner
 link complex modification configurations:
 #+BEGIN_SRC bash
@@ -101,12 +100,10 @@ mv /Users/diphia/.config/karabiner/assets/complex_modifications /Users/diphia/.c
 ln -s /Users/diphia/dotfiles/karabiner/assets/complex_modifications/ /Users/diphia/.config/karabiner/assets/complex_modifications
 #+END_SRC
 
-#+RESULTS:
-
-
 * Hammerspoon
 link hammerspoon configurations:
 #+BEGIN_SRC bash
-mv /Users/diphia/.hammerspoon /Users/diphia/.hammerspoon.bak
-ln -s /Users/diphia/dotfiles/.hammerspoon /Users/diphia/.hammerspoon
+  mv /Users/diphia/.hammerspoon /Users/diphia/.hammerspoon.bak
+  ln -s /Users/diphia/dotfiles/.hammerspoon /Users/diphia/.hammerspoon
 #+END_SRC
+
