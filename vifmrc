@@ -35,7 +35,7 @@ nnoremap <f7> :mkdir<space>
 
 nnoremap x :delete
 nnoremap X :!rm -rf %f
-nnoremap e :!emacsclient -n -e '(progn (setq file-name "%f") (cond ((string-equal (car (cdr (split-string file-name "\\."))) "org") (select-frame-by-name "Org Mode\n")) (t (select-frame-by-name "GNU Emacs\n"))) (sit-for 0.3) (find-file file-name))'<cr>
+nnoremap e :!emacsclient -n %f<cr>
 nnoremap E :!emacsclient -n ./<cr>
 nnoremap O :!open ./<cr>
 nnoremap o :!open %f&<cr>
