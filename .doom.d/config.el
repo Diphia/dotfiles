@@ -108,6 +108,8 @@
 
 (setq frame-title-format '("GNU Emacs\n"))
 
+(setq scroll-margin 10)
+
 (defun make-org-mode-frame ()
   (interactive)
   (make-frame)
