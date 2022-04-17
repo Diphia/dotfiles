@@ -10,6 +10,10 @@ hs.hotkey.bind({"control"}, "3", function()
     hs.application.launchOrFocus("Google Chrome")
 end)
 
+hs.hotkey.bind({"control", "command"}, "3", function()
+    hs.application.launchOrFocus("Safari")
+end)
+
 hs.hotkey.bind({"control"}, "4", function()
     hs.window'Org Mode\n':focus()
 end)

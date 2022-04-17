@@ -11,15 +11,16 @@ def parse_lines(lines):
     >>> print(router)
     router: root@10.0.0.1:22
     """
-    dict = {}
+    kwmap = {}
     for l in lines:
         segments = l.strip().split(" ")
         key, value = segments[0].lower(), segments[1].lower()
-        dict[key] = value
-    if not 'port' in dict: dict['port'] = '22'
-    if not 'identityfile' in dict: dict['identityfile'] = ''
-    if not 'preferredauthentications' in dict: dict['preferredauthentications'] = ''
-    return Host(dict.get('host'), dict.get('hostname'), dict.get('user'), dict.get('port'), dict.get('identityfile'), dict.get('preferredauthentications'))
+        kwmap[key] = value
+    kwmap.setdefault('port', '22')
+    kwmap.setdefault('identityfile', '')
+    kwmap.setdefault('preferredauthentications', '')
+    return Host(kwmap.get('host'), kwmap.get('hostname'), kwmap.get('user'), kwmap.get('port'))
+
 
 def slice_file(config_file):
     """ slice whole file, return a list of segments shaped in list
@@ -33,19 +34,19 @@ def slice_file(config_file):
     >>> file.close()
     """
     segment, result = [], []
-    for l in config_file:
-        if l.strip()[0] == '#':
+    for current_line in config_file:
+        if current_line.strip()[0] == '#':
             continue
-        if l.split(' ')[0] == 'Host' and segment:
+        if current_line.split(' ')[0] == 'Host' and segment:
             result.append((list(segment)))
             segment = []
-        segment.append(l)
+        segment.append(current_line)
     result.append((list(segment)))
     return result
 
+
 class Host:
     """
-
     >>> router = Host("router", "10.0.0.1", "root")
     >>> router
     < Host router >
@@ -55,25 +56,26 @@ class Host:
     >>> print(remote_mac)
     remote_mac: diphia@17.0.0.1:6022
     """
-    def __init__(self, label, hostname, user, port = '22', identity_file = "", preferred_authentications = "publickey"):
+    def __init__(self, label, hostname, user, port='22'):
         self.label = label
         self.hostname = hostname
         self.user = user
         self.port = port
 
     def show_with_align(self):
-        port_output = "" if self.port == '22' else ":{}".format(self.port)
-        return "{}: {} @ {}{}".format(self.label[:10].ljust(10), self.user, self.hostname, port_output)
+        "show info with align, will padding spaces and truncate long hostnames"
+        port_output = "" if self.port == '22' else f":{self.port}"
+        return f"{self.label[:10].ljust(10)}: {self.user} @ {self.hostname}{port_output}"
 
     def __repr__(self):
-        return "< Host {} >".format(self.label)
+        return f"< Host {self.label} >"
 
     def __str__(self):
-        return "{}: {}@{}:{}".format(self.label, self.user, self.hostname, self.port)
+        return f"{self.label}: {self.user}@{self.hostname}:{self.port}"
 
-if __name__=="__main__":
-    path = "/Users/diphia/.ssh/config"
-    with open(path) as f:
+if __name__ == "__main__":
+    PATH = "/Users/diphia/.ssh/config"
+    with open(PATH, encoding="UTF-8") as f:
         slices = slice_file(f)
         host_objects = map(parse_lines, slices)
         for host in host_objects:

@@ -110,6 +110,8 @@
 
 (setq scroll-margin 10)
 
+(lsp-ui-mode)
+
 (defun make-org-mode-frame ()
   (interactive)
   (make-frame)
