@@ -184,7 +184,8 @@ a communication channel."
 
 (defun org-confluence-template (contents info)
   (let ((depth (plist-get info :with-toc)))
-    (concat (when depth "\{toc\}\n\n") contents)))
+    ;;(concat (when depth "\{toc\}\n\n") contents)))
+    contents))
 
 (defun org-confluence-timestamp (timestamp _contents _info)
   "Transcode a TIMESTAMP object from Org to Confluence.

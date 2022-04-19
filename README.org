@@ -59,7 +59,7 @@ ln -s /Users/diphia/dotfiles/monas.zsh-theme /Users/diphia/.oh-my-zsh/themes/mon
 remove the default config and source to dotfiles/.tmux.conf
 #+BEGIN_SRC bash
 mv ~/.tmux.conf ~/.tmux.conf.bak
-touch ~/vifmrc.local
+touch ~/.tmux.conf.local
 touch ~/.tmux.conf
 echo "source ~/dotfiles/.tmux.conf" >> ~/.tmux.conf
 echo "source ~/.tmux.conf.local" >> ~/.tmux.conf
