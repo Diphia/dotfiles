@@ -1,5 +1,6 @@
 hs.hotkey.bind({"control"}, "1", function()
     hs.window'GNU Emacs\n':focus()
+    moveCursorToFocusedWindow()
 end)
 
 hs.hotkey.bind({"control"}, "2", function()
@@ -19,6 +20,7 @@ end)
 
 hs.hotkey.bind({"control"}, "4", function()
     hs.window'Org Mode\n':focus()
+    moveCursorToFocusedWindow()
 end)
 
 hs.hotkey.bind({"command", "option"}, ",", function()
@@ -33,11 +35,6 @@ end)
 
 hs.hotkey.bind({"control", "command"}, "q", function()
     hs.application.launchOrFocus("Microsoft Outlook")
-    moveCursorToFocusedWindow()
-end)
-
-hs.hotkey.bind({"control", "command"}, "w", function()
-    hs.application.launchOrFocus("WeChat")
     moveCursorToFocusedWindow()
 end)
 
