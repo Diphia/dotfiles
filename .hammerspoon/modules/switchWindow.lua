@@ -38,6 +38,11 @@ hs.hotkey.bind({"control", "command"}, "q", function()
     moveCursorToFocusedWindow()
 end)
 
+hs.hotkey.bind({"control", "command"}, "d", function()
+    hs.application.launchOrFocus("Dictionary")
+    moveCursorToFocusedWindow()
+end)
+
 function moveCursorToFocusedWindow()
     local current = hs.window.focusedWindow()
     local screen = current:screen()
