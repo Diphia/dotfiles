@@ -43,6 +43,11 @@ hs.hotkey.bind({"control", "command"}, "d", function()
     moveCursorToFocusedWindow()
 end)
 
+hs.hotkey.bind({"control", "command"}, "w", function()
+    hs.application.launchOrFocus("WeChat")
+    moveCursorToFocusedWindow()
+end)
+
 function moveCursorToFocusedWindow()
     local current = hs.window.focusedWindow()
     local screen = current:screen()
