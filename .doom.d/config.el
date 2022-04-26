@@ -96,9 +96,9 @@
 
 (setq org-extend-today-until 4)
 
-;; (setq geiser-active-implementations '(racket))
-;; (if (eq system-type 'darwin) ;; manually set the racket execution path for macos
-    ;; (setq racket-racket-program "/Applications/Racket/bin//racket"))
+(setq geiser-active-implementations '(racket))
+(if (eq system-type 'darwin) ;; manually set the racket execution path for macos
+    (setq racket-racket-program "/Applications/Racket/bin/racket"))
 
 ;; (setq truncate-lines t)
 
