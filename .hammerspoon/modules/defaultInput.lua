@@ -48,6 +48,7 @@ appInputMethod = {
     {'/Applications/Google Chrome.app', 'English'},
     {'/Applications/Emacs.app', 'English'},
     {'/opt/homebrew/Cellar/emacs-plus@27/27.2/Emacs.app', 'English'},
+    {'/opt/homebrew/Cellar/emacs-plus@28/28.1/Emacs.app', 'English'},
     {'/Applications/Webex.app', 'English'},
     {'/System/Library/CoreServices/Finder.app', 'English'},
     {'/Applications/WeChat.app', 'Chinese'},
