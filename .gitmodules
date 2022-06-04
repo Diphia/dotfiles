@@ -1,5 +1,1 @@
-[submodule "surge"]
-	path = surge
-	url = git@github.com:Diphia/surge.git
-    ignore = dirty
 
