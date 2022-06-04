@@ -1,3 +1,5 @@
 *.rej
 .DS_Store
 TAGS
+.gitsecret/keys/random_seed
+!*.secret
