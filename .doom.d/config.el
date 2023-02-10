@@ -116,3 +116,14 @@
   (interactive)
   (make-frame)
   (set-frame-name "Org Mode\n"))
+
+(defun get-file-path()
+  "Show the full path file name in the minibuffer."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (message filename)
+    (kill-new filename)))
+
+(map! :leader
+      :desc "New journal entry"
+      "y" #'get-file-path)
