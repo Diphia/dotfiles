@@ -39,6 +39,10 @@ alias cdp="cd \$(ls|percol)"
 alias vip="vi \$(ls|percol)"
 alias cal="cal --monday"
 alias k="kubectl"
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit -m"
+alias gd="git diff"
 
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
