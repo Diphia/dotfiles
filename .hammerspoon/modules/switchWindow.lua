@@ -13,7 +13,7 @@ hs.hotkey.bind({"option"}, "1", function()
 end)
 
 hs.hotkey.bind({"option"}, "2", function()
-    hs.application.launchOrFocus("iTerm")
+    hs.application.launchOrFocus("Warp")
     moveCursorToFocusedWindow()
 end)
 
@@ -22,8 +22,13 @@ hs.hotkey.bind({"option"}, "3", function()
     moveCursorToFocusedWindow()
 end)
 
-hs.hotkey.bind({"option"}, "s", function()
-    hs.application.launchOrFocus("Safari")
+hs.hotkey.bind({"option"}, "i", function()
+    hs.application.launchOrFocus("iTerm")
+    moveCursorToFocusedWindow()
+end)
+
+hs.hotkey.bind({"option"}, "m", function()
+    hs.application.launchOrFocus("Activity Monitor")
     moveCursorToFocusedWindow()
 end)
 
@@ -62,11 +67,6 @@ end)
 
 hs.hotkey.bind({"option"}, "e", function()
     hs.application.launchOrFocus("Telegram")
-    moveCursorToFocusedWindow()
-end)
-
-hs.hotkey.bind({"option"}, "m", function()
-    hs.application.launchOrFocus("Cisco Webex Meetings")
     moveCursorToFocusedWindow()
 end)
 

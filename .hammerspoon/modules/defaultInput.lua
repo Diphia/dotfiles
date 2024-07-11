@@ -1,6 +1,6 @@
 
 local function Chinese()
-    hs.keycodes.currentSourceID("com.apple.inputmethod.SCIM.Shuangpin")
+    hs.keycodes.currentSourceID("im.rime.inputmethod.Squirrel.Hans")
 end
 
 local function English()
@@ -45,10 +45,12 @@ end
 
 appInputMethod = {
     {'/Applications/iTerm.app', 'English'},
+    {'/Applications/Warp.app', 'English'},
     {'/Applications/Google Chrome.app', 'English'},
     {'/Applications/Emacs.app', 'English'},
     {'/opt/homebrew/Cellar/emacs-plus@27/27.2/Emacs.app', 'English'},
     {'/opt/homebrew/Cellar/emacs-plus@28/28.1/Emacs.app', 'English'},
+    {'/usr/local/Cellar/emacs-plus@28/28.2/Emacs.app', 'English'},
     {'/Applications/Webex.app', 'English'},
     {'/System/Library/CoreServices/Finder.app', 'English'},
     {'/Applications/WeChat.app', 'Chinese'},
