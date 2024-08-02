@@ -87,6 +87,29 @@ hs.hotkey.bind({'option'}, 'a', function()
   moveCursorToFocusedWindow()
 end)
 
+local storedWindow = nil
+
+function storeCurrentWindow()
+    storedWindow = hs.window.focusedWindow()
+    if storedWindow then
+        hs.alert.show("Window stored")
+    else
+        hs.alert.show("No window to store")
+    end
+end
+
+function restoreStoredWindow()
+    if storedWindow and storedWindow:isVisible() then
+        storedWindow:focus()
+        moveCursorToFocusedWindow()
+    else
+        hs.alert.show("No stored window to restore")
+    end
+end
+
+hs.hotkey.bind({"option", "shift"}, "r", storeCurrentWindow)
+hs.hotkey.bind({"option"}, "r", restoreStoredWindow)
+
 
 function moveCursorToFocusedWindow()
     local current = hs.window.focusedWindow()
