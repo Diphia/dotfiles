@@ -1,6 +1,0 @@
-# key: eq
-# name: assert equal
-# --
-- equal:
-    path: $1
-    value: $2

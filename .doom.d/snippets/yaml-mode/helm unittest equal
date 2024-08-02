@@ -1,6 +1,0 @@
-# key: equal
-# name: helm unittest equal
-# --
-- equal:
-    path: $1
-value: $2

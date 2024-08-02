@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: conf
-# key: conf
-# --
-#+BEGIN_SRC conf
-$1
-#+END_SRC
