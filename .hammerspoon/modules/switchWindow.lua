@@ -3,6 +3,13 @@ local org_mode
 emacs = hs.window'GNU Emacs\n'
 org_mode = hs.window'Org Mode\n'
 
+local function focusAppIfRunning(appName)
+    local app = hs.application.get(appName)
+    if app and #app:allWindows() > 0 then
+        app:activate()
+        moveCursorToFocusedWindow()
+    end
+end
 
 hs.hotkey.bind({"option"}, "1", function()
     if not emacs then
@@ -46,13 +53,13 @@ hs.hotkey.bind({"command", "option"}, ",", function()
 end)
 
 hs.hotkey.bind({"option"}, "q", function()
-    hs.application.launchOrFocus("Webex")
-    moveCursorToFocusedWindow()
+	focusAppIfRunning("Webex")
+	moveCursorToFocusedWindow()
 end)
 
 hs.hotkey.bind({"option"}, "o", function()
-    hs.application.launchOrFocus("Microsoft Outlook")
-    moveCursorToFocusedWindow()
+	focusAppIfRunning("Microsoft Outlook")
+	moveCursorToFocusedWindow()
 end)
 
 hs.hotkey.bind({"option"}, "d", function()
@@ -70,8 +77,13 @@ hs.hotkey.bind({"option"}, "e", function()
     moveCursorToFocusedWindow()
 end)
 
-hs.hotkey.bind({"option"}, "t", function()
-    hs.application.launchOrFocus("Terminal")
+hs.hotkey.bind({"option"}, "r", function()
+    hs.application.launchOrFocus("mCommander")
+    moveCursorToFocusedWindow()
+end)
+
+hs.hotkey.bind({"option"}, "c", function()
+    hs.application.launchOrFocus("CHatGPT")
     moveCursorToFocusedWindow()
 end)
 
@@ -88,28 +100,6 @@ hs.hotkey.bind({'option'}, 'a', function()
 end)
 
 local storedWindow = nil
-
-function storeCurrentWindow()
-    storedWindow = hs.window.focusedWindow()
-    if storedWindow then
-        hs.alert.show("Window stored")
-    else
-        hs.alert.show("No window to store")
-    end
-end
-
-function restoreStoredWindow()
-    if storedWindow and storedWindow:isVisible() then
-        storedWindow:focus()
-        moveCursorToFocusedWindow()
-    else
-        hs.alert.show("No stored window to restore")
-    end
-end
-
-hs.hotkey.bind({"option", "shift"}, "r", storeCurrentWindow)
-hs.hotkey.bind({"option"}, "r", restoreStoredWindow)
-
 
 function moveCursorToFocusedWindow()
     local current = hs.window.focusedWindow()
