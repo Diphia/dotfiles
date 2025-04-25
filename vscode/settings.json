@@ -1,0 +1,90 @@
+{
+    "vim.easymotion": true,
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<space>"
+            ],
+            "commands": [
+                "vspacecode.space"
+            ]
+        },
+        {
+            "before": [
+                ","
+            ],
+            "commands": [
+                "vspacecode.space",
+                {
+                    "command": "whichkey.triggerKey",
+                    "args": "m"
+                }
+            ]
+        },
+        {
+            "before": ["<C-l>"], 
+            "after": ["z", "z"] 
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<space>"
+            ],
+            "commands": [
+                "vspacecode.space"
+            ]
+        },
+        {
+            "before": [
+                ","
+            ],
+            "commands": [
+                "vspacecode.space",
+                {
+                    "command": "whichkey.triggerKey",
+                    "args": "m"
+                }
+            ]
+        },
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        }
+    ],
+    "editor.fontSize": 14,
+    "vspacecode.bindingOverrides": [
+        {
+            "keys": ["`"],
+            "name": "Toggle last file",
+            "type": "command",
+            "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor"
+        },
+        {
+            "keys": ["f", "s"],
+            "name": "Open SSH config",
+            "type": "command",
+            "command": "opensshremotes.openConfigFile"
+        }
+    ],
+    "workbench.colorTheme": "One Dark Pro Night Flat",
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.activityBar.location": "hidden",
+    "window.commandCenter": false,
+    "chat.commandCenter.enabled": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.editor.editorActionsLocation": "hidden"
+}
