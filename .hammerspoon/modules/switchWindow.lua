@@ -83,7 +83,7 @@ hs.hotkey.bind({"option"}, "r", function()
 end)
 
 hs.hotkey.bind({"option"}, "c", function()
-    hs.application.launchOrFocus("CHatGPT")
+    hs.application.launchOrFocus("ChatWise")
     moveCursorToFocusedWindow()
 end)
 

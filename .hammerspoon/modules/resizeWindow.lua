@@ -69,16 +69,19 @@ hs.hotkey.bind({"option"}, "j", function()
     win:setFrame(f)
 end)
 
--- center 1/2
 hs.hotkey.bind({"option"}, "g", function()
     local win = hs.window.focusedWindow()
-    local f = win:frame()
+    if not win then return end
+
     local screen = win:screen()
     local max = screen:frame()
+    local f = win:frame()
 
-    f.x = max.x + max.w/4
-    f.y = max.y
-    f.w = max.w / 2
+    f.w = max.w * (2/3)
     f.h = max.h
+
+    f.x = max.x + (max.w - f.w) / 2
+    f.y = max.y
+
     win:setFrame(f)
 end)
