@@ -12,10 +12,7 @@ local function focusAppIfRunning(appName)
 end
 
 hs.hotkey.bind({"option"}, "1", function()
-    if not emacs then
-        emacs = hs.window'GNU Emacs\n'
-    end
-    emacs:focus()
+    hs.application.launchOrFocus("Visual Studio Code")
     moveCursorToFocusedWindow()
 end)
 
