@@ -209,6 +209,11 @@
 		"when": "editorTextFocus && !terminalFocus"
 	},
 	{
+		"key": "ctrl+x 0",
+		"command": "workbench.action.toggleAuxiliaryBar",
+		"when": "auxiliaryBarFocus"
+	},
+	{
 		"key": "ctrl+x 1",
 		"command": "runCommands",
 		"when": "editorTextFocus && !terminalFocus && auxiliaryBarVisible",
