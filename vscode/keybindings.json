@@ -210,8 +210,19 @@
 	},
 	{
 		"key": "ctrl+x 1",
+		"command": "runCommands",
+		"when": "editorTextFocus && !terminalFocus && auxiliaryBarVisible",
+		"args": {
+			"commands": [
+				"workbench.action.closeEditorsInOtherGroups",
+				"workbench.action.toggleAuxiliaryBar"
+			]
+		}
+	},
+	{
+		"key": "ctrl+x 1",
 		"command": "workbench.action.closeEditorsInOtherGroups",
-		"when": "editorTextFocus && !terminalFocus"
+		"when": "editorTextFocus && !terminalFocus && !auxiliaryBarVisible"
 	},
 	{
 		"key": "ctrl+x 2",
@@ -229,16 +240,6 @@
 		"when": "editorTextFocus"
 	},
 	{
-		"key": "ctrl+w h",
-		"command": "workbench.view.explorer",
-		"when": "editorTextFocus && activeEditorGroupIndex == 1"
-	},
-	{
-		"key": "ctrl+w h",
-		"command": "workbench.action.focusLeftGroup",
-		"when": "editorTextFocus && activeEditorGroupIndex != 1"
-	},
-	{
 		"key": "ctrl+w j",
 		"command": "workbench.action.focusBelowGroup",
 		"when": "editorTextFocus"
@@ -249,12 +250,12 @@
 		"when": "editorTextFocus"
 	},
 	{
-		"key": "ctrl+w l",
-		"command": "workbench.action.focusRightGroup",
-		"when": "editorTextFocus"
+		"key": "ctrl+w ctrl+h",
+		"command": "workbench.view.explorer",
+		"when": "editorTextFocus && activeEditorGroupIndex == 1"
 	},
 	{
-		"key": "ctrl+w ctrl+h",
+		"key": "ctrl+w h",
 		"command": "workbench.view.explorer",
 		"when": "editorTextFocus && activeEditorGroupIndex == 1"
 	},
@@ -262,6 +263,21 @@
 		"key": "ctrl+w ctrl+h",
 		"command": "workbench.action.focusLeftGroup",
 		"when": "editorTextFocus && activeEditorGroupIndex != 1"
+	},
+	{
+		"key": "ctrl+w h",
+		"command": "workbench.action.focusLeftGroup",
+		"when": "editorTextFocus && activeEditorGroupIndex != 1"
+	},
+	{
+		"key": "ctrl+w ctrl+h",
+		"command": "workbench.action.focusLastEditorGroup",
+		"when": "auxiliaryBarFocus"
+	},
+	{
+		"key": "ctrl+w h",
+		"command": "workbench.action.focusLastEditorGroup",
+		"when": "auxiliaryBarFocus"
 	},
 	{
 		"key": "ctrl+w ctrl+j",
@@ -277,6 +293,53 @@
 		"key": "ctrl+w ctrl+l",
 		"command": "workbench.action.focusRightGroup",
 		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+w l",
+		"command": "workbench.action.focusRightGroup",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+w ctrl+l",
+		"command": "workbench.action.focusRightGroupWithoutWrap",
+		"when": "editorFocus && !activeEditorGroupLast"
+	},
+	{
+		"key": "ctrl+w l",
+		"command": "workbench.action.focusRightGroupWithoutWrap",
+		"when": "editorFocus && !activeEditorGroupLast"
+	},
+	{
+		"key": "ctrl+w ctrl+l",
+		"command": "workbench.action.focusAuxiliaryBar",
+		"when": "editorFocus && activeEditorGroupLast && auxiliaryBarVisible"
+	},
+	{
+		"key": "ctrl+w l",
+		"command": "workbench.action.focusAuxiliaryBar",
+		"when": "editorFocus && activeEditorGroupLast && auxiliaryBarVisible"
+	},
+	{
+		"key": "ctrl+w ctrl+l",
+		"command": "runCommands",
+		"when": "editorFocus && activeEditorGroupLast && !auxiliaryBarVisible",
+		"args": {
+			"commands": [
+				"workbench.action.toggleAuxiliaryBar",
+				"workbench.action.focusAuxiliaryBar"
+			]
+		}
+	},
+	{
+		"key": "ctrl+w l",
+		"command": "runCommands",
+		"when": "editorFocus && activeEditorGroupLast && !auxiliaryBarVisible",
+		"args": {
+			"commands": [
+				"workbench.action.toggleAuxiliaryBar",
+				"workbench.action.focusAuxiliaryBar"
+			]
+		}
 	},
 	{
 		"key": "alt+x",
