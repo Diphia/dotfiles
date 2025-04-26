@@ -47,6 +47,7 @@ appInputMethod = {
     {'/Applications/Warp.app', 'English'},
     {'/Applications/Google Chrome.app', 'English'},
     {'/Applications/Emacs.app', 'English'},
+    {'/Applications/Visual Studio Code.app', 'English'},
     {'/opt/homebrew/Cellar/emacs-plus@27/27.2/Emacs.app', 'English'},
     {'/opt/homebrew/Cellar/emacs-plus@28/28.1/Emacs.app', 'English'},
     {'/opt/homebrew/Cellar/emacs-plus@28/28.2/Emacs.app', 'English'},
