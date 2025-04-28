@@ -86,5 +86,7 @@
     "window.commandCenter": false,
     "chat.commandCenter.enabled": false,
     "workbench.layoutControl.enabled": false,
-    "workbench.editor.editorActionsLocation": "hidden"
+    "workbench.editor.editorActionsLocation": "hidden",
+    "editor.minimap.enabled": false,
+    "window.zoomLevel": 1
 }
