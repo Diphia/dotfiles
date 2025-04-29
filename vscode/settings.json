@@ -25,6 +25,14 @@
         {
             "before": ["<C-l>"], 
             "after": ["z", "z"] 
+        },
+        {
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
         }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
@@ -92,6 +100,12 @@
             "type": "command",
             "command": "command-bridge.openFile",
             "args": { "paths": ["~/temp/scratch"] }
+        },
+        {
+            "keys": ["t", "t"],
+            "name": "Toggle word wrap",
+            "type": "command",
+            "command": "editor.action.toggleWordWrap"
         }
     ],
     "workbench.colorTheme": "One Dark Pro Night Flat",
