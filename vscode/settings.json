@@ -84,7 +84,7 @@
             "keys": ["f", "p"],
             "name": "Quick Open",
             "type": "command",
-            "command": "workbench.action.quickOpen",
+            "command": "workbench.action.quickOpen"
         },
         {
             "keys": ["x"],
