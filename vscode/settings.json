@@ -81,7 +81,7 @@
             "args": { "paths": ["~/.ssh/config"] }
         },
         {
-            "keys": ["f", "p"],
+            "keys": [" "],
             "name": "Quick Open",
             "type": "command",
             "command": "workbench.action.quickOpen"
