@@ -77,7 +77,15 @@
             "keys": ["f", "s"],
             "name": "Open SSH config",
             "type": "command",
-            "command": "opensshremotes.openConfigFile"
+            "command": "command-bridge.openFile",
+            "args": { "paths": ["~/.ssh/config"] }
+        },
+        {
+            "keys": ["x"],
+            "name": "Open scratch buffer",
+            "type": "command",
+            "command": "command-bridge.openFile",
+            "args": { "paths": ["~/temp/scratch"] }
         }
     ],
     "workbench.colorTheme": "One Dark Pro Night Flat",
@@ -88,5 +96,19 @@
     "workbench.layoutControl.enabled": false,
     "workbench.editor.editorActionsLocation": "hidden",
     "editor.minimap.enabled": false,
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "mcp": {
+        "servers": {
+            "mcp-server-time": {
+                "command": "python",
+                "args": [
+                    "-m",
+                    "mcp_server_time",
+                    "--local-timezone=America/Los_Angeles"
+                ],
+                "env": {}
+            }
+        }
+    },
+    "C_Cpp.intelliSenseEngine": "disabled"
 }
