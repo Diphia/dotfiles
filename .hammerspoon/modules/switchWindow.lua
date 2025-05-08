@@ -37,10 +37,7 @@ hs.hotkey.bind({"option"}, "m", function()
 end)
 
 hs.hotkey.bind({"option"}, "4", function()
-    if not org_mode then
-        org_mode = hs.window'Org Mode\n'
-    end
-    org_mode:focus()
+    hs.application.launchOrFocus("Emacs")
     moveCursorToFocusedWindow()
 end)
 
