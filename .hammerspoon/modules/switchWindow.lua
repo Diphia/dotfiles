@@ -72,7 +72,7 @@ hs.hotkey.bind({"option"}, "e", function()
 end)
 
 hs.hotkey.bind({"option"}, "r", function()
-    hs.application.launchOrFocus("mCommander")
+    hs.application.launchOrFocus("vifmm")
     moveCursorToFocusedWindow()
 end)
 
