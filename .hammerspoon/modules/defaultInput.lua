@@ -56,6 +56,7 @@ appInputMethod = {
     {'/System/Library/CoreServices/Finder.app', 'English'},
     {'/Applications/WeChat.app', 'Chinese'},
     {'/Applications/System Preferences.app', 'English'},
+    {'/Applications/ViFMM.app', 'English'},
 }
 
 appWatcher = hs.application.watcher.new(applicationWatcher)
