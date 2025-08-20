@@ -77,7 +77,12 @@ hs.hotkey.bind({"option"}, "r", function()
 end)
 
 hs.hotkey.bind({"option"}, "c", function()
-    hs.application.launchOrFocus("ChatWise")
+    hs.application.launchOrFocus("Terminal")
+    moveCursorToFocusedWindow()
+end)
+
+hs.hotkey.bind({"option"}, "p", function()
+    hs.application.launchOrFocus("iPhone Mirroring")
     moveCursorToFocusedWindow()
 end)
 
