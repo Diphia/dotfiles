@@ -1,3 +1,5 @@
+eval "$(zoxide init zsh)"
+
 if [[ $OSTYPE == linux* ]]
 then
     HOME=/home/$USER
@@ -34,3 +36,9 @@ alias -s bz2='tar xjvf'
 export PATH="/home/diphia/.local/bin:$PATH"
 export EDITOR=vim
 export VISUAL=vim
+
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats ' (%b)'
+setopt PROMPT_SUBST
+PROMPT='%F{cyan}%1~%f%F{red}${vcs_info_msg_0_}%f %F{green}$%f '
