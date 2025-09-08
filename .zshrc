@@ -13,10 +13,9 @@ DISABLE_AUTO_TITLE="true"
 
 alias vi='vim'
 alias pc='proxychains4'
-alias v="f -e vim"
 alias grep="grep -E --color"
 alias ssh="TERM=xterm-256color ssh"
-alias e='e(){emacsclient $1&;};e'
+alias e='e(){emacsclient -t $1;};e'
 alias hg="history | grep "
 alias h="history | percol"
 alias cdp="cd \$(ls|percol)"
