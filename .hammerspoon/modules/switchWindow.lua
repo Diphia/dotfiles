@@ -17,7 +17,7 @@ hs.hotkey.bind({"option"}, "1", function()
 end)
 
 hs.hotkey.bind({"option"}, "2", function()
-    hs.application.launchOrFocus("Warp")
+    hs.application.launchOrFocus("kitty")
     moveCursorToFocusedWindow()
 end)
 
