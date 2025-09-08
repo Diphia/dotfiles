@@ -37,6 +37,12 @@ export PATH="/home/diphia/.local/bin:$PATH"
 export EDITOR=vim
 export VISUAL=vim
 
+# Load zsh-autosuggestions
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Configure zsh-autosuggestions to use right arrow key to accept suggestion
+bindkey '^[[C' forward-char  # Right arrow key accepts suggestion
+
 autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats ' (%b)'
