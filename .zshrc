@@ -26,6 +26,7 @@ alias gs="git status"
 alias ga="git add"
 alias gc="git commit -m"
 alias gd="git diff"
+alias gp="git push"
 
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
