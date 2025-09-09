@@ -34,6 +34,19 @@ export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=vim
 export VISUAL=vim
 
+# History configuration
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Configure zsh-autosuggestions to use right arrow key to accept suggestion
 bindkey '^[[C' forward-char  # Right arrow key accepts suggestion
