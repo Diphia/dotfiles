@@ -41,6 +41,11 @@ hs.hotkey.bind({"option"}, "4", function()
     moveCursorToFocusedWindow()
 end)
 
+hs.hotkey.bind({"option"}, "5", function()
+    hs.application.launchOrFocusByBundleID("com.openai.atlas")
+    moveCursorToFocusedWindow()
+end)
+
 hs.hotkey.bind({"command", "option"}, ",", function()
     hs.application.launchOrFocus("System Preferences")
     moveCursorToFocusedWindow()
