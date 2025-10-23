@@ -1,0 +1,7 @@
+#!/bin/bash
+set -euo pipefail
+
+temp_dir="$HOME/temp/$(date +%Y-%m-%d-%H%M%S)"
+mkdir -p "$temp_dir"
+cd "$temp_dir" || exit 1
+exec "$SHELL"
