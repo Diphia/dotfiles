@@ -12,7 +12,10 @@ local function focusAppIfRunning(appName)
 end
 
 hs.hotkey.bind({"option"}, "1", function()
-    hs.application.launchOrFocus("Visual Studio Code")
+    if not emacs then
+        emacs = hs.window'GNU Emacs\n'
+   end
+    emacs:focus()
     moveCursorToFocusedWindow()
 end)
 
@@ -37,12 +40,15 @@ hs.hotkey.bind({"option"}, "m", function()
 end)
 
 hs.hotkey.bind({"option"}, "4", function()
-    hs.application.launchOrFocus("Emacs")
+    if not org_mode then
+        org_mode = hs.window'Org Mode\n'
+    end
+    org_mode:focus()
     moveCursorToFocusedWindow()
 end)
 
 hs.hotkey.bind({"option"}, "`", function()
-    hs.application.launchOrFocusByBundleID("com.openai.atlas")
+    hs.application.launchOrFocus("Safari")
     moveCursorToFocusedWindow()
 end)
 
