@@ -48,7 +48,7 @@ hs.hotkey.bind({"option"}, "4", function()
 end)
 
 hs.hotkey.bind({"option"}, "`", function()
-    hs.application.launchOrFocus("Safari")
+    hs.application.launchOrFocus("ChatGPT")
     moveCursorToFocusedWindow()
 end)
 
